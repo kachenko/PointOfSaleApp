@@ -1,0 +1,15 @@
+C:\Users\Mariia\source\repos\PointOfSaleApp\bin\Debug\PointOfSaleApp.exe.config
+C:\Users\Mariia\source\repos\PointOfSaleApp\bin\Debug\PointOfSaleApp.exe
+C:\Users\Mariia\source\repos\PointOfSaleApp\bin\Debug\PointOfSaleApp.pdb
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.AssemblyReference.cache
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.Properties.Resources.resources
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.GenerateResource.cache
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.CoreCompileInputs.cache
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.exe
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.pdb
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.LoginForm.resources
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.NewOrderForm.resources
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.MenuForm.resources
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddCategoryForm.resources
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddDishForm.resources
+C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddProductForm.resources
