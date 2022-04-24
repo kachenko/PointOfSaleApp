@@ -31,13 +31,14 @@ namespace PointOfSaleApp
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewOrderForm));
             this.infoPanel = new System.Windows.Forms.Panel();
+            this.fullProductNameLabel = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
             this.priceLabel = new System.Windows.Forms.Label();
             this.removeButton = new System.Windows.Forms.Button();
             this.addProductButton = new System.Windows.Forms.Button();
             this.quantLabel = new System.Windows.Forms.Label();
             this.productNameLabel = new System.Windows.Forms.Label();
-            this.quantityUpDown = new System.Windows.Forms.NumericUpDown();
             this.itemPanel = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -46,17 +47,21 @@ namespace PointOfSaleApp
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.snacksButton = new System.Windows.Forms.Button();
-            this.dessertButton = new System.Windows.Forms.Button();
             this.productsListView = new System.Windows.Forms.ListView();
-            this.drinksButton = new System.Windows.Forms.Button();
-            this.seaButton = new System.Windows.Forms.Button();
-            this.vegeButton = new System.Windows.Forms.Button();
-            this.mainsButton = new System.Windows.Forms.Button();
-            this.breakfastButton = new System.Windows.Forms.Button();
-            this.starterButton = new System.Windows.Forms.Button();
+            this.idColumnHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameColumnHeadw = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.priceColumnHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
             this.billPanel = new System.Windows.Forms.Panel();
+            this.totalBillLabel = new System.Windows.Forms.Label();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.orderListView = new System.Windows.Forms.ListView();
+            this.idBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NameBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.priceBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.createButton = new System.Windows.Forms.Button();
             this.tableNrComboBox = new System.Windows.Forms.ComboBox();
             this.tableNrLabel = new System.Windows.Forms.Label();
             this.billLabel = new System.Windows.Forms.Label();
@@ -64,36 +69,31 @@ namespace PointOfSaleApp
             this.orderLabel = new System.Windows.Forms.Label();
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.userPictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.idColumnHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.nameColumnHeadw = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.priceColumnHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.descriptionLabel = new System.Windows.Forms.Label();
-            this.fullProductNameLabel = new System.Windows.Forms.Label();
-            this.createButton = new System.Windows.Forms.Button();
-            this.orderListView = new System.Windows.Forms.ListView();
-            this.totalLabel = new System.Windows.Forms.Label();
-            this.changeButton = new System.Windows.Forms.Button();
-            this.idBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.NameBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.quantBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.priceBillColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.totalBillLabel = new System.Windows.Forms.Label();
+            this.quantityTextBox = new System.Windows.Forms.TextBox();
+            this.snacksButton = new System.Windows.Forms.Button();
+            this.dessertButton = new System.Windows.Forms.Button();
+            this.drinksButton = new System.Windows.Forms.Button();
+            this.seaButton = new System.Windows.Forms.Button();
+            this.vegeButton = new System.Windows.Forms.Button();
+            this.mainsButton = new System.Windows.Forms.Button();
+            this.breakfastButton = new System.Windows.Forms.Button();
+            this.starterButton = new System.Windows.Forms.Button();
+            this.userPictureBox = new System.Windows.Forms.PictureBox();
             this.infoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).BeginInit();
             this.itemPanel.SuspendLayout();
             this.billPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // infoPanel
             // 
+            this.infoPanel.Controls.Add(this.quantityTextBox);
             this.infoPanel.Controls.Add(this.fullProductNameLabel);
             this.infoPanel.Controls.Add(this.descriptionLabel);
             this.infoPanel.Controls.Add(this.priceTextBox);
@@ -102,11 +102,34 @@ namespace PointOfSaleApp
             this.infoPanel.Controls.Add(this.addProductButton);
             this.infoPanel.Controls.Add(this.quantLabel);
             this.infoPanel.Controls.Add(this.productNameLabel);
-            this.infoPanel.Controls.Add(this.quantityUpDown);
             this.infoPanel.Location = new System.Drawing.Point(372, 173);
             this.infoPanel.Name = "infoPanel";
             this.infoPanel.Size = new System.Drawing.Size(264, 418);
             this.infoPanel.TabIndex = 7;
+            // 
+            // fullProductNameLabel
+            // 
+            this.fullProductNameLabel.AutoSize = true;
+            this.fullProductNameLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fullProductNameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.fullProductNameLabel.Location = new System.Drawing.Point(4, 73);
+            this.fullProductNameLabel.MaximumSize = new System.Drawing.Size(250, 0);
+            this.fullProductNameLabel.Name = "fullProductNameLabel";
+            this.fullProductNameLabel.Size = new System.Drawing.Size(91, 23);
+            this.fullProductNameLabel.TabIndex = 9;
+            this.fullProductNameLabel.Text = "Full Name:";
+            // 
+            // descriptionLabel
+            // 
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.descriptionLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.descriptionLabel.Location = new System.Drawing.Point(3, 232);
+            this.descriptionLabel.MaximumSize = new System.Drawing.Size(250, 0);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(99, 23);
+            this.descriptionLabel.TabIndex = 8;
+            this.descriptionLabel.Text = "Description:";
             // 
             // priceTextBox
             // 
@@ -176,26 +199,6 @@ namespace PointOfSaleApp
             this.productNameLabel.Size = new System.Drawing.Size(164, 30);
             this.productNameLabel.TabIndex = 1;
             this.productNameLabel.Text = "Product Name";
-            // 
-            // quantityUpDown
-            // 
-            this.quantityUpDown.Enabled = false;
-            this.quantityUpDown.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityUpDown.Location = new System.Drawing.Point(127, 155);
-            this.quantityUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.quantityUpDown.Name = "quantityUpDown";
-            this.quantityUpDown.Size = new System.Drawing.Size(120, 25);
-            this.quantityUpDown.TabIndex = 0;
-            this.quantityUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.quantityUpDown.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // itemPanel
             // 
@@ -284,37 +287,6 @@ namespace PointOfSaleApp
             this.label2.TabIndex = 14;
             this.label2.Text = "Breakfast";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 88);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 17);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Starters";
-            // 
-            // snacksButton
-            // 
-            this.snacksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.snacksButton.Image = ((System.Drawing.Image)(resources.GetObject("snacksButton.Image")));
-            this.snacksButton.Location = new System.Drawing.Point(91, 110);
-            this.snacksButton.Name = "snacksButton";
-            this.snacksButton.Size = new System.Drawing.Size(82, 82);
-            this.snacksButton.TabIndex = 10;
-            this.snacksButton.UseVisualStyleBackColor = true;
-            this.snacksButton.Click += new System.EventHandler(this.snacksButton_Click);
-            // 
-            // dessertButton
-            // 
-            this.dessertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dessertButton.Image = ((System.Drawing.Image)(resources.GetObject("dessertButton.Image")));
-            this.dessertButton.Location = new System.Drawing.Point(179, 110);
-            this.dessertButton.Name = "dessertButton";
-            this.dessertButton.Size = new System.Drawing.Size(82, 82);
-            this.dessertButton.TabIndex = 6;
-            this.dessertButton.UseVisualStyleBackColor = true;
-            this.dessertButton.Click += new System.EventHandler(this.dessertButton_Click);
-            // 
             // productsListView
             // 
             this.productsListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -329,73 +301,31 @@ namespace PointOfSaleApp
             this.productsListView.TabIndex = 12;
             this.productsListView.UseCompatibleStateImageBehavior = false;
             this.productsListView.View = System.Windows.Forms.View.Details;
+            this.productsListView.SelectedIndexChanged += new System.EventHandler(this.productsListView_SelectedIndexChanged);
             this.productsListView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.productsListView_MouseClick);
             // 
-            // drinksButton
+            // idColumnHead
             // 
-            this.drinksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.drinksButton.Image = ((System.Drawing.Image)(resources.GetObject("drinksButton.Image")));
-            this.drinksButton.Location = new System.Drawing.Point(267, 110);
-            this.drinksButton.Name = "drinksButton";
-            this.drinksButton.Size = new System.Drawing.Size(82, 82);
-            this.drinksButton.TabIndex = 7;
-            this.drinksButton.UseVisualStyleBackColor = true;
-            this.drinksButton.Click += new System.EventHandler(this.drinksButton_Click);
+            this.idColumnHead.Text = "ID";
+            this.idColumnHead.Width = 40;
             // 
-            // seaButton
+            // nameColumnHeadw
             // 
-            this.seaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seaButton.Image = ((System.Drawing.Image)(resources.GetObject("seaButton.Image")));
-            this.seaButton.Location = new System.Drawing.Point(267, 3);
-            this.seaButton.Name = "seaButton";
-            this.seaButton.Size = new System.Drawing.Size(82, 82);
-            this.seaButton.TabIndex = 9;
-            this.seaButton.UseVisualStyleBackColor = true;
-            this.seaButton.Click += new System.EventHandler(this.seaButton_Click);
+            this.nameColumnHeadw.Text = "Name";
+            this.nameColumnHeadw.Width = 177;
             // 
-            // vegeButton
+            // priceColumnHead
             // 
-            this.vegeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vegeButton.Image = ((System.Drawing.Image)(resources.GetObject("vegeButton.Image")));
-            this.vegeButton.Location = new System.Drawing.Point(3, 110);
-            this.vegeButton.Name = "vegeButton";
-            this.vegeButton.Size = new System.Drawing.Size(82, 82);
-            this.vegeButton.TabIndex = 8;
-            this.vegeButton.UseVisualStyleBackColor = true;
-            this.vegeButton.Click += new System.EventHandler(this.vegeButton_Click);
+            this.priceColumnHead.Text = "Price";
             // 
-            // mainsButton
+            // label1
             // 
-            this.mainsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mainsButton.Image = ((System.Drawing.Image)(resources.GetObject("mainsButton.Image")));
-            this.mainsButton.Location = new System.Drawing.Point(179, 3);
-            this.mainsButton.Name = "mainsButton";
-            this.mainsButton.Size = new System.Drawing.Size(82, 82);
-            this.mainsButton.TabIndex = 5;
-            this.mainsButton.UseVisualStyleBackColor = true;
-            this.mainsButton.Click += new System.EventHandler(this.mainsButton_Click);
-            // 
-            // breakfastButton
-            // 
-            this.breakfastButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.breakfastButton.Image = ((System.Drawing.Image)(resources.GetObject("breakfastButton.Image")));
-            this.breakfastButton.Location = new System.Drawing.Point(91, 3);
-            this.breakfastButton.Name = "breakfastButton";
-            this.breakfastButton.Size = new System.Drawing.Size(82, 82);
-            this.breakfastButton.TabIndex = 4;
-            this.breakfastButton.UseVisualStyleBackColor = true;
-            this.breakfastButton.Click += new System.EventHandler(this.breakfastButton_Click);
-            // 
-            // starterButton
-            // 
-            this.starterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.starterButton.Image = ((System.Drawing.Image)(resources.GetObject("starterButton.Image")));
-            this.starterButton.Location = new System.Drawing.Point(3, 3);
-            this.starterButton.Name = "starterButton";
-            this.starterButton.Size = new System.Drawing.Size(82, 82);
-            this.starterButton.TabIndex = 3;
-            this.starterButton.UseVisualStyleBackColor = true;
-            this.starterButton.Click += new System.EventHandler(this.starterButton_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 88);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 17);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Starters";
             // 
             // billPanel
             // 
@@ -413,8 +343,88 @@ namespace PointOfSaleApp
             this.billPanel.Size = new System.Drawing.Size(328, 422);
             this.billPanel.TabIndex = 5;
             // 
+            // totalBillLabel
+            // 
+            this.totalBillLabel.AutoSize = true;
+            this.totalBillLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalBillLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.totalBillLabel.Location = new System.Drawing.Point(270, 332);
+            this.totalBillLabel.Name = "totalBillLabel";
+            this.totalBillLabel.Size = new System.Drawing.Size(45, 30);
+            this.totalBillLabel.TabIndex = 13;
+            this.totalBillLabel.Text = "0.0";
+            // 
+            // changeButton
+            // 
+            this.changeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.changeButton.Location = new System.Drawing.Point(232, 67);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(84, 35);
+            this.changeButton.TabIndex = 10;
+            this.changeButton.Text = "CHANGE";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.totalLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.totalLabel.Location = new System.Drawing.Point(3, 332);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(72, 30);
+            this.totalLabel.TabIndex = 12;
+            this.totalLabel.Text = "Total:";
+            // 
+            // orderListView
+            // 
+            this.orderListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.idBillColHead,
+            this.NameBillColHead,
+            this.quantBillColHead,
+            this.priceBillColHead});
+            this.orderListView.HideSelection = false;
+            this.orderListView.Location = new System.Drawing.Point(8, 110);
+            this.orderListView.Name = "orderListView";
+            this.orderListView.Size = new System.Drawing.Size(308, 219);
+            this.orderListView.TabIndex = 11;
+            this.orderListView.UseCompatibleStateImageBehavior = false;
+            this.orderListView.View = System.Windows.Forms.View.Details;
+            // 
+            // idBillColHead
+            // 
+            this.idBillColHead.Text = "ID";
+            // 
+            // NameBillColHead
+            // 
+            this.NameBillColHead.Text = "Name";
+            // 
+            // quantBillColHead
+            // 
+            this.quantBillColHead.Text = "Quantity";
+            this.quantBillColHead.Width = 89;
+            // 
+            // priceBillColHead
+            // 
+            this.priceBillColHead.Text = "Price";
+            // 
+            // createButton
+            // 
+            this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.createButton.Location = new System.Drawing.Point(240, 363);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(85, 55);
+            this.createButton.TabIndex = 10;
+            this.createButton.Text = "CREATE";
+            this.createButton.UseVisualStyleBackColor = true;
+            // 
             // tableNrComboBox
             // 
+            this.tableNrComboBox.Enabled = false;
             this.tableNrComboBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableNrComboBox.FormattingEnabled = true;
             this.tableNrComboBox.Items.AddRange(new object[] {
@@ -497,16 +507,6 @@ namespace PointOfSaleApp
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Name Surname";
             // 
-            // userPictureBox
-            // 
-            this.userPictureBox.Image = global::PointOfSaleApp.Properties.Resources.f291c20922ce1ff1878b13afc2a49f19;
-            this.userPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.userPictureBox.Name = "userPictureBox";
-            this.userPictureBox.Size = new System.Drawing.Size(111, 130);
-            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.userPictureBox.TabIndex = 0;
-            this.userPictureBox.TabStop = false;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Peru;
@@ -539,122 +539,114 @@ namespace PointOfSaleApp
             this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 26);
             this.newOrderToolStripMenuItem.Text = "New Order";
             // 
-            // idColumnHead
+            // quantityTextBox
             // 
-            this.idColumnHead.Text = "ID";
-            this.idColumnHead.Width = 40;
+            this.quantityTextBox.Enabled = false;
+            this.quantityTextBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantityTextBox.Location = new System.Drawing.Point(127, 152);
+            this.quantityTextBox.Name = "quantityTextBox";
+            this.quantityTextBox.Size = new System.Drawing.Size(120, 25);
+            this.quantityTextBox.TabIndex = 10;
+            this.quantityTextBox.Text = "1";
+            this.quantityTextBox.Leave += new System.EventHandler(this.quantityTextBox_Leave);
             // 
-            // nameColumnHeadw
+            // snacksButton
             // 
-            this.nameColumnHeadw.Text = "Name";
-            this.nameColumnHeadw.Width = 177;
+            this.snacksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.snacksButton.Image = ((System.Drawing.Image)(resources.GetObject("snacksButton.Image")));
+            this.snacksButton.Location = new System.Drawing.Point(91, 110);
+            this.snacksButton.Name = "snacksButton";
+            this.snacksButton.Size = new System.Drawing.Size(82, 82);
+            this.snacksButton.TabIndex = 10;
+            this.snacksButton.UseVisualStyleBackColor = true;
+            this.snacksButton.Click += new System.EventHandler(this.snacksButton_Click);
             // 
-            // priceColumnHead
+            // dessertButton
             // 
-            this.priceColumnHead.Text = "Price";
+            this.dessertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dessertButton.Image = ((System.Drawing.Image)(resources.GetObject("dessertButton.Image")));
+            this.dessertButton.Location = new System.Drawing.Point(179, 110);
+            this.dessertButton.Name = "dessertButton";
+            this.dessertButton.Size = new System.Drawing.Size(82, 82);
+            this.dessertButton.TabIndex = 6;
+            this.dessertButton.UseVisualStyleBackColor = true;
+            this.dessertButton.Click += new System.EventHandler(this.dessertButton_Click);
             // 
-            // descriptionLabel
+            // drinksButton
             // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.descriptionLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.descriptionLabel.Location = new System.Drawing.Point(3, 232);
-            this.descriptionLabel.MaximumSize = new System.Drawing.Size(250, 0);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(99, 23);
-            this.descriptionLabel.TabIndex = 8;
-            this.descriptionLabel.Text = "Description:";
+            this.drinksButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.drinksButton.Image = ((System.Drawing.Image)(resources.GetObject("drinksButton.Image")));
+            this.drinksButton.Location = new System.Drawing.Point(267, 110);
+            this.drinksButton.Name = "drinksButton";
+            this.drinksButton.Size = new System.Drawing.Size(82, 82);
+            this.drinksButton.TabIndex = 7;
+            this.drinksButton.UseVisualStyleBackColor = true;
+            this.drinksButton.Click += new System.EventHandler(this.drinksButton_Click);
             // 
-            // fullProductNameLabel
+            // seaButton
             // 
-            this.fullProductNameLabel.AutoSize = true;
-            this.fullProductNameLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fullProductNameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.fullProductNameLabel.Location = new System.Drawing.Point(4, 73);
-            this.fullProductNameLabel.MaximumSize = new System.Drawing.Size(250, 0);
-            this.fullProductNameLabel.Name = "fullProductNameLabel";
-            this.fullProductNameLabel.Size = new System.Drawing.Size(91, 23);
-            this.fullProductNameLabel.TabIndex = 9;
-            this.fullProductNameLabel.Text = "Full Name:";
+            this.seaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.seaButton.Image = ((System.Drawing.Image)(resources.GetObject("seaButton.Image")));
+            this.seaButton.Location = new System.Drawing.Point(267, 3);
+            this.seaButton.Name = "seaButton";
+            this.seaButton.Size = new System.Drawing.Size(82, 82);
+            this.seaButton.TabIndex = 9;
+            this.seaButton.UseVisualStyleBackColor = true;
+            this.seaButton.Click += new System.EventHandler(this.seaButton_Click);
             // 
-            // createButton
+            // vegeButton
             // 
-            this.createButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.createButton.Location = new System.Drawing.Point(240, 363);
-            this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(85, 55);
-            this.createButton.TabIndex = 10;
-            this.createButton.Text = "CREATE";
-            this.createButton.UseVisualStyleBackColor = true;
+            this.vegeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vegeButton.Image = ((System.Drawing.Image)(resources.GetObject("vegeButton.Image")));
+            this.vegeButton.Location = new System.Drawing.Point(3, 110);
+            this.vegeButton.Name = "vegeButton";
+            this.vegeButton.Size = new System.Drawing.Size(82, 82);
+            this.vegeButton.TabIndex = 8;
+            this.vegeButton.UseVisualStyleBackColor = true;
+            this.vegeButton.Click += new System.EventHandler(this.vegeButton_Click);
             // 
-            // orderListView
+            // mainsButton
             // 
-            this.orderListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.idBillColHead,
-            this.NameBillColHead,
-            this.quantBillColHead,
-            this.priceBillColHead});
-            this.orderListView.HideSelection = false;
-            this.orderListView.Location = new System.Drawing.Point(8, 110);
-            this.orderListView.Name = "orderListView";
-            this.orderListView.Size = new System.Drawing.Size(308, 219);
-            this.orderListView.TabIndex = 11;
-            this.orderListView.UseCompatibleStateImageBehavior = false;
-            this.orderListView.View = System.Windows.Forms.View.Details;
+            this.mainsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mainsButton.Image = ((System.Drawing.Image)(resources.GetObject("mainsButton.Image")));
+            this.mainsButton.Location = new System.Drawing.Point(179, 3);
+            this.mainsButton.Name = "mainsButton";
+            this.mainsButton.Size = new System.Drawing.Size(82, 82);
+            this.mainsButton.TabIndex = 5;
+            this.mainsButton.UseVisualStyleBackColor = true;
+            this.mainsButton.Click += new System.EventHandler(this.mainsButton_Click);
             // 
-            // totalLabel
+            // breakfastButton
             // 
-            this.totalLabel.AutoSize = true;
-            this.totalLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.totalLabel.Location = new System.Drawing.Point(3, 332);
-            this.totalLabel.Name = "totalLabel";
-            this.totalLabel.Size = new System.Drawing.Size(72, 30);
-            this.totalLabel.TabIndex = 12;
-            this.totalLabel.Text = "Total:";
+            this.breakfastButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.breakfastButton.Image = ((System.Drawing.Image)(resources.GetObject("breakfastButton.Image")));
+            this.breakfastButton.Location = new System.Drawing.Point(91, 3);
+            this.breakfastButton.Name = "breakfastButton";
+            this.breakfastButton.Size = new System.Drawing.Size(82, 82);
+            this.breakfastButton.TabIndex = 4;
+            this.breakfastButton.UseVisualStyleBackColor = true;
+            this.breakfastButton.Click += new System.EventHandler(this.breakfastButton_Click);
             // 
-            // changeButton
+            // starterButton
             // 
-            this.changeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changeButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.changeButton.Location = new System.Drawing.Point(232, 67);
-            this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(84, 35);
-            this.changeButton.TabIndex = 10;
-            this.changeButton.Text = "CHANGE";
-            this.changeButton.UseVisualStyleBackColor = true;
-            this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
+            this.starterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.starterButton.Image = ((System.Drawing.Image)(resources.GetObject("starterButton.Image")));
+            this.starterButton.Location = new System.Drawing.Point(3, 3);
+            this.starterButton.Name = "starterButton";
+            this.starterButton.Size = new System.Drawing.Size(82, 82);
+            this.starterButton.TabIndex = 3;
+            this.starterButton.UseVisualStyleBackColor = true;
+            this.starterButton.Click += new System.EventHandler(this.starterButton_Click);
             // 
-            // idBillColHead
+            // userPictureBox
             // 
-            this.idBillColHead.Text = "ID";
-            // 
-            // NameBillColHead
-            // 
-            this.NameBillColHead.Text = "Name";
-            // 
-            // quantBillColHead
-            // 
-            this.quantBillColHead.Text = "Quantity";
-            this.quantBillColHead.Width = 89;
-            // 
-            // priceBillColHead
-            // 
-            this.priceBillColHead.Text = "Price";
-            // 
-            // totalBillLabel
-            // 
-            this.totalBillLabel.AutoSize = true;
-            this.totalBillLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.totalBillLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.totalBillLabel.Location = new System.Drawing.Point(270, 332);
-            this.totalBillLabel.Name = "totalBillLabel";
-            this.totalBillLabel.Size = new System.Drawing.Size(45, 30);
-            this.totalBillLabel.TabIndex = 13;
-            this.totalBillLabel.Text = "0.0";
+            this.userPictureBox.Image = global::PointOfSaleApp.Properties.Resources.f291c20922ce1ff1878b13afc2a49f19;
+            this.userPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.userPictureBox.Name = "userPictureBox";
+            this.userPictureBox.Size = new System.Drawing.Size(111, 130);
+            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.userPictureBox.TabIndex = 0;
+            this.userPictureBox.TabStop = false;
             // 
             // NewOrderForm
             // 
@@ -675,16 +667,15 @@ namespace PointOfSaleApp
             this.Load += new System.EventHandler(this.NewOrderForm_Load);
             this.infoPanel.ResumeLayout(false);
             this.infoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.quantityUpDown)).EndInit();
             this.itemPanel.ResumeLayout(false);
             this.itemPanel.PerformLayout();
             this.billPanel.ResumeLayout(false);
             this.billPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -725,7 +716,6 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Button addProductButton;
         private System.Windows.Forms.Label quantLabel;
         private System.Windows.Forms.Label productNameLabel;
-        private System.Windows.Forms.NumericUpDown quantityUpDown;
         private System.Windows.Forms.TextBox priceTextBox;
         private System.Windows.Forms.Label priceLabel;
         private System.Windows.Forms.Button removeButton;
@@ -745,5 +735,6 @@ namespace PointOfSaleApp
         private System.Windows.Forms.ColumnHeader quantBillColHead;
         private System.Windows.Forms.ColumnHeader priceBillColHead;
         private System.Windows.Forms.Label totalBillLabel;
+        private System.Windows.Forms.TextBox quantityTextBox;
     }
 }

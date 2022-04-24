@@ -36,7 +36,7 @@ namespace PointOfSaleApp
             this.UsersButton = new System.Windows.Forms.Button();
             this.MyOrdersButton = new System.Windows.Forms.Button();
             this.MenuButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
+            this.addProdButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // newOrderButton
@@ -109,18 +109,18 @@ namespace PointOfSaleApp
             this.MenuButton.Text = "MENU";
             this.MenuButton.UseVisualStyleBackColor = true;
             // 
-            // addButton
+            // addProdButton
             // 
-            this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addButton.Location = new System.Drawing.Point(815, 67);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(155, 155);
-            this.addButton.TabIndex = 6;
-            this.addButton.Text = "ADD ITEM";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.addProdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addProdButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addProdButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.addProdButton.Location = new System.Drawing.Point(815, 67);
+            this.addProdButton.Name = "addProdButton";
+            this.addProdButton.Size = new System.Drawing.Size(155, 155);
+            this.addProdButton.TabIndex = 6;
+            this.addProdButton.Text = "ADD PRODUCT";
+            this.addProdButton.UseVisualStyleBackColor = true;
+            this.addProdButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // MenuForm
             // 
@@ -128,7 +128,7 @@ namespace PointOfSaleApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
-            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.addProdButton);
             this.Controls.Add(this.MenuButton);
             this.Controls.Add(this.MyOrdersButton);
             this.Controls.Add(this.UsersButton);
@@ -151,6 +151,6 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Button UsersButton;
         private System.Windows.Forms.Button MyOrdersButton;
         private System.Windows.Forms.Button MenuButton;
-        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button addProdButton;
     }
 }

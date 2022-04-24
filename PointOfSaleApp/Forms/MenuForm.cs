@@ -51,7 +51,9 @@ namespace PointOfSaleApp
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
+            Forms.AddProductForm addProduct = new Forms.AddProductForm();
+            this.Hide();
+            addProduct.Show();
         }
     }
 }

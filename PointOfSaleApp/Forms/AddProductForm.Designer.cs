@@ -29,40 +29,46 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.listProdView = new System.Windows.Forms.ListView();
+            this.prodListView = new System.Windows.Forms.ListView();
             this.prodIdColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prodNameColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prodQuantColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prodCategColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.listProdLabel = new System.Windows.Forms.Label();
             this.userPictureBox = new System.Windows.Forms.PictureBox();
+            this.listProdLabel = new System.Windows.Forms.Label();
             this.prodNameTextBox = new System.Windows.Forms.TextBox();
-            this.prodQuantityTextBox = new System.Windows.Forms.TextBox();
+            this.prodCodeTextBox = new System.Windows.Forms.TextBox();
             this.prodCatComboBox = new System.Windows.Forms.ComboBox();
             this.productNameLabel = new System.Windows.Forms.Label();
-            this.productQuantLabel = new System.Windows.Forms.Label();
+            this.productCodeLabel = new System.Windows.Forms.Label();
             this.productCategoryLabel = new System.Windows.Forms.Label();
             this.addProductButton = new System.Windows.Forms.Button();
             this.removeProductButton = new System.Windows.Forms.Button();
+            this.productUnitLabel = new System.Windows.Forms.Label();
+            this.prodUnitComboBox = new System.Windows.Forms.ComboBox();
+            this.prodCodeColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prodUnitColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // listProdView
+            // prodListView
             // 
-            this.listProdView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.prodListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.prodIdColHead,
+            this.prodCodeColHead,
             this.prodNameColHead,
-            this.prodQuantColHead});
-            this.listProdView.HideSelection = false;
-            this.listProdView.Location = new System.Drawing.Point(12, 194);
-            this.listProdView.Name = "listProdView";
-            this.listProdView.Size = new System.Drawing.Size(412, 397);
-            this.listProdView.TabIndex = 0;
-            this.listProdView.UseCompatibleStateImageBehavior = false;
-            this.listProdView.View = System.Windows.Forms.View.Details;
+            this.prodCategColHead,
+            this.prodUnitColHead});
+            this.prodListView.HideSelection = false;
+            this.prodListView.Location = new System.Drawing.Point(12, 194);
+            this.prodListView.Name = "prodListView";
+            this.prodListView.Size = new System.Drawing.Size(475, 397);
+            this.prodListView.TabIndex = 0;
+            this.prodListView.UseCompatibleStateImageBehavior = false;
+            this.prodListView.View = System.Windows.Forms.View.Details;
             // 
             // prodIdColHead
             // 
@@ -70,12 +76,15 @@ namespace PointOfSaleApp.Forms
             // 
             // prodNameColHead
             // 
+            this.prodNameColHead.DisplayIndex = 1;
             this.prodNameColHead.Text = "Name";
-            this.prodNameColHead.Width = 261;
+            this.prodNameColHead.Width = 90;
             // 
-            // prodQuantColHead
+            // prodCategColHead
             // 
-            this.prodQuantColHead.Text = "Quantity";
+            this.prodCategColHead.DisplayIndex = 2;
+            this.prodCategColHead.Text = "Category";
+            this.prodCategColHead.Width = 87;
             // 
             // mainPanel
             // 
@@ -109,6 +118,16 @@ namespace PointOfSaleApp.Forms
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Name Surname";
             // 
+            // userPictureBox
+            // 
+            this.userPictureBox.Image = global::PointOfSaleApp.Properties.Resources.f291c20922ce1ff1878b13afc2a49f19;
+            this.userPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.userPictureBox.Name = "userPictureBox";
+            this.userPictureBox.Size = new System.Drawing.Size(111, 130);
+            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.userPictureBox.TabIndex = 0;
+            this.userPictureBox.TabStop = false;
+            // 
             // listProdLabel
             // 
             this.listProdLabel.AutoSize = true;
@@ -120,16 +139,6 @@ namespace PointOfSaleApp.Forms
             this.listProdLabel.TabIndex = 8;
             this.listProdLabel.Text = "Product List";
             // 
-            // userPictureBox
-            // 
-            this.userPictureBox.Image = global::PointOfSaleApp.Properties.Resources.f291c20922ce1ff1878b13afc2a49f19;
-            this.userPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.userPictureBox.Name = "userPictureBox";
-            this.userPictureBox.Size = new System.Drawing.Size(111, 130);
-            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.userPictureBox.TabIndex = 0;
-            this.userPictureBox.TabStop = false;
-            // 
             // prodNameTextBox
             // 
             this.prodNameTextBox.Location = new System.Drawing.Point(678, 215);
@@ -137,12 +146,12 @@ namespace PointOfSaleApp.Forms
             this.prodNameTextBox.Size = new System.Drawing.Size(292, 22);
             this.prodNameTextBox.TabIndex = 9;
             // 
-            // prodQuantityTextBox
+            // prodCodeTextBox
             // 
-            this.prodQuantityTextBox.Location = new System.Drawing.Point(678, 243);
-            this.prodQuantityTextBox.Name = "prodQuantityTextBox";
-            this.prodQuantityTextBox.Size = new System.Drawing.Size(292, 22);
-            this.prodQuantityTextBox.TabIndex = 10;
+            this.prodCodeTextBox.Location = new System.Drawing.Point(678, 243);
+            this.prodCodeTextBox.Name = "prodCodeTextBox";
+            this.prodCodeTextBox.Size = new System.Drawing.Size(292, 22);
+            this.prodCodeTextBox.TabIndex = 10;
             // 
             // prodCatComboBox
             // 
@@ -164,17 +173,17 @@ namespace PointOfSaleApp.Forms
             this.productNameLabel.TabIndex = 12;
             this.productNameLabel.Text = "Product Name:";
             // 
-            // productQuantLabel
+            // productCodeLabel
             // 
-            this.productQuantLabel.AutoSize = true;
-            this.productQuantLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.productQuantLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.productQuantLabel.Location = new System.Drawing.Point(493, 242);
-            this.productQuantLabel.MaximumSize = new System.Drawing.Size(250, 0);
-            this.productQuantLabel.Name = "productQuantLabel";
-            this.productQuantLabel.Size = new System.Drawing.Size(78, 23);
-            this.productQuantLabel.TabIndex = 13;
-            this.productQuantLabel.Text = "Quantity:";
+            this.productCodeLabel.AutoSize = true;
+            this.productCodeLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.productCodeLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.productCodeLabel.Location = new System.Drawing.Point(493, 242);
+            this.productCodeLabel.MaximumSize = new System.Drawing.Size(250, 0);
+            this.productCodeLabel.Name = "productCodeLabel";
+            this.productCodeLabel.Size = new System.Drawing.Size(54, 23);
+            this.productCodeLabel.TabIndex = 13;
+            this.productCodeLabel.Text = "Code:";
             // 
             // productCategoryLabel
             // 
@@ -199,6 +208,7 @@ namespace PointOfSaleApp.Forms
             this.addProductButton.TabIndex = 15;
             this.addProductButton.Text = "ADD";
             this.addProductButton.UseVisualStyleBackColor = true;
+            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
             // removeProductButton
             // 
@@ -212,25 +222,59 @@ namespace PointOfSaleApp.Forms
             this.removeProductButton.Text = "REMOVE";
             this.removeProductButton.UseVisualStyleBackColor = true;
             // 
+            // productUnitLabel
+            // 
+            this.productUnitLabel.AutoSize = true;
+            this.productUnitLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.productUnitLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.productUnitLabel.Location = new System.Drawing.Point(493, 300);
+            this.productUnitLabel.MaximumSize = new System.Drawing.Size(250, 0);
+            this.productUnitLabel.Name = "productUnitLabel";
+            this.productUnitLabel.Size = new System.Drawing.Size(45, 23);
+            this.productUnitLabel.TabIndex = 18;
+            this.productUnitLabel.Text = "Unit:";
+            // 
+            // prodUnitComboBox
+            // 
+            this.prodUnitComboBox.FormattingEnabled = true;
+            this.prodUnitComboBox.Location = new System.Drawing.Point(678, 301);
+            this.prodUnitComboBox.Name = "prodUnitComboBox";
+            this.prodUnitComboBox.Size = new System.Drawing.Size(292, 24);
+            this.prodUnitComboBox.TabIndex = 19;
+            // 
+            // prodCodeColHead
+            // 
+            this.prodCodeColHead.DisplayIndex = 3;
+            this.prodCodeColHead.Text = "Code";
+            this.prodCodeColHead.Width = 82;
+            // 
+            // prodUnitColHead
+            // 
+            this.prodUnitColHead.Text = "Unit";
+            // 
             // AddProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.prodUnitComboBox);
+            this.Controls.Add(this.productUnitLabel);
             this.Controls.Add(this.removeProductButton);
             this.Controls.Add(this.addProductButton);
             this.Controls.Add(this.productCategoryLabel);
-            this.Controls.Add(this.productQuantLabel);
+            this.Controls.Add(this.productCodeLabel);
             this.Controls.Add(this.productNameLabel);
             this.Controls.Add(this.prodCatComboBox);
-            this.Controls.Add(this.prodQuantityTextBox);
+            this.Controls.Add(this.prodCodeTextBox);
             this.Controls.Add(this.prodNameTextBox);
             this.Controls.Add(this.listProdLabel);
             this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.listProdView);
+            this.Controls.Add(this.prodListView);
             this.Name = "AddProductForm";
             this.Text = "POS - Add Product";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddProductForm_FormClosing);
+            this.Load += new System.EventHandler(this.AddProductForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
@@ -241,7 +285,7 @@ namespace PointOfSaleApp.Forms
 
         #endregion
 
-        private System.Windows.Forms.ListView listProdView;
+        private System.Windows.Forms.ListView prodListView;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label positLabel;
         private System.Windows.Forms.Label nameLabel;
@@ -249,14 +293,18 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label listProdLabel;
         private System.Windows.Forms.ColumnHeader prodIdColHead;
         private System.Windows.Forms.ColumnHeader prodNameColHead;
-        private System.Windows.Forms.ColumnHeader prodQuantColHead;
+        private System.Windows.Forms.ColumnHeader prodCategColHead;
         private System.Windows.Forms.TextBox prodNameTextBox;
-        private System.Windows.Forms.TextBox prodQuantityTextBox;
+        private System.Windows.Forms.TextBox prodCodeTextBox;
         private System.Windows.Forms.ComboBox prodCatComboBox;
         private System.Windows.Forms.Label productNameLabel;
-        private System.Windows.Forms.Label productQuantLabel;
+        private System.Windows.Forms.Label productCodeLabel;
         private System.Windows.Forms.Label productCategoryLabel;
         private System.Windows.Forms.Button addProductButton;
         private System.Windows.Forms.Button removeProductButton;
+        private System.Windows.Forms.ColumnHeader prodCodeColHead;
+        private System.Windows.Forms.ColumnHeader prodUnitColHead;
+        private System.Windows.Forms.Label productUnitLabel;
+        private System.Windows.Forms.ComboBox prodUnitComboBox;
     }
 }

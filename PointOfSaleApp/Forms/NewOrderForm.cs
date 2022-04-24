@@ -22,6 +22,8 @@ namespace PointOfSaleApp
 		}
         private void NewOrderForm_Load(object sender, EventArgs e)
         {
+            
+
             conn.Open();
             nameLabel.Text = UserClass.userLogin.ToString();
             positLabel.Text = UserClass.userRole.ToString();
@@ -64,9 +66,9 @@ namespace PointOfSaleApp
             for (int i = 0; i < table.Rows.Count; i++)
             {
                 DataRow row = table.Rows[i];
-                ListViewItem item = new ListViewItem(row["name"].ToString());
+                ListViewItem item = new ListViewItem(row["id"].ToString());
+                item.SubItems.Add(row["name"].ToString());
                 item.SubItems.Add(row["price"].ToString());
-                item.SubItems.Add(row["id"].ToString());
                 productsListView.Items.Add(item);
             }
         }
@@ -200,8 +202,8 @@ namespace PointOfSaleApp
 
         private void productsListView_MouseClick(object sender, MouseEventArgs e)
         {
-            quantityUpDown.Value = 1;
-            quantityUpDown.Enabled = true;
+            quantityTextBox.Text = "1";
+            quantityTextBox.Enabled = true;
             int id = int.Parse(productsListView.SelectedItems[0].SubItems[0].Text);
             string query = "select * from Dish where id = " + id;
             DataTable table = new DataTable();
@@ -222,47 +224,31 @@ namespace PointOfSaleApp
             }
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            int id = int.Parse(productsListView.SelectedItems[0].SubItems[0].Text);
-            string query = "select * from Dish where id = " + id;
-            DataTable table = new DataTable();
-            adapter = new SqlDataAdapter(query, conn);
-            adapter.Fill(table);
-
-            foreach(DataRow row in table.Rows)
-            {
-                string price = row["price"].ToString();
-                priceTextBox.Text = ( quantityUpDown.Value * decimal.Parse(price) ).ToString();
-            }
-
-        }
-
         private void tableNrComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Are you sure you are ordering for table number " + tableNrComboBox.Text + "?", "Create New Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
-            {
-                tableNrComboBox.Enabled = false;
-            }
+            //if ((MessageBox.Show("Are you sure you are ordering for table number " + tableNrComboBox.Text + "?", "Create New Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+            //{
+            //    tableNrComboBox.Enabled = false;
+            //}
 
-            DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Order] where table_nr = " + tableNrComboBox.Text, conn);
+            //DataTable table = new DataTable();
+            //adapter = new SqlDataAdapter("select * from [Order] where table_nr = " + tableNrComboBox.Text, conn);
             
 
-            foreach (DataRow row in table.Rows)
-            {
-                if (adapter != null)
-                {
-                    adapter.Fill(table);
-                    int status = int.Parse(row["status"].ToString());
+            //foreach (DataRow row in table.Rows)
+            //{
+            //    if (adapter != null)
+            //    {
+            //        adapter.Fill(table);
+            //        int status = int.Parse(row["status"].ToString());
                     
-                    if (status != 0)
-                    {
-                        MessageBox.Show("This table is already in service.", "Create New Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+            //        if (status != 0)
+            //        {
+            //            MessageBox.Show("This table is already in service.", "Create New Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        }
+            //    }
                 
-            }
+            //}
         }
 
         private void changeButton_Click(object sender, EventArgs e)
@@ -275,39 +261,66 @@ namespace PointOfSaleApp
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-            string queryInsert = "insert into [Order] (table_nr, time, price, user_id, status) values(@table_nr, @time, @price, @user_id, @status)";
-            SqlCommand command = new SqlCommand(queryInsert, conn);
+            //string queryInsert = "insert into [Order] (table_nr, time, price, user_id, isActive) values(@table_nr, @time, @price, @user_id, @status)";
+            //SqlCommand command = new SqlCommand(queryInsert, conn);
             
-            command.Parameters.AddWithValue("@table_nr", tableNrComboBox.Text);
-            command.Parameters.AddWithValue("@time", DateTime.Now.ToString("HH:mm"));
-            command.Parameters.AddWithValue("@price", totalBillLabel.Text);
-            command.Parameters.AddWithValue("@user_id", UserClass.userId);
-            command.Parameters.AddWithValue("@status", 1);
-            command.CommandType = CommandType.Text;
-            int i = command.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("Order #" + orderLabel.Text + " added.", "Order Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //command.Parameters.AddWithValue("@table_nr", tableNrComboBox.Text);
+            //command.Parameters.AddWithValue("@time", DateTime.Now.ToString("HH:mm"));
+            //command.Parameters.AddWithValue("@price", totalBillLabel.Text);
+            //command.Parameters.AddWithValue("@user_id", UserClass.userId);
+            //command.Parameters.AddWithValue("@status", 1);
+            //command.CommandType = CommandType.Text;
+            //int i = command.ExecuteNonQuery();
+            //conn.Close();
+            //MessageBox.Show("Order #" + orderLabel.Text + " added.", "Order Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            orderListView.View = View.Details;
-            conn.Open();
-            string querySelect = "select * from [Order] where id = " + orderLabel.Text;
-            DataTable table = new DataTable();
-            adapter = new SqlDataAdapter(querySelect, conn);
-            adapter.Fill(table);
-            foreach(DataRow row in table.Rows)
+            //orderListView.View = View.Details;
+            //conn.Open();
+            //string querySelect = "select * from [Order] where id = " + orderLabel.Text;
+            //DataTable table = new DataTable();
+            //adapter = new SqlDataAdapter(querySelect, conn);
+            //adapter.Fill(table);
+            //foreach(DataRow row in table.Rows)
+            //{
+            //    string id = row["id"].ToString();
+            //    string name = row["name"].ToString();
+            //    string quantity = row["quantity"].ToString();
+            //    string price = row["price"].ToString();
+
+            //    ListViewItem item = new ListViewItem(id);
+            //    item.SubItems.Add(name);
+            //    item.SubItems.Add(quantity);
+            //    item.SubItems.Add(price);
+
+            //    orderListView.Items.Add(item);
+            //}
+        }
+
+        private void quantityTextBox_Leave(object sender, EventArgs e)
+        {
+            
+
+            string query = "select * from [Order] where table_nr = " + tableNrComboBox.Text;
+            adapter = new SqlDataAdapter(query, conn);
+            if(adapter == null)
             {
-                string id = row["id"].ToString();
-                string name = row["name"].ToString();
-                string quantity = row["quantity"].ToString();
-                string price = row["price"].ToString();
+                if ((MessageBox.Show("The order isn't exist. Are you sure you are ordering for table nr " + tableNrComboBox.Text + "?", "Create New Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+                {
+                    tableNrComboBox.Enabled = false;
 
-                ListViewItem item = new ListViewItem(id);
-                item.SubItems.Add(name);
-                item.SubItems.Add(quantity);
-                item.SubItems.Add(price);
-
-                orderListView.Items.Add(item);
+                    // create order in database
+                    string queryAddOrder = "";
+                    
+                }
             }
+            
+
+            
+        }
+
+        private void productsListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
