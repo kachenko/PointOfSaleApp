@@ -29,87 +29,59 @@ namespace PointOfSaleApp.Forms
 
         private void FillCategoryComboBox()
         {
-            conn.Open();
-            string query = "select * from [ProductCategory]";
-            adapter = new SqlDataAdapter(query, conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            DataRow row = table.NewRow();
-            row["name"] = "";
-            table.Rows.InsertAt(row, 0);
-            prodCatComboBox.DataSource = table;
-            prodCatComboBox.DisplayMember = "name";
-            prodCatComboBox.ValueMember = "id";
-            conn.Close();
+            //conn.Open();
+            //string query = "select * from [ProductCategory]";
+            //adapter = new SqlDataAdapter(query, conn);
+            //DataTable table = new DataTable();
+            //adapter.Fill(table);
+            //DataRow row = table.NewRow();
+            //row["name"] = "";
+            //table.Rows.InsertAt(row, 0);
+            //prodCatComboBox.DataSource = table;
+            //prodCatComboBox.DisplayMember = "name";
+            //prodCatComboBox.ValueMember = "id";
+            //conn.Close();
         }
         private void FillUnitComboBox()
         {
-            conn.Open();
-            string query = "select * from [Unit]";
-            adapter = new SqlDataAdapter(query, conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            DataRow row = table.NewRow();
-            row["type"] = "";
-            table.Rows.InsertAt(row, 0);
-            prodUnitComboBox.DataSource = table;
-            prodUnitComboBox.DisplayMember = "type";
-            prodUnitComboBox.ValueMember = "id";
-            conn.Close();
+            //conn.Open();
+            //string query = "select * from [Unit]";
+            //adapter = new SqlDataAdapter(query, conn);
+            //DataTable table = new DataTable();
+            //adapter.Fill(table);
+            //DataRow row = table.NewRow();
+            //row["type"] = "";
+            //table.Rows.InsertAt(row, 0);
+            //prodUnitComboBox.DataSource = table;
+            //prodUnitComboBox.DisplayMember = "type";
+            //prodUnitComboBox.ValueMember = "id";
+            //conn.Close();
         }
 
         private void FillListProdView()
         {
-            prodListView.Items.Clear();
-            prodListView.View = View.Details;
-            adapter = new SqlDataAdapter("select * from [Product]", conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
+            //prodListView.Items.Clear();
+            //prodListView.View = View.Details;
+            //adapter = new SqlDataAdapter("select * from [Product]", conn);
+            //DataTable table = new DataTable();
+            //adapter.Fill(table);
 
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                DataRow row = table.Rows[i];
-                ListViewItem item = new ListViewItem(row["id"].ToString());
-                item.SubItems.Add(row["name"].ToString());
-                item.SubItems.Add(row["category_id"].ToString());
-                item.SubItems.Add(row["code"].ToString());
-                item.SubItems.Add(row["unit_id"].ToString());
-                prodListView.Items.Add(item);
-            }
+            //for (int i = 0; i < table.Rows.Count; i++)
+            //{
+            //    DataRow row = table.Rows[i];
+            //    ListViewItem item = new ListViewItem(row["id"].ToString());
+            //    item.SubItems.Add(row["name"].ToString());
+            //    item.SubItems.Add(row["category_id"].ToString());
+            //    item.SubItems.Add(row["code"].ToString());
+            //    item.SubItems.Add(row["unit_id"].ToString());
+            //    prodListView.Items.Add(item);
+            //}
         }
 
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you really want to add a product to the system?", 
-                                "Add New Product", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                conn.Open();
-                string queryInsert = "insert into [Product] (code, name, category_id, unit_id) values(@code, @name, @category_id, @unit_id)";
-                SqlCommand command = new SqlCommand(queryInsert, conn);
 
-                string prodCode = prodCodeTextBox.Text;
-                string prodName = prodNameTextBox.Text;
-                object prodCat = prodCatComboBox.SelectedValue;
-                object prodUnit = prodUnitComboBox.SelectedValue;
-                if(MessageBox.Show("PRODUCT \nName: " + prodName +
-                                "\nCode: " + prodCode, "Confirm Add New Product", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    command.Parameters.AddWithValue("@code", prodCode);
-                    command.Parameters.AddWithValue("@name", prodName);
-                    command.Parameters.AddWithValue("@category_id", prodCat);
-                    command.Parameters.AddWithValue("@unit_id", prodUnit);
-
-                    int i = command.ExecuteNonQuery();
-                    conn.Close();
-                    MessageBox.Show("Product " + prodName + " is created.", "Product Is Created", MessageBoxButtons.OK);
-                }
-
-                prodCodeTextBox.Clear();
-                prodNameTextBox.Clear();
-                prodCatComboBox.SelectedIndex = 0;
-                prodUnitComboBox.SelectedIndex = 0;
-            }
         }
 
         private void AddProductForm_FormClosing(object sender, FormClosingEventArgs e)

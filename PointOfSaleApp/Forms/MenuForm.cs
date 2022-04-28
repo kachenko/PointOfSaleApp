@@ -55,5 +55,12 @@ namespace PointOfSaleApp
             this.Hide();
             addProduct.Show();
         }
+
+        private void categoryButton_Click(object sender, EventArgs e)
+        {
+            Forms.AddCategoryForm addCategory = new Forms.AddCategoryForm();
+            this.Hide();
+            addCategory.Show();
+        }
     }
 }

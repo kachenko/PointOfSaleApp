@@ -32,22 +32,25 @@ namespace PointOfSaleApp.Forms
             this.mainPanel = new System.Windows.Forms.Panel();
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.userPictureBox = new System.Windows.Forms.PictureBox();
             this.listCatLabel = new System.Windows.Forms.Label();
             this.listCatView = new System.Windows.Forms.ListView();
             this.prodIdColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prodNameColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prodQuantColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.userPictureBox = new System.Windows.Forms.PictureBox();
             this.removeProductButton = new System.Windows.Forms.Button();
             this.addProductButton = new System.Windows.Forms.Button();
-            this.productQuantLabel = new System.Windows.Forms.Label();
+            this.productDescrLabel = new System.Windows.Forms.Label();
             this.categoryNameLabel = new System.Windows.Forms.Label();
-            this.prodQuantityTextBox = new System.Windows.Forms.TextBox();
-            this.prodNameTextBox = new System.Windows.Forms.TextBox();
-            this.whichCatComboBox = new System.Windows.Forms.ComboBox();
-            this.whichCategoryLabel = new System.Windows.Forms.Label();
+            this.prodCatDesTextBox = new System.Windows.Forms.TextBox();
+            this.prodCatTextBox = new System.Windows.Forms.TextBox();
+            this.prodDescColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -55,7 +58,7 @@ namespace PointOfSaleApp.Forms
             this.mainPanel.Controls.Add(this.positLabel);
             this.mainPanel.Controls.Add(this.nameLabel);
             this.mainPanel.Controls.Add(this.userPictureBox);
-            this.mainPanel.Location = new System.Drawing.Point(12, 12);
+            this.mainPanel.Location = new System.Drawing.Point(12, 31);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(958, 136);
             this.mainPanel.TabIndex = 8;
@@ -82,6 +85,16 @@ namespace PointOfSaleApp.Forms
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Name Surname";
             // 
+            // userPictureBox
+            // 
+            this.userPictureBox.Image = global::PointOfSaleApp.Properties.Resources.f291c20922ce1ff1878b13afc2a49f19;
+            this.userPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.userPictureBox.Name = "userPictureBox";
+            this.userPictureBox.Size = new System.Drawing.Size(111, 130);
+            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.userPictureBox.TabIndex = 0;
+            this.userPictureBox.TabStop = false;
+            // 
             // listCatLabel
             // 
             this.listCatLabel.AutoSize = true;
@@ -98,14 +111,15 @@ namespace PointOfSaleApp.Forms
             this.listCatView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.prodIdColHead,
             this.prodNameColHead,
-            this.prodQuantColHead});
+            this.prodDescColHead});
             this.listCatView.HideSelection = false;
             this.listCatView.Location = new System.Drawing.Point(12, 194);
             this.listCatView.Name = "listCatView";
-            this.listCatView.Size = new System.Drawing.Size(412, 397);
+            this.listCatView.Size = new System.Drawing.Size(455, 397);
             this.listCatView.TabIndex = 9;
             this.listCatView.UseCompatibleStateImageBehavior = false;
             this.listCatView.View = System.Windows.Forms.View.Details;
+            this.listCatView.SelectedIndexChanged += new System.EventHandler(this.listCatView_SelectedIndexChanged);
             // 
             // prodIdColHead
             // 
@@ -114,21 +128,7 @@ namespace PointOfSaleApp.Forms
             // prodNameColHead
             // 
             this.prodNameColHead.Text = "Name";
-            this.prodNameColHead.Width = 261;
-            // 
-            // prodQuantColHead
-            // 
-            this.prodQuantColHead.Text = "Quantity";
-            // 
-            // userPictureBox
-            // 
-            this.userPictureBox.Image = global::PointOfSaleApp.Properties.Resources.f291c20922ce1ff1878b13afc2a49f19;
-            this.userPictureBox.Location = new System.Drawing.Point(3, 3);
-            this.userPictureBox.Name = "userPictureBox";
-            this.userPictureBox.Size = new System.Drawing.Size(111, 130);
-            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.userPictureBox.TabIndex = 0;
-            this.userPictureBox.TabStop = false;
+            this.prodNameColHead.Width = 152;
             // 
             // removeProductButton
             // 
@@ -141,6 +141,7 @@ namespace PointOfSaleApp.Forms
             this.removeProductButton.TabIndex = 24;
             this.removeProductButton.Text = "REMOVE";
             this.removeProductButton.UseVisualStyleBackColor = true;
+            this.removeProductButton.Click += new System.EventHandler(this.removeProductButton_Click);
             // 
             // addProductButton
             // 
@@ -153,18 +154,19 @@ namespace PointOfSaleApp.Forms
             this.addProductButton.TabIndex = 23;
             this.addProductButton.Text = "ADD";
             this.addProductButton.UseVisualStyleBackColor = true;
+            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
-            // productQuantLabel
+            // productDescrLabel
             // 
-            this.productQuantLabel.AutoSize = true;
-            this.productQuantLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.productQuantLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.productQuantLabel.Location = new System.Drawing.Point(473, 219);
-            this.productQuantLabel.MaximumSize = new System.Drawing.Size(250, 0);
-            this.productQuantLabel.Name = "productQuantLabel";
-            this.productQuantLabel.Size = new System.Drawing.Size(78, 23);
-            this.productQuantLabel.TabIndex = 21;
-            this.productQuantLabel.Text = "Quantity:";
+            this.productDescrLabel.AutoSize = true;
+            this.productDescrLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.productDescrLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.productDescrLabel.Location = new System.Drawing.Point(473, 219);
+            this.productDescrLabel.MaximumSize = new System.Drawing.Size(250, 0);
+            this.productDescrLabel.Name = "productDescrLabel";
+            this.productDescrLabel.Size = new System.Drawing.Size(99, 23);
+            this.productDescrLabel.TabIndex = 21;
+            this.productDescrLabel.Text = "Description:";
             // 
             // categoryNameLabel
             // 
@@ -178,42 +180,56 @@ namespace PointOfSaleApp.Forms
             this.categoryNameLabel.TabIndex = 20;
             this.categoryNameLabel.Text = "Category Name:";
             // 
-            // prodQuantityTextBox
+            // prodCatDesTextBox
             // 
-            this.prodQuantityTextBox.Location = new System.Drawing.Point(678, 222);
-            this.prodQuantityTextBox.Name = "prodQuantityTextBox";
-            this.prodQuantityTextBox.Size = new System.Drawing.Size(292, 22);
-            this.prodQuantityTextBox.TabIndex = 18;
+            this.prodCatDesTextBox.Location = new System.Drawing.Point(678, 222);
+            this.prodCatDesTextBox.Name = "prodCatDesTextBox";
+            this.prodCatDesTextBox.Size = new System.Drawing.Size(292, 22);
+            this.prodCatDesTextBox.TabIndex = 18;
             // 
-            // prodNameTextBox
+            // prodCatTextBox
             // 
-            this.prodNameTextBox.Location = new System.Drawing.Point(678, 194);
-            this.prodNameTextBox.Name = "prodNameTextBox";
-            this.prodNameTextBox.Size = new System.Drawing.Size(292, 22);
-            this.prodNameTextBox.TabIndex = 17;
+            this.prodCatTextBox.Location = new System.Drawing.Point(678, 194);
+            this.prodCatTextBox.Name = "prodCatTextBox";
+            this.prodCatTextBox.Size = new System.Drawing.Size(292, 22);
+            this.prodCatTextBox.TabIndex = 17;
             // 
-            // whichCatComboBox
+            // prodDescColHead
             // 
-            this.whichCatComboBox.FormattingEnabled = true;
-            this.whichCatComboBox.Items.AddRange(new object[] {
-            "Product",
-            "Dish"});
-            this.whichCatComboBox.Location = new System.Drawing.Point(678, 250);
-            this.whichCatComboBox.Name = "whichCatComboBox";
-            this.whichCatComboBox.Size = new System.Drawing.Size(292, 24);
-            this.whichCatComboBox.TabIndex = 19;
+            this.prodDescColHead.Text = "Description";
+            this.prodDescColHead.Width = 151;
             // 
-            // whichCategoryLabel
+            // menuStrip1
             // 
-            this.whichCategoryLabel.AutoSize = true;
-            this.whichCategoryLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.whichCategoryLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.whichCategoryLabel.Location = new System.Drawing.Point(473, 249);
-            this.whichCategoryLabel.MaximumSize = new System.Drawing.Size(250, 0);
-            this.whichCategoryLabel.Name = "whichCategoryLabel";
-            this.whichCategoryLabel.Size = new System.Drawing.Size(190, 23);
-            this.whichCategoryLabel.TabIndex = 22;
-            this.whichCategoryLabel.Text = "Product/Dish Category?";
+            this.menuStrip1.BackColor = System.Drawing.Color.Peru;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.newOrderToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
+            this.menuStrip1.TabIndex = 25;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // newOrderToolStripMenuItem
+            // 
+            this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
+            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
+            this.newOrderToolStripMenuItem.Text = "New Order";
             // 
             // AddCategoryForm
             // 
@@ -221,22 +237,25 @@ namespace PointOfSaleApp.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.removeProductButton);
             this.Controls.Add(this.addProductButton);
-            this.Controls.Add(this.whichCategoryLabel);
-            this.Controls.Add(this.productQuantLabel);
+            this.Controls.Add(this.productDescrLabel);
             this.Controls.Add(this.categoryNameLabel);
-            this.Controls.Add(this.whichCatComboBox);
-            this.Controls.Add(this.prodQuantityTextBox);
-            this.Controls.Add(this.prodNameTextBox);
+            this.Controls.Add(this.prodCatDesTextBox);
+            this.Controls.Add(this.prodCatTextBox);
             this.Controls.Add(this.listCatLabel);
             this.Controls.Add(this.listCatView);
             this.Controls.Add(this.mainPanel);
             this.Name = "AddCategoryForm";
             this.Text = "POS - Add Category";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddCategoryForm_FormClosing);
+            this.Load += new System.EventHandler(this.AddCategoryForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,14 +271,16 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.ListView listCatView;
         private System.Windows.Forms.ColumnHeader prodIdColHead;
         private System.Windows.Forms.ColumnHeader prodNameColHead;
-        private System.Windows.Forms.ColumnHeader prodQuantColHead;
         private System.Windows.Forms.Button removeProductButton;
         private System.Windows.Forms.Button addProductButton;
-        private System.Windows.Forms.Label productQuantLabel;
+        private System.Windows.Forms.Label productDescrLabel;
         private System.Windows.Forms.Label categoryNameLabel;
-        private System.Windows.Forms.TextBox prodQuantityTextBox;
-        private System.Windows.Forms.TextBox prodNameTextBox;
-        private System.Windows.Forms.ComboBox whichCatComboBox;
-        private System.Windows.Forms.Label whichCategoryLabel;
+        private System.Windows.Forms.TextBox prodCatDesTextBox;
+        private System.Windows.Forms.TextBox prodCatTextBox;
+        private System.Windows.Forms.ColumnHeader prodDescColHead;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
     }
 }

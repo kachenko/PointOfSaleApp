@@ -31,8 +31,10 @@ namespace PointOfSaleApp.Forms
         {
             this.prodListView = new System.Windows.Forms.ListView();
             this.prodIdColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prodCodeColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prodNameColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prodCategColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.prodUnitColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@ namespace PointOfSaleApp.Forms
             this.removeProductButton = new System.Windows.Forms.Button();
             this.productUnitLabel = new System.Windows.Forms.Label();
             this.prodUnitComboBox = new System.Windows.Forms.ComboBox();
-            this.prodCodeColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.prodUnitColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,12 @@ namespace PointOfSaleApp.Forms
             // 
             this.prodIdColHead.Text = "ID";
             // 
+            // prodCodeColHead
+            // 
+            this.prodCodeColHead.DisplayIndex = 3;
+            this.prodCodeColHead.Text = "Code";
+            this.prodCodeColHead.Width = 82;
+            // 
             // prodNameColHead
             // 
             this.prodNameColHead.DisplayIndex = 1;
@@ -85,6 +91,10 @@ namespace PointOfSaleApp.Forms
             this.prodCategColHead.DisplayIndex = 2;
             this.prodCategColHead.Text = "Category";
             this.prodCategColHead.Width = 87;
+            // 
+            // prodUnitColHead
+            // 
+            this.prodUnitColHead.Text = "Unit";
             // 
             // mainPanel
             // 
@@ -208,7 +218,6 @@ namespace PointOfSaleApp.Forms
             this.addProductButton.TabIndex = 15;
             this.addProductButton.Text = "ADD";
             this.addProductButton.UseVisualStyleBackColor = true;
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
             // 
             // removeProductButton
             // 
@@ -241,16 +250,6 @@ namespace PointOfSaleApp.Forms
             this.prodUnitComboBox.Name = "prodUnitComboBox";
             this.prodUnitComboBox.Size = new System.Drawing.Size(292, 24);
             this.prodUnitComboBox.TabIndex = 19;
-            // 
-            // prodCodeColHead
-            // 
-            this.prodCodeColHead.DisplayIndex = 3;
-            this.prodCodeColHead.Text = "Code";
-            this.prodCodeColHead.Width = 82;
-            // 
-            // prodUnitColHead
-            // 
-            this.prodUnitColHead.Text = "Unit";
             // 
             // AddProductForm
             // 

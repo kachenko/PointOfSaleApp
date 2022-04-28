@@ -37,6 +37,7 @@ namespace PointOfSaleApp
             this.MyOrdersButton = new System.Windows.Forms.Button();
             this.MenuButton = new System.Windows.Forms.Button();
             this.addProdButton = new System.Windows.Forms.Button();
+            this.categoryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // newOrderButton
@@ -122,12 +123,26 @@ namespace PointOfSaleApp
             this.addProdButton.UseVisualStyleBackColor = true;
             this.addProdButton.Click += new System.EventHandler(this.addButton_Click);
             // 
+            // categoryButton
+            // 
+            this.categoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categoryButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.categoryButton.Location = new System.Drawing.Point(12, 262);
+            this.categoryButton.Name = "categoryButton";
+            this.categoryButton.Size = new System.Drawing.Size(155, 155);
+            this.categoryButton.TabIndex = 7;
+            this.categoryButton.Text = "CATEGORY";
+            this.categoryButton.UseVisualStyleBackColor = true;
+            this.categoryButton.Click += new System.EventHandler(this.categoryButton_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.categoryButton);
             this.Controls.Add(this.addProdButton);
             this.Controls.Add(this.MenuButton);
             this.Controls.Add(this.MyOrdersButton);
@@ -152,5 +167,6 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Button MyOrdersButton;
         private System.Windows.Forms.Button MenuButton;
         private System.Windows.Forms.Button addProdButton;
+        private System.Windows.Forms.Button categoryButton;
     }
 }
