@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
@@ -37,20 +38,38 @@ namespace PointOfSaleApp.Forms
             this.listCatView = new System.Windows.Forms.ListView();
             this.prodIdColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.prodNameColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.removeProductButton = new System.Windows.Forms.Button();
-            this.addProductButton = new System.Windows.Forms.Button();
+            this.prodDescColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.removeCategoryButton = new System.Windows.Forms.Button();
+            this.addCategoryButton = new System.Windows.Forms.Button();
             this.productDescrLabel = new System.Windows.Forms.Label();
             this.categoryNameLabel = new System.Windows.Forms.Label();
             this.prodCatDesTextBox = new System.Windows.Forms.TextBox();
             this.prodCatTextBox = new System.Windows.Forms.TextBox();
-            this.prodDescColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newSessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.navigateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.returnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateCategoryButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dishCategoryDataSet = new PointOfSaleApp.DishCategoryDataSet();
+            this.dishCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dishCategoryTableAdapter = new PointOfSaleApp.DishCategoryDataSetTableAdapters.DishCategoryTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -130,31 +149,36 @@ namespace PointOfSaleApp.Forms
             this.prodNameColHead.Text = "Name";
             this.prodNameColHead.Width = 152;
             // 
-            // removeProductButton
+            // prodDescColHead
             // 
-            this.removeProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeProductButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeProductButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.removeProductButton.Location = new System.Drawing.Point(794, 352);
-            this.removeProductButton.Name = "removeProductButton";
-            this.removeProductButton.Size = new System.Drawing.Size(85, 55);
-            this.removeProductButton.TabIndex = 24;
-            this.removeProductButton.Text = "REMOVE";
-            this.removeProductButton.UseVisualStyleBackColor = true;
-            this.removeProductButton.Click += new System.EventHandler(this.removeProductButton_Click);
+            this.prodDescColHead.Text = "Description";
+            this.prodDescColHead.Width = 151;
             // 
-            // addProductButton
+            // removeCategoryButton
             // 
-            this.addProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addProductButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProductButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addProductButton.Location = new System.Drawing.Point(885, 352);
-            this.addProductButton.Name = "addProductButton";
-            this.addProductButton.Size = new System.Drawing.Size(85, 55);
-            this.addProductButton.TabIndex = 23;
-            this.addProductButton.Text = "ADD";
-            this.addProductButton.UseVisualStyleBackColor = true;
-            this.addProductButton.Click += new System.EventHandler(this.addProductButton_Click);
+            this.removeCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeCategoryButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeCategoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.removeCategoryButton.Location = new System.Drawing.Point(885, 352);
+            this.removeCategoryButton.Name = "removeCategoryButton";
+            this.removeCategoryButton.Size = new System.Drawing.Size(85, 55);
+            this.removeCategoryButton.TabIndex = 24;
+            this.removeCategoryButton.Text = "REMOVE";
+            this.removeCategoryButton.UseVisualStyleBackColor = true;
+            this.removeCategoryButton.Click += new System.EventHandler(this.removeCategoryButton_Click);
+            // 
+            // addCategoryButton
+            // 
+            this.addCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addCategoryButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCategoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.addCategoryButton.Location = new System.Drawing.Point(703, 352);
+            this.addCategoryButton.Name = "addCategoryButton";
+            this.addCategoryButton.Size = new System.Drawing.Size(85, 55);
+            this.addCategoryButton.TabIndex = 23;
+            this.addCategoryButton.Text = "ADD";
+            this.addCategoryButton.UseVisualStyleBackColor = true;
+            this.addCategoryButton.Click += new System.EventHandler(this.addCategoryButton_Click);
             // 
             // productDescrLabel
             // 
@@ -194,42 +218,157 @@ namespace PointOfSaleApp.Forms
             this.prodCatTextBox.Size = new System.Drawing.Size(292, 22);
             this.prodCatTextBox.TabIndex = 17;
             // 
-            // prodDescColHead
-            // 
-            this.prodDescColHead.Text = "Description";
-            this.prodDescColHead.Width = 151;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Peru;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.newOrderToolStripMenuItem});
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(982, 28);
-            this.menuStrip1.TabIndex = 25;
+            this.menuStrip1.TabIndex = 27;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newSessionToolStripMenuItem,
+            this.navigateToolStripMenuItem,
+            this.returnToolStripMenuItem,
+            this.logoutToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Text = "Session";
             // 
-            // viewToolStripMenuItem
+            // newSessionToolStripMenuItem
             // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.viewToolStripMenuItem.Text = "View";
+            this.newSessionToolStripMenuItem.Name = "newSessionToolStripMenuItem";
+            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.newSessionToolStripMenuItem.Text = "New Session";
             // 
-            // newOrderToolStripMenuItem
+            // navigateToolStripMenuItem
             // 
-            this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
-            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(95, 24);
-            this.newOrderToolStripMenuItem.Text = "New Order";
+            this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.navigateToolStripMenuItem.Text = "Navigate";
+            // 
+            // returnToolStripMenuItem
+            // 
+            this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.returnToolStripMenuItem.Text = "Return";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.productsToolStripMenuItem,
+            this.categoryToolStripMenuItem,
+            this.dishesToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // productsToolStripMenuItem
+            // 
+            this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.productsToolStripMenuItem.Text = "Products";
+            // 
+            // categoryToolStripMenuItem
+            // 
+            this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
+            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.categoryToolStripMenuItem.Text = "Categories";
+            // 
+            // dishesToolStripMenuItem
+            // 
+            this.dishesToolStripMenuItem.Name = "dishesToolStripMenuItem";
+            this.dishesToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
+            this.dishesToolStripMenuItem.Text = "Dishes";
+            // 
+            // updateCategoryButton
+            // 
+            this.updateCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateCategoryButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateCategoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.updateCategoryButton.Location = new System.Drawing.Point(794, 352);
+            this.updateCategoryButton.Name = "updateCategoryButton";
+            this.updateCategoryButton.Size = new System.Drawing.Size(85, 55);
+            this.updateCategoryButton.TabIndex = 28;
+            this.updateCategoryButton.Text = "UPDATE";
+            this.updateCategoryButton.UseVisualStyleBackColor = true;
+            this.updateCategoryButton.Click += new System.EventHandler(this.updateCategoryButton_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.dishCategoryBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(164, 325);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(431, 205);
+            this.dataGridView1.TabIndex = 29;
+            // 
+            // dishCategoryDataSet
+            // 
+            this.dishCategoryDataSet.DataSetName = "DishCategoryDataSet";
+            this.dishCategoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dishCategoryBindingSource
+            // 
+            this.dishCategoryBindingSource.DataMember = "DishCategory";
+            this.dishCategoryBindingSource.DataSource = this.dishCategoryDataSet;
+            // 
+            // dishCategoryTableAdapter
+            // 
+            this.dishCategoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.Width = 125;
             // 
             // AddCategoryForm
             // 
@@ -237,9 +376,11 @@ namespace PointOfSaleApp.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.updateCategoryButton);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.removeProductButton);
-            this.Controls.Add(this.addProductButton);
+            this.Controls.Add(this.removeCategoryButton);
+            this.Controls.Add(this.addCategoryButton);
             this.Controls.Add(this.productDescrLabel);
             this.Controls.Add(this.categoryNameLabel);
             this.Controls.Add(this.prodCatDesTextBox);
@@ -256,6 +397,9 @@ namespace PointOfSaleApp.Forms
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,8 +415,8 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.ListView listCatView;
         private System.Windows.Forms.ColumnHeader prodIdColHead;
         private System.Windows.Forms.ColumnHeader prodNameColHead;
-        private System.Windows.Forms.Button removeProductButton;
-        private System.Windows.Forms.Button addProductButton;
+        private System.Windows.Forms.Button removeCategoryButton;
+        private System.Windows.Forms.Button addCategoryButton;
         private System.Windows.Forms.Label productDescrLabel;
         private System.Windows.Forms.Label categoryNameLabel;
         private System.Windows.Forms.TextBox prodCatDesTextBox;
@@ -280,7 +424,22 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.ColumnHeader prodDescColHead;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newSessionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem navigateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem returnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dishesToolStripMenuItem;
+        private System.Windows.Forms.Button updateCategoryButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private DishCategoryDataSet dishCategoryDataSet;
+        private System.Windows.Forms.BindingSource dishCategoryBindingSource;
+        private DishCategoryDataSetTableAdapters.DishCategoryTableAdapter dishCategoryTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

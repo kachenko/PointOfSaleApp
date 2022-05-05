@@ -29,3 +29,4 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOf
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.exe
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.pdb
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.OrderTableForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddCategoryForm2.resources

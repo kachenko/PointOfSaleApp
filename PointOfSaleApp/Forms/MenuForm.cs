@@ -62,5 +62,22 @@ namespace PointOfSaleApp
             this.Hide();
             addCategory.Show();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MenuButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Forms.AddCategoryForm2 addCategory = new Forms.AddCategoryForm2();
+            this.Hide();
+            addCategory.Show();
+        }
     }
 }
