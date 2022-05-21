@@ -24,10 +24,10 @@ namespace PointOfSaleApp.Forms
 
         private void AddCategoryForm2_Load(object sender, EventArgs e)
         {
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.DishCategory' . Możesz go przenieść lub usunąć.
-            this.dishCategoryTableAdapter.Fill(this.posDBDataSet.DishCategory);
-            nameLabel.Text = UserClass.userLogin.ToString();
-            positLabel.Text = UserClass.userRole.ToString();
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Category' . Możesz go przenieść lub usunąć.
+            this.categoryTableAdapter.Fill(this.posDBDataSet.Category);
+            nameLabel.Text = MyUserClass.userLogin.ToString();
+            positLabel.Text = MyUserClass.userRole.ToString();
         }
 
         private void ClearData()
@@ -40,28 +40,28 @@ namespace PointOfSaleApp.Forms
         // Display Data in DataGridView
         private void DisplayData()
         {
-            string query = "select * from DishCategory";
+            string query = "select * from Category";
             conn.Open();
             DataTable table = new DataTable();
             adapter = new SqlDataAdapter(query, conn);
             adapter.Fill(table);
-            dataGridView1.DataSource = table;
+            categoryGridView.DataSource = table;
             conn.Close();
         }
 
         // Fill TextBoxes from DataGridView
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            prodCatIDTextBox.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            prodCatTextBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            prodCatDesTextBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            prodCatIDTextBox.Text = categoryGridView.CurrentRow.Cells[0].Value.ToString();
+            prodCatTextBox.Text = categoryGridView.CurrentRow.Cells[1].Value.ToString();
+            prodCatDesTextBox.Text = categoryGridView.CurrentRow.Cells[2].Value.ToString();
         }
 
         // Helper
         private bool checkIfExistForAdd(string name)
         {
             DataTable table = new DataTable();
-            string query = "select * from DishCategory where name = @name";
+            string query = "select * from Category where name = @name";
             SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.AddWithValue("@name", name);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -74,13 +74,13 @@ namespace PointOfSaleApp.Forms
 
         private void addCategoryButton_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Are you sure you want to add category " + prodCatTextBox.Text + "?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+            if ((MessageBox.Show("Are you sure you want to add category " + prodCatTextBox.Text + "?", "Add Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
             {
                 if (prodCatTextBox != null && prodCatDesTextBox != null)
                 {
                     if (!checkIfExistForAdd(prodCatTextBox.Text))
                     {
-                        string query = "insert into [DishCategory] (name, description) values(@name, @description)";
+                        string query = "insert into [Category] (name, description) values(@name, @description)";
                         cmd = new SqlCommand(query, conn);
                         conn.Open();
                         cmd.Parameters.AddWithValue("@name", prodCatTextBox.Text);
@@ -108,7 +108,7 @@ namespace PointOfSaleApp.Forms
         private bool checkIfExistForUpdate(string id)
         {
             DataTable table = new DataTable();
-            string query = "select * from DishCategory where id = @id";
+            string query = "select * from Category where id = @id";
             SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.AddWithValue("@id", id);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -123,7 +123,7 @@ namespace PointOfSaleApp.Forms
         {
             if ((MessageBox.Show("Are you sure you want to update a category?", "Update Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
             {
-                string queryUpdate = "update DishCategory set name = @name, description = @description where id = " + prodCatIDTextBox.Text;
+                string queryUpdate = "update Category set name = @name, description = @description where id = " + prodCatIDTextBox.Text;
                 SqlCommand command = new SqlCommand(queryUpdate, conn);
                 conn.Open();
                 command.Parameters.AddWithValue("@name", prodCatTextBox.Text);
@@ -161,9 +161,9 @@ namespace PointOfSaleApp.Forms
         {
             if ((MessageBox.Show("Are you sure you want to remove category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
             {
-                if (prodCatIDTextBox != null)
+                if (prodCatIDTextBox.Text != "0" && prodCatTextBox.Text != "" && prodCatDesTextBox.Text != "")
                 {
-                    string query = "delete from [DishCategory] where id = @id";
+                    string query = "delete from [Category] where id = @id";
                     cmd = new SqlCommand(query, conn);
                     conn.Open();
                     cmd.Parameters.AddWithValue("@id", prodCatIDTextBox.Text);
@@ -213,6 +213,11 @@ namespace PointOfSaleApp.Forms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void categoryGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

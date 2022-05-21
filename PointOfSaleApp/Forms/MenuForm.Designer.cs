@@ -30,11 +30,10 @@ namespace PointOfSaleApp
         private void InitializeComponent()
         {
             this.newOrderButton = new System.Windows.Forms.Button();
-            this.UsersButton = new System.Windows.Forms.Button();
-            this.MyOrdersButton = new System.Windows.Forms.Button();
-            this.MenuButton = new System.Windows.Forms.Button();
-            this.addProdButton = new System.Windows.Forms.Button();
-            this.categoryButton = new System.Windows.Forms.Button();
+            this.usersButton = new System.Windows.Forms.Button();
+            this.myOrdersButton = new System.Windows.Forms.Button();
+            this.menuButton = new System.Windows.Forms.Button();
+            this.dishButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +45,8 @@ namespace PointOfSaleApp
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.categoryButton = new System.Windows.Forms.Button();
+            this.myAccountButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,68 +63,56 @@ namespace PointOfSaleApp
             this.newOrderButton.UseVisualStyleBackColor = true;
             this.newOrderButton.Click += new System.EventHandler(this.newOrderButton_Click);
             // 
-            // UsersButton
+            // usersButton
             // 
-            this.UsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UsersButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsersButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.UsersButton.Location = new System.Drawing.Point(416, 253);
-            this.UsersButton.Name = "UsersButton";
-            this.UsersButton.Size = new System.Drawing.Size(155, 155);
-            this.UsersButton.TabIndex = 3;
-            this.UsersButton.Text = "USERS";
-            this.UsersButton.UseVisualStyleBackColor = true;
+            this.usersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.usersButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.usersButton.Location = new System.Drawing.Point(416, 253);
+            this.usersButton.Name = "usersButton";
+            this.usersButton.Size = new System.Drawing.Size(155, 155);
+            this.usersButton.TabIndex = 3;
+            this.usersButton.Text = "USERS";
+            this.usersButton.UseVisualStyleBackColor = true;
+            this.usersButton.Click += new System.EventHandler(this.UsersButton_Click);
             // 
-            // MyOrdersButton
+            // myOrdersButton
             // 
-            this.MyOrdersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MyOrdersButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MyOrdersButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.MyOrdersButton.Location = new System.Drawing.Point(212, 67);
-            this.MyOrdersButton.Name = "MyOrdersButton";
-            this.MyOrdersButton.Size = new System.Drawing.Size(155, 155);
-            this.MyOrdersButton.TabIndex = 4;
-            this.MyOrdersButton.Text = "MY ORDERS";
-            this.MyOrdersButton.UseVisualStyleBackColor = true;
+            this.myOrdersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.myOrdersButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myOrdersButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.myOrdersButton.Location = new System.Drawing.Point(212, 67);
+            this.myOrdersButton.Name = "myOrdersButton";
+            this.myOrdersButton.Size = new System.Drawing.Size(155, 155);
+            this.myOrdersButton.TabIndex = 4;
+            this.myOrdersButton.Text = "MY ORDERS";
+            this.myOrdersButton.UseVisualStyleBackColor = true;
             // 
-            // MenuButton
+            // menuButton
             // 
-            this.MenuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MenuButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.MenuButton.Location = new System.Drawing.Point(416, 67);
-            this.MenuButton.Name = "MenuButton";
-            this.MenuButton.Size = new System.Drawing.Size(155, 155);
-            this.MenuButton.TabIndex = 5;
-            this.MenuButton.Text = "MENU";
-            this.MenuButton.UseVisualStyleBackColor = true;
-            this.MenuButton.Click += new System.EventHandler(this.MenuButton_Click);
+            this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.menuButton.Location = new System.Drawing.Point(416, 67);
+            this.menuButton.Name = "menuButton";
+            this.menuButton.Size = new System.Drawing.Size(155, 155);
+            this.menuButton.TabIndex = 5;
+            this.menuButton.Text = "MENU";
+            this.menuButton.UseVisualStyleBackColor = true;
+            this.menuButton.Click += new System.EventHandler(this.MenuButton_Click);
             // 
-            // addProdButton
+            // dishButton
             // 
-            this.addProdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addProdButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addProdButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addProdButton.Location = new System.Drawing.Point(12, 253);
-            this.addProdButton.Name = "addProdButton";
-            this.addProdButton.Size = new System.Drawing.Size(155, 155);
-            this.addProdButton.TabIndex = 6;
-            this.addProdButton.Text = "PRODUCT";
-            this.addProdButton.UseVisualStyleBackColor = true;
-            this.addProdButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // categoryButton
-            // 
-            this.categoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.categoryButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.categoryButton.Location = new System.Drawing.Point(212, 253);
-            this.categoryButton.Name = "categoryButton";
-            this.categoryButton.Size = new System.Drawing.Size(155, 155);
-            this.categoryButton.TabIndex = 7;
-            this.categoryButton.Text = "CATEGORY";
-            this.categoryButton.UseVisualStyleBackColor = true;
-            this.categoryButton.Click += new System.EventHandler(this.categoryButton_Click);
+            this.dishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dishButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dishButton.Location = new System.Drawing.Point(12, 253);
+            this.dishButton.Name = "dishButton";
+            this.dishButton.Size = new System.Drawing.Size(155, 155);
+            this.dishButton.TabIndex = 6;
+            this.dishButton.Text = "DISH";
+            this.dishButton.UseVisualStyleBackColor = true;
+            this.dishButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // menuStrip1
             // 
@@ -148,7 +136,7 @@ namespace PointOfSaleApp
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -189,7 +177,7 @@ namespace PointOfSaleApp
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -210,18 +198,30 @@ namespace PointOfSaleApp
             this.dishesToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.dishesToolStripMenuItem.Text = "Dishes";
             // 
-            // button1
+            // categoryButton
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.button1.Location = new System.Drawing.Point(212, 436);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 155);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "CATEGORY 2";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.categoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.categoryButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.categoryButton.Location = new System.Drawing.Point(212, 253);
+            this.categoryButton.Name = "categoryButton";
+            this.categoryButton.Size = new System.Drawing.Size(155, 155);
+            this.categoryButton.TabIndex = 27;
+            this.categoryButton.Text = "CATEGORY";
+            this.categoryButton.UseVisualStyleBackColor = true;
+            this.categoryButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // myAccountButton
+            // 
+            this.myAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.myAccountButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myAccountButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.myAccountButton.Location = new System.Drawing.Point(616, 253);
+            this.myAccountButton.Name = "myAccountButton";
+            this.myAccountButton.Size = new System.Drawing.Size(155, 155);
+            this.myAccountButton.TabIndex = 28;
+            this.myAccountButton.Text = "MY ACCOUNT";
+            this.myAccountButton.UseVisualStyleBackColor = true;
             // 
             // MenuForm
             // 
@@ -229,18 +229,19 @@ namespace PointOfSaleApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.myAccountButton);
             this.Controls.Add(this.categoryButton);
-            this.Controls.Add(this.addProdButton);
-            this.Controls.Add(this.MenuButton);
-            this.Controls.Add(this.MyOrdersButton);
-            this.Controls.Add(this.UsersButton);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.dishButton);
+            this.Controls.Add(this.menuButton);
+            this.Controls.Add(this.myOrdersButton);
+            this.Controls.Add(this.usersButton);
             this.Controls.Add(this.newOrderButton);
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POS - Menu";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuForm_FormClosing);
+            this.Load += new System.EventHandler(this.MenuForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -251,11 +252,10 @@ namespace PointOfSaleApp
         #endregion
 
         private System.Windows.Forms.Button newOrderButton;
-        private System.Windows.Forms.Button UsersButton;
-        private System.Windows.Forms.Button MyOrdersButton;
-        private System.Windows.Forms.Button MenuButton;
-        private System.Windows.Forms.Button addProdButton;
-        private System.Windows.Forms.Button categoryButton;
+        private System.Windows.Forms.Button usersButton;
+        private System.Windows.Forms.Button myOrdersButton;
+        private System.Windows.Forms.Button menuButton;
+        private System.Windows.Forms.Button dishButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newSessionToolStripMenuItem;
@@ -267,6 +267,7 @@ namespace PointOfSaleApp
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dishesToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button categoryButton;
+        private System.Windows.Forms.Button myAccountButton;
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,41 +14,22 @@ namespace PointOfSaleApp
 {
     public partial class LoginForm : Form
     {
-        SqlConnection cn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
+        SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
         
         public LoginForm()
         {
-            cn.Open();
             InitializeComponent();
         }
 
 		private void loginButton_Click(object sender, EventArgs e)
         {
-            string query = "select * from [User] where login = '" + LoginTextBox.Text + "' and password = '" + passTextBox.Text + "'";
-
-            SqlDataAdapter adp = new SqlDataAdapter(query, cn);
             DataTable table = new DataTable();
-            adp.Fill(table);
-
-            foreach(DataRow row in table.Rows)
-            {
-                int id = int.Parse(row["id"].ToString());
-                string login = row["login"].ToString();
-                string role = row["role"].ToString();
-
-                UserClass.userId = id;
-                UserClass.userLogin = login;
-                UserClass.userRole = role;
-            }
-
-            int id2 = UserClass.userId;
-
-            if (table.Rows.Count == 1)
-            {
-                MenuForm mf = new MenuForm();
-                this.Hide();
-                mf.Show();
-            }
+            SqlCommand command = new SqlCommand("sp_role_login", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@login", LoginTextBox.Text);
+            command.Parameters.AddWithValue("@password", passTextBox.Text);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
             if (LoginTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Login is requiered!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -58,7 +40,19 @@ namespace PointOfSaleApp
                 MessageBox.Show("Password is requiered!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 passTextBox.Focus();
             }
-            if (LoginTextBox.Text != "admin" || passTextBox.Text != "admin")
+            if (table.Rows.Count == 1)
+            {
+                foreach(DataRow row in table.Rows)
+                {
+                    MyUserClass.userId = int.Parse(row["id"].ToString());
+                    MyUserClass.userLogin = row["login"].ToString();
+                    MyUserClass.userRole = row["role"].ToString();
+                }
+                MenuForm mf = new MenuForm();
+                this.Hide();
+                mf.Show();
+            }
+            else
             {
                 MessageBox.Show("Login/password is incorrect!", "Validation Error", MessageBoxButtons.OK);
                 LoginTextBox.Focus();

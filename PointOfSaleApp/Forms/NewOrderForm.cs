@@ -22,11 +22,9 @@ namespace PointOfSaleApp
 		}
         private void NewOrderForm_Load(object sender, EventArgs e)
         {
-            
-
             conn.Open();
-            nameLabel.Text = UserClass.userLogin.ToString();
-            positLabel.Text = UserClass.userRole.ToString();
+            nameLabel.Text = MyUserClass.userLogin.ToString();
+            positLabel.Text = MyUserClass.userRole.ToString();
 
             adapter = new SqlDataAdapter("select top 1 id from [Order] order by id desc", conn);
             DataTable table = new DataTable();
@@ -59,7 +57,7 @@ namespace PointOfSaleApp
         {
             productsListView.Items.Clear();
             productsListView.View = View.Details;
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 1", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 1", conn);
             DataTable table = new DataTable();
             adapter.Fill(table);
 
@@ -97,7 +95,7 @@ namespace PointOfSaleApp
             productsListView.Items.Clear();
             productsListView.View = View.Details;
             DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 3", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 3", conn);
             adapter.Fill(table);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -115,7 +113,7 @@ namespace PointOfSaleApp
             productsListView.Items.Clear();
             productsListView.View = View.Details;
             DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 4", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 4", conn);
             adapter.Fill(table);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -133,7 +131,7 @@ namespace PointOfSaleApp
             productsListView.Items.Clear();
             productsListView.View = View.Details;
             DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 5", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 5", conn);
             adapter.Fill(table);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -151,7 +149,7 @@ namespace PointOfSaleApp
             productsListView.Items.Clear();
             productsListView.View = View.Details;
             DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 6", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 6", conn);
             adapter.Fill(table);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -169,7 +167,7 @@ namespace PointOfSaleApp
             productsListView.Items.Clear();
             productsListView.View = View.Details;
             DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 7", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 7", conn);
             adapter.Fill(table);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -187,7 +185,7 @@ namespace PointOfSaleApp
             productsListView.Items.Clear();
             productsListView.View = View.Details;
             DataTable table = new DataTable();
-            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [DishCategory] category on dish.category_id = category.id where category.id = 8", conn);
+            adapter = new SqlDataAdapter("select * from [Dish] dish inner join [Category] category on dish.category_id = category.id where category.id = 8", conn);
             adapter.Fill(table);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -309,7 +307,7 @@ namespace PointOfSaleApp
                     tableNrComboBox.Enabled = false;
 
                     // create order in database
-                    string queryAddOrder = "";
+                    // string queryAddOrder = "";
                     
                 }
             }

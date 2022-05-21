@@ -16,6 +16,29 @@ namespace PointOfSaleApp
         {
             InitializeComponent();
         }
+        private void MenuForm_Load(object sender, EventArgs e)
+        {
+            if(MyUserClass.userRole == "Admin")
+            {
+                newOrderButton.Visible = true;
+                myOrdersButton.Visible = true;
+                menuButton.Visible = true;
+                dishButton.Visible = true;
+                categoryButton.Visible = true;
+                usersButton.Visible = true;
+                myAccountButton.Visible = true;
+            }
+            else if (MyUserClass.userRole == "Waiter")
+            {
+                newOrderButton.Visible = true;
+                myOrdersButton.Visible = true;
+                menuButton.Visible = true;
+                dishButton.Visible = false;
+                categoryButton.Visible = false;
+                usersButton.Visible = false;
+                myAccountButton.Visible = true;
+            }
+        }
 
         private void newOrderButton_Click(object sender, EventArgs e)
         {
@@ -51,9 +74,9 @@ namespace PointOfSaleApp
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            Forms.AddProductForm addProduct = new Forms.AddProductForm();
+            Forms.AddDishForm addDish = new Forms.AddDishForm();
             this.Hide();
-            addProduct.Show();
+            addDish.Show();
         }
 
         private void categoryButton_Click(object sender, EventArgs e)
@@ -79,5 +102,13 @@ namespace PointOfSaleApp
             this.Hide();
             addCategory.Show();
         }
+
+        private void UsersButton_Click(object sender, EventArgs e)
+        {
+            Forms.UsersManagmentForm uMF = new Forms.UsersManagmentForm();
+            this.Hide();
+            uMF.Show();
+        }
+
     }
 }

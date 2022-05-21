@@ -30,7 +30,14 @@ namespace PointOfSaleApp.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.categoryGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.posDBDataSet = new PointOfSaleApp.posDBDataSet();
+            this.dishCategoryBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dishCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.updateCategoryButton = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,46 +61,89 @@ namespace PointOfSaleApp.Forms
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.userPictureBox = new System.Windows.Forms.PictureBox();
-            this.dishCategoryDataSet = new PointOfSaleApp.DishCategoryDataSet();
-            this.dishCategoryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.posDBDataSet = new PointOfSaleApp.posDBDataSet();
-            this.dishCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dishCategoryTableAdapter = new PointOfSaleApp.posDBDataSetTableAdapters.DishCategoryTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryIDLabel = new System.Windows.Forms.Label();
             this.prodCatIDTextBox = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dishDishCategoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dishCategoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dishBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dishTableAdapter = new PointOfSaleApp.posDBDataSetTableAdapters.DishTableAdapter();
+            this.categoryTableAdapter = new PointOfSaleApp.posDBDataSetTableAdapters.CategoryTableAdapter();
+            this.categoryBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishDishCategoryBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // categoryGridView
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.dishCategoryBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 200);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(431, 391);
-            this.dataGridView1.TabIndex = 41;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.categoryGridView.AutoGenerateColumns = false;
+            this.categoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.categoryGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.categoryGridView.ColumnHeadersHeight = 29;
+            this.categoryGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.categoryGridView.DataSource = this.categoryBindingSource1;
+            this.categoryGridView.Location = new System.Drawing.Point(17, 200);
+            this.categoryGridView.MultiSelect = false;
+            this.categoryGridView.Name = "categoryGridView";
+            this.categoryGridView.ReadOnly = true;
+            this.categoryGridView.RowHeadersWidth = 51;
+            this.categoryGridView.RowTemplate.Height = 24;
+            this.categoryGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.categoryGridView.Size = new System.Drawing.Size(431, 391);
+            this.categoryGridView.TabIndex = 41;
+            this.categoryGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.categoryGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.categoryGridView_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn4.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "name";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "description";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataMember = "Category";
+            this.categoryBindingSource.DataSource = this.posDBDataSet;
+            // 
+            // posDBDataSet
+            // 
+            this.posDBDataSet.DataSetName = "posDBDataSet";
+            this.posDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dishCategoryBindingSource2
+            // 
+            this.dishCategoryBindingSource2.DataMember = "DishCategory";
+            this.dishCategoryBindingSource2.DataSource = this.posDBDataSet;
             // 
             // updateCategoryButton
             // 
@@ -117,7 +167,7 @@ namespace PointOfSaleApp.Forms
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
             this.menuStrip1.TabIndex = 39;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -160,7 +210,7 @@ namespace PointOfSaleApp.Forms
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -171,7 +221,7 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -311,52 +361,6 @@ namespace PointOfSaleApp.Forms
             this.userPictureBox.TabIndex = 0;
             this.userPictureBox.TabStop = false;
             // 
-            // dishCategoryDataSet
-            // 
-            this.dishCategoryDataSet.DataSetName = "DishCategoryDataSet";
-            this.dishCategoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dishCategoryDataSetBindingSource
-            // 
-            this.dishCategoryDataSetBindingSource.DataSource = this.dishCategoryDataSet;
-            this.dishCategoryDataSetBindingSource.Position = 0;
-            // 
-            // posDBDataSet
-            // 
-            this.posDBDataSet.DataSetName = "posDBDataSet";
-            this.posDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dishCategoryBindingSource
-            // 
-            this.dishCategoryBindingSource.DataMember = "DishCategory";
-            this.dishCategoryBindingSource.DataSource = this.posDBDataSet;
-            // 
-            // dishCategoryTableAdapter
-            // 
-            this.dishCategoryTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
             // categoryIDLabel
             // 
             this.categoryIDLabel.AutoSize = true;
@@ -378,6 +382,29 @@ namespace PointOfSaleApp.Forms
             this.prodCatIDTextBox.TabIndex = 42;
             this.prodCatIDTextBox.Text = "0";
             // 
+            // dishCategoryBindingSource1
+            // 
+            this.dishCategoryBindingSource1.DataMember = "DishCategory";
+            this.dishCategoryBindingSource1.DataSource = this.posDBDataSet;
+            // 
+            // dishBindingSource
+            // 
+            this.dishBindingSource.DataMember = "Dish";
+            this.dishBindingSource.DataSource = this.posDBDataSet;
+            // 
+            // dishTableAdapter
+            // 
+            this.dishTableAdapter.ClearBeforeFill = true;
+            // 
+            // categoryTableAdapter
+            // 
+            this.categoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // categoryBindingSource1
+            // 
+            this.categoryBindingSource1.DataMember = "Category";
+            this.categoryBindingSource1.DataSource = this.posDBDataSet;
+            // 
             // AddCategoryForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -387,7 +414,7 @@ namespace PointOfSaleApp.Forms
             this.ClientSize = new System.Drawing.Size(982, 603);
             this.Controls.Add(this.categoryIDLabel);
             this.Controls.Add(this.prodCatIDTextBox);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.categoryGridView);
             this.Controls.Add(this.updateCategoryButton);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.removeCategoryButton);
@@ -403,16 +430,18 @@ namespace PointOfSaleApp.Forms
             this.Text = "POS - Add Category";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddCategoryForm2_FormClosing);
             this.Load += new System.EventHandler(this.AddCategoryForm2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.posDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.posDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dishCategoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishDishCategoryBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,7 +449,7 @@ namespace PointOfSaleApp.Forms
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView categoryGridView;
         private System.Windows.Forms.Button updateCategoryButton;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -444,15 +473,29 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label positLabel;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.PictureBox userPictureBox;
-        private System.Windows.Forms.BindingSource dishCategoryDataSetBindingSource;
-        private DishCategoryDataSet dishCategoryDataSet;
-        private posDBDataSet posDBDataSet;
-        private System.Windows.Forms.BindingSource dishCategoryBindingSource;
-        private posDBDataSetTableAdapters.DishCategoryTableAdapter dishCategoryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        //private posDBDataSetTableAdapters.DishCategoryTableAdapter dishCategoryTableAdapter;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label categoryIDLabel;
         private System.Windows.Forms.TextBox prodCatIDTextBox;
+        private System.Windows.Forms.BindingSource dishDishCategoryBindingSource1;
+        //private posDBDataSet1 posDBDataSet1;
+        private System.Windows.Forms.BindingSource dishCategoryBindingSource;
+        //private posDBDataSet1TableAdapters.DishCategoryTableAdapter dishCategoryTableAdapter;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private posDBDataSet posDBDataSet;
+        private System.Windows.Forms.BindingSource dishCategoryBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.BindingSource dishBindingSource;
+        private posDBDataSetTableAdapters.DishTableAdapter dishTableAdapter;
+        private System.Windows.Forms.BindingSource dishCategoryBindingSource2;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private posDBDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter;
+        private System.Windows.Forms.BindingSource categoryBindingSource1;
     }
 }
