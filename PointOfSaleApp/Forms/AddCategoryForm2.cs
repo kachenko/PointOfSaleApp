@@ -32,6 +32,7 @@ namespace PointOfSaleApp.Forms
 
         private void ClearData()
         {
+            prodCatIDTextBox.Text = "0";
             prodCatIDTextBox.Text = "";
             prodCatTextBox.Text = "";
             prodCatDesTextBox.Text = "";
@@ -58,12 +59,13 @@ namespace PointOfSaleApp.Forms
         }
 
         // Helper
-        private bool checkIfExistForAdd(string name)
+        private bool checkIfExistForAdd(string name, string description)
         {
             DataTable table = new DataTable();
-            string query = "select * from Category where name = @name";
+            string query = "select * from Category where name = @name and description = @description";
             SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@description", description);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
             if (table.Rows.Count > 0)
@@ -78,7 +80,7 @@ namespace PointOfSaleApp.Forms
             {
                 if (prodCatTextBox != null && prodCatDesTextBox != null)
                 {
-                    if (!checkIfExistForAdd(prodCatTextBox.Text))
+                    if (!checkIfExistForAdd(prodCatTextBox.Text, prodCatDesTextBox.Text))
                     {
                         string query = "insert into [Category] (name, description) values(@name, @description)";
                         cmd = new SqlCommand(query, conn);
@@ -138,12 +140,12 @@ namespace PointOfSaleApp.Forms
 
         private void updateCategoryButton_Click(object sender, EventArgs e)
         {
-            if (checkIfExistForAdd(prodCatTextBox.Text))
+            if (checkIfExistForAdd(prodCatTextBox.Text, prodCatDesTextBox.Text))
             {
                 MessageBox.Show("You have not made any changes.");
                 return;
             }
-            if (prodCatTextBox == null && prodCatDesTextBox == null)
+            if (prodCatTextBox == null || prodCatTextBox.Text == "")
             {
                 MessageBox.Show("You did not provide data. Please check.");
                 return;
@@ -161,7 +163,7 @@ namespace PointOfSaleApp.Forms
         {
             if ((MessageBox.Show("Are you sure you want to remove category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
             {
-                if (prodCatIDTextBox.Text != "0" && prodCatTextBox.Text != "" && prodCatDesTextBox.Text != "")
+                if (prodCatIDTextBox.Text != "0" || prodCatTextBox.Text != "" && prodCatDesTextBox.Text != "")
                 {
                     string query = "delete from [Category] where id = @id";
                     cmd = new SqlCommand(query, conn);
