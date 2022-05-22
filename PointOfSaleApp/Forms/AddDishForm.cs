@@ -15,7 +15,6 @@ namespace PointOfSaleApp.Forms
     public partial class AddDishForm : Form
     {
         SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
-        SqlDataAdapter adapter;
         public AddDishForm()
         {
             InitializeComponent();
@@ -32,21 +31,29 @@ namespace PointOfSaleApp.Forms
         private void showCategoryListView()
         {
             dishCatListView.Items.Clear();
-            string query = "select * from Category";
-            adapter = new SqlDataAdapter(query, conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            for (int i = 0; i < table.Rows.Count; i++)
+            try
             {
-                DataRow row = table.Rows[i];
-                ListViewItem item = new ListViewItem(row["id"].ToString());
-                item.SubItems.Add(row["name"].ToString());
-                dishCatListView.Items.Add(item);
+                string query = "select * from Category order by 1";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                for (int i = 0; i < table.Rows.Count; i++)
+                {
+                    DataRow row = table.Rows[i];
+                    ListViewItem item = new ListViewItem(row["id"].ToString());
+                    item.SubItems.Add(row["name"].ToString());
+                    dishCatListView.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void clearData()
         {
+            dishIDTextBox.Text = "0";
             dishNameTextBox.Text = "";
             dishFullNameTextBox.Text = "";
             dishCatSelectListView.Items.Clear();
@@ -57,47 +64,61 @@ namespace PointOfSaleApp.Forms
         private void displayData()
         {
             string query = "select * from Dish";
-            conn.Open();
-            DataTable table = new DataTable();
-            adapter = new SqlDataAdapter(query, conn);
-            adapter.Fill(table);
-            dishGridView.DataSource = table;
-            conn.Close();
+            try
+            {
+                conn.Open();
+                DataTable table = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                adapter.Fill(table);
+                dishGridView.DataSource = table;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             clearData();
             showCategoryListView();
-            string dishID = dishGridView.CurrentRow.Cells[0].Value.ToString();
-            string query = "select Dish.id [id], Dish.name [name], Dish.full_name [full_name], Dish.price [price], Dish.description [description], " +
-                            "Category.id [category_id], Category.name [category], Category.description [category_description] " +
-                            "from Dish left join Dish_Category on Dish.id = Dish_Category.dish_id " +
-                            "left join Category on Dish_Category.category_id = Category.id where Dish.id = " + dishID;
-            adapter = new SqlDataAdapter(query, conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            foreach(DataRow row in table.Rows)
+            try
             {
-                dishIDTextBox.Text = row["id"].ToString();
-                dishNameTextBox.Text = row["name"].ToString();
-                dishFullNameTextBox.Text = row["full_name"].ToString();
-                dishPriceTextBox.Text = row["price"].ToString();
-                dishDescTextBox.Text = row["description"].ToString();
-
-                ListViewItem itemSelect = new ListViewItem(row["category_id"].ToString());
-                itemSelect.SubItems.Add(row["category"].ToString());
-                dishCatSelectListView.Items.Add(itemSelect);
-            }
-            foreach (ListViewItem categoryItem in dishCatListView.Items)
-            {
-                foreach (ListViewItem selectCategoryItem in dishCatSelectListView.Items)
+                string dishID = dishGridView.CurrentRow.Cells[0].Value.ToString();
+                string query = "select Dish.id [id], Dish.name [name], Dish.full_name [full_name], Dish.price [price], Dish.description [description], " +
+                                "Category.id [category_id], Category.name [category], Category.description [category_description] " +
+                                "from Dish left join Dish_Category on Dish.id = Dish_Category.dish_id " +
+                                "left join Category on Dish_Category.category_id = Category.id where Dish.id = " + dishID;
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                foreach (DataRow row in table.Rows)
                 {
-                    if (selectCategoryItem.Text == categoryItem.Text)
+                    dishIDTextBox.Text = row["id"].ToString();
+                    dishNameTextBox.Text = row["name"].ToString();
+                    dishFullNameTextBox.Text = row["full_name"].ToString();
+                    dishPriceTextBox.Text = row["price"].ToString();
+                    dishDescTextBox.Text = row["description"].ToString();
+
+                    ListViewItem itemSelect = new ListViewItem(row["category_id"].ToString());
+                    itemSelect.SubItems.Add(row["category"].ToString());
+                    dishCatSelectListView.Items.Add(itemSelect);
+                }
+                foreach (ListViewItem categoryItem in dishCatListView.Items)
+                {
+                    foreach (ListViewItem selectCategoryItem in dishCatSelectListView.Items)
                     {
-                        dishCatListView.Items.Remove(categoryItem);
+                        if (selectCategoryItem.Text == categoryItem.Text)
+                        {
+                            dishCatListView.Items.Remove(categoryItem);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -114,11 +135,6 @@ namespace PointOfSaleApp.Forms
                     e.Cancel = true;
                 }
             }
-        }
-        
-        private void dishNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -163,54 +179,66 @@ namespace PointOfSaleApp.Forms
 
         private bool checkIfExistForAdd(string name)
         {
-            DataTable table = new DataTable();
-            string query = "select * from Dish where name = @name";
+            DataTable table2 = new DataTable();
+            string query = "select * from Dish where name = '" + name + "'";
             SqlCommand command = new SqlCommand(query, conn);
-            command.Parameters.AddWithValue("@name", name);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            adapter.Fill(table);
-            if (table.Rows.Count > 0)
+            SqlDataAdapter adapter2 = new SqlDataAdapter(command);
+            adapter2.Fill(table2);
+            int count = table2.Rows.Count;
+            if (count > 0)
                 return true;
-            else 
-                return false;
+            return false;
         }
 
         private void addDishButton_Click(object sender, EventArgs e)
         {
             if (dishNameTextBox != null && dishCatSelectListView.Items.Count != 0 && dishPriceTextBox != null)
             {
-                if ((MessageBox.Show("Are you sure you want to add dish " + dishNameTextBox.Text + "?", "Add Dish", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to add dish " + dishNameTextBox.Text + "?", "Add Dish", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
                     if (!checkIfExistForAdd(dishNameTextBox.Text))
                     {
+                        dishIDTextBox.Text = "0";
                         string queryInsertDish = "insert into Dish (name, full_name, price, description) values (@name, @full_name, @price, @description)";
-                        conn.Open();
-                        SqlCommand command = new SqlCommand(queryInsertDish, conn);
-                        command.Parameters.AddWithValue("@name", dishNameTextBox.Text);
-                        command.Parameters.AddWithValue("@full_name", dishFullNameTextBox.Text);
-                        command.Parameters.AddWithValue("@price", dishPriceTextBox.Text);
-                        command.Parameters.AddWithValue("@description", dishDescTextBox.Text);
-                        command.ExecuteNonQuery();
-                        int count = dishCatSelectListView.Items.Count;
+                        try
+                        {
+                            conn.Open();
+                            SqlCommand command = new SqlCommand(queryInsertDish, conn);
+                            command.Parameters.AddWithValue("@name", dishNameTextBox.Text);
+                            command.Parameters.AddWithValue("@full_name", dishFullNameTextBox.Text);
+                            command.Parameters.AddWithValue("@price", dishPriceTextBox.Text);
+                            command.Parameters.AddWithValue("@description", dishDescTextBox.Text);
+                            command.ExecuteNonQuery();
 
-                        string query = "select id from Dish where name = @name and full_name = @full_name and price = @price";
-                        SqlCommand command3 = new SqlCommand(query, conn);
-                        command3.CommandType = CommandType.Text;
-                        command3.Parameters.AddWithValue("@name", dishNameTextBox.Text);
-                        string dishID = command3.ExecuteScalar().ToString();
-                        for (int i = 0; i < count; i++)
-                        { 
-                            string queryInsertDishCategory = "insert into Dish_Category (dish_id, category_id) values (@dish_id, @category_id)";
-                            SqlCommand command2 = new SqlCommand(queryInsertDishCategory, conn);
-                            command2.Parameters.AddWithValue("@dish_id", dishID);
-                            command2.Parameters.AddWithValue("@category_id", dishCatSelectListView.Items[i].SubItems[0].Text);
-                            command2.ExecuteNonQuery();
+                            int count = dishCatSelectListView.Items.Count;
+
+                            string query = "select id from Dish where name = @name";
+                            SqlCommand command3 = new SqlCommand(query, conn);
+                            command3.CommandType = CommandType.Text;
+                            command3.Parameters.AddWithValue("@name", dishNameTextBox.Text);
+                            string dishID = command3.ExecuteScalar().ToString();
+                            for (int i = 0; i < count; i++)
+                            { 
+                                string queryInsertDishCategory = "insert into Dish_Category (dish_id, category_id) values (@dish_id, @category_id)";
+                                SqlCommand command2 = new SqlCommand(queryInsertDishCategory, conn);
+                                command2.Parameters.AddWithValue("@dish_id", dishID);
+                                command2.Parameters.AddWithValue("@category_id", dishCatSelectListView.Items[i].SubItems[0].Text);
+                                command2.ExecuteNonQuery();
+                            }
+
+                            conn.Close();
                         }
-                        conn.Close();
-                        MessageBox.Show("Dish added.");
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        MessageBox.Show("Dish " + dishNameTextBox.Text + " added.");
                         displayData();
-                        clearData();
-                        
+                        // clearData();
+
+                        dishGridView.ClearSelection();
+                        int nRowIndex = dishGridView.Rows.Count - 2;
+                        dishGridView.Rows[nRowIndex].Cells[0].Selected = true;
                     }
                     else
                     {
@@ -227,63 +255,107 @@ namespace PointOfSaleApp.Forms
 
         private bool checkIfExistForUpdate(string id)
         {
-            DataTable table = new DataTable();
-            string query = "select * from Dish where id = @id";
-            SqlCommand command = new SqlCommand(query, conn);
-            command.Parameters.AddWithValue("@id", id);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            adapter.Fill(table);
-            if (table.Rows.Count > 0)
-                return true;
-            else
-                return false;
+            try
+            {
+                DataTable table = new DataTable();
+                string query = "select * from Dish where id = @id";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(table);
+                if (table.Rows.Count > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
         }
 
         private void updateDish()
         {
-            conn.Open();
-            string query = "update [Dish] set name = @name, full_name = @full_name, price = @price, description = @description where id = @dish_id";
-            SqlCommand command = new SqlCommand(query, conn);
-            conn.Open();
-            command.Parameters.AddWithValue("@name", dishNameTextBox.Text);
-            command.Parameters.AddWithValue("@full_name", dishFullNameTextBox.Text);
-            command.Parameters.AddWithValue("@price", dishPriceTextBox.Text);
-            command.Parameters.AddWithValue("@description", dishDescTextBox.Text);
-            command.Parameters.AddWithValue("@dish_id", dishIDTextBox.Text);
-            command.ExecuteNonQuery();
-            conn.Close();
-
-            query = "select * from Dish_Category where dish_id = @dish_id";
-            SqlCommand checkSelectCategoryExist = new SqlCommand(query, conn);
-            SqlDataReader reader = checkSelectCategoryExist.ExecuteReader();
-            if(!reader.HasRows)
+            try
             {
-                // not exist
+                conn.Open();
+                string query = "update [Dish] set name = @name, full_name = @full_name, price = @price, description = @description where id = @dish_id";
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@name", dishNameTextBox.Text);
+                command.Parameters.AddWithValue("@full_name", dishFullNameTextBox.Text);
+                command.Parameters.AddWithValue("@price", dishPriceTextBox.Text);
+                command.Parameters.AddWithValue("@description", dishDescTextBox.Text);
+                command.Parameters.AddWithValue("@dish_id", dishIDTextBox.Text);
+                command.ExecuteNonQuery();
+                conn.Close();
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            updateDish_Category();
+
             MessageBox.Show("Dish " + dishNameTextBox.Text + " updated.", "Dish Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            displayData();
-            //    clearData();
+            // displayData();
         }
 
         private void updateDish_Category()
         {
-            for(int i = 0; i <= dishCatSelectListView.Items.Count; i++)
+            try
             {
-                string query = "";
+                conn.Open();
+                DataTable table2 = new DataTable();
+                string query = "select * from Dish_Category where dish_id = @dish_id";
+                SqlCommand command2 = new SqlCommand(query, conn);
+                command2.Parameters.AddWithValue("@dish_id", dishIDTextBox.Text);
+                SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
+                adapter2.Fill(table2);
+                conn.Close();
+
+                foreach (DataRow row in table2.Rows)
+                {
+                    string rowDish_CategoryID = row[0].ToString();
+                    string rowCategoryID = row[2].ToString();
+                    if (dishCatSelectListView.FindItemWithText(rowCategoryID) == null)
+                    {
+                        conn.Open();
+                        MessageBox.Show(rowCategoryID + " is not exist in listView...");
+                        // Delete from DB
+                        string queryDelete = "delete from [Dish_Category] where id = @id";
+                        SqlCommand command1 = new SqlCommand(queryDelete, conn);
+                        command1.Parameters.AddWithValue("@id", rowDish_CategoryID);
+                        SqlDataReader reader = command1.ExecuteReader();
+                        conn.Close();
+                    }
+                }
+
+                // if in listView is and in DB is not exist - insert into DB
+                int count = dishCatSelectListView.Items.Count;
+                conn.Open();
+                for (int i = 0; i < count; i++)
+                {
+                    ListViewItem item = dishCatSelectListView.Items[i];
+                    string categoryID = item.SubItems[0].Text;
+                    string categoryName = item.SubItems[1].Text;
+                    string queryCategory = "[sp_update_insert_dish_category] @dish_id, @category_id";
+                    SqlCommand command3 = new SqlCommand(queryCategory, conn);
+                    command3.Parameters.AddWithValue("@dish_id", dishIDTextBox.Text);
+                    command3.Parameters.AddWithValue("@category_id", categoryID);
+                    command3.ExecuteNonQuery();
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void updateDishButton_Click(object sender, EventArgs e)
         {
-            {
                 if ((MessageBox.Show("Are you sure you want to update dish " + dishNameTextBox.Text + "?", "Update Dish", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
                 {
-                    //if (checkIfExistForAdd(dishNameTextBox.Text))
-                    //{
-                    //    MessageBox.Show("You have not made any changes.");
-                    //    return;
-                    //}
                     if (dishIDTextBox.Text == "0")
                     {
                         MessageBox.Show("You did not select data. Please check.");
@@ -297,12 +369,27 @@ namespace PointOfSaleApp.Forms
                         return;
                     }
                     displayData();
-                    clearData();
                 }
-                else
-                {
-                    MessageBox.Show("You did not enter data. Please check.");
-                }
+                //else
+                //{
+                //    MessageBox.Show("You did not enter data. Please check.");
+                //}
+        }
+
+        private void removeDish()
+        {
+            try
+            {
+                conn.Open();
+                string query = "delete from Dish_Category where dish_id = @id; delete from Dish where id = @id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", dishIDTextBox.Text);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -312,12 +399,7 @@ namespace PointOfSaleApp.Forms
             {
                 if (dishIDTextBox.Text != "0")
                 {
-                    string query = "delete from Dish_Category where dish_id = @id; delete from Dish where id = @id";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    conn.Open();
-                    cmd.Parameters.AddWithValue("@id", dishIDTextBox.Text);
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
+                    removeDish();
                     MessageBox.Show("Dish " + dishNameTextBox.Text + " deleted", "Category Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     displayData();
                     clearData();
@@ -326,6 +408,17 @@ namespace PointOfSaleApp.Forms
                 {
                     MessageBox.Show("You did not select record to delete.");
                 }
+                dishGridView.ClearSelection();
+                dishGridView.Rows[0].Cells[0].Selected = true;
+            }
+        }
+
+        private void clearDishButton_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to clear the data?", "Clear Data", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                clearData();
+                showCategoryListView();
             }
         }
     }

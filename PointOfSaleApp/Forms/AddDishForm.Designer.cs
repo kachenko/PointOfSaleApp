@@ -79,6 +79,7 @@ namespace PointOfSaleApp.Forms
             this.dishCatSelectListView = new System.Windows.Forms.ListView();
             this.dishSelectIDCatColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dishSelectNameCatColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clearDishButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -208,7 +209,6 @@ namespace PointOfSaleApp.Forms
             this.dishNameTextBox.Name = "dishNameTextBox";
             this.dishNameTextBox.Size = new System.Drawing.Size(344, 22);
             this.dishNameTextBox.TabIndex = 27;
-            this.dishNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dishNameTextBox_KeyPress);
             // 
             // listDishLabel
             // 
@@ -526,12 +526,26 @@ namespace PointOfSaleApp.Forms
             // 
             this.dishSelectNameCatColHead.Text = "Name";
             // 
+            // clearDishButton
+            // 
+            this.clearDishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearDishButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearDishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.clearDishButton.Location = new System.Drawing.Point(537, 536);
+            this.clearDishButton.Name = "clearDishButton";
+            this.clearDishButton.Size = new System.Drawing.Size(85, 55);
+            this.clearDishButton.TabIndex = 54;
+            this.clearDishButton.Text = "CLEAR";
+            this.clearDishButton.UseVisualStyleBackColor = true;
+            this.clearDishButton.Click += new System.EventHandler(this.clearDishButton_Click);
+            // 
             // AddDishForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.clearDishButton);
             this.Controls.Add(this.dishCatSelectListView);
             this.Controls.Add(this.dishCatListView);
             this.Controls.Add(this.dishIDLabel);
@@ -627,5 +641,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.ColumnHeader dishSelectIDCatColHead;
         private System.Windows.Forms.ColumnHeader dishSelectNameCatColHead;
         private System.Windows.Forms.BindingSource dishBindingSource2;
+        private System.Windows.Forms.Button clearDishButton;
     }
 }
