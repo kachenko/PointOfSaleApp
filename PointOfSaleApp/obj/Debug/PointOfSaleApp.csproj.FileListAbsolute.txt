@@ -145,3 +145,4 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\tr\Micr
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\zh-Hans\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\zh-Hant\Microsoft.VisualStudio.Services.WebApi.resources.dll
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.CopyComplete
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.MyAccountForm.resources

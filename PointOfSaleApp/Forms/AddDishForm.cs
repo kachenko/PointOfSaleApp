@@ -22,9 +22,11 @@ namespace PointOfSaleApp.Forms
 
         private void AddDishForm_Load(object sender, EventArgs e)
         {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Dish' . Możesz go przenieść lub usunąć.
+            this.dishTableAdapter.Fill(this.posDBDataSet.Dish);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Dish' . Możesz go przenieść lub usunąć.
             nameLabel.Text = MyUserClass.userLogin.ToString();
             positLabel.Text = MyUserClass.userRole.ToString();
-            this.dishTableAdapter.Fill(this.posDBDataSet.Dish);
             showCategoryListView();
         }
 
@@ -192,7 +194,10 @@ namespace PointOfSaleApp.Forms
 
         private void addDishButton_Click(object sender, EventArgs e)
         {
-            if (dishNameTextBox != null && dishCatSelectListView.Items.Count != 0 && dishPriceTextBox != null)
+            // CHECK IF PRICE IS VARCHAR
+            string priceText = dishPriceTextBox.Text;
+            if (dishNameTextBox != null && dishCatSelectListView.Items.Count != 0 && dishPriceTextBox != null ||
+                dishNameTextBox.Text != "" && dishPriceTextBox.Text != "")
             {
                 if (MessageBox.Show("Are you sure you want to add dish " + dishNameTextBox.Text + "?", "Add Dish", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
@@ -354,26 +359,22 @@ namespace PointOfSaleApp.Forms
 
         private void updateDishButton_Click(object sender, EventArgs e)
         {
-                if ((MessageBox.Show("Are you sure you want to update dish " + dishNameTextBox.Text + "?", "Update Dish", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+            if ((MessageBox.Show("Are you sure you want to update dish " + dishNameTextBox.Text + "?", "Update Dish", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+            {
+                if (dishIDTextBox.Text == "0" && dishNameTextBox.Text == "")
                 {
-                    if (dishIDTextBox.Text == "0")
-                    {
-                        MessageBox.Show("You did not select data. Please check.");
-                        return;
-                    }
-                    if (checkIfExistForUpdate(dishIDTextBox.Text))
-                        updateDish();
-                    else
-                    {
-                        MessageBox.Show("You cannot update a non-existent category. Check the data you entered.");
-                        return;
-                    }
-                    displayData();
+                    MessageBox.Show("You did not select data. Please check.");
+                    return;
                 }
-                //else
-                //{
-                //    MessageBox.Show("You did not enter data. Please check.");
-                //}
+                if (checkIfExistForUpdate(dishIDTextBox.Text))
+                    updateDish();
+                else
+                {
+                    MessageBox.Show("You cannot update a non-existent category. Check the data you entered.");
+                    return;
+                }
+                displayData();
+            }
         }
 
         private void removeDish()
@@ -420,6 +421,27 @@ namespace PointOfSaleApp.Forms
                 clearData();
                 showCategoryListView();
             }
+        }
+
+        private void dishPriceTextBox_Leave(object sender, EventArgs e)
+        {
+            string priceText = dishPriceTextBox.Text;
+            for (int i=0; i<priceText.Length; i++)
+            {
+                if (!char.IsDigit(priceText[i]))
+                {
+                    MessageBox.Show("Please enter a valid number.");
+                    dishPriceTextBox.Text = "";
+                    return;
+                }
+            }
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MenuForm menu = new MenuForm();
+            this.Hide();
+            menu.Show();
         }
     }
 }

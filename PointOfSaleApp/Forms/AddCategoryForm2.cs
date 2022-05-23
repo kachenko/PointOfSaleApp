@@ -26,6 +26,10 @@ namespace PointOfSaleApp.Forms
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Category' . Możesz go przenieść lub usunąć.
             this.categoryTableAdapter.Fill(this.posDBDataSet.Category);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Category' . Możesz go przenieść lub usunąć.
+            this.categoryTableAdapter.Fill(this.posDBDataSet.Category);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Category' . Możesz go przenieść lub usunąć.
+            this.categoryTableAdapter.Fill(this.posDBDataSet.Category);
             nameLabel.Text = MyUserClass.userLogin.ToString();
             positLabel.Text = MyUserClass.userRole.ToString();
         }
@@ -161,11 +165,11 @@ namespace PointOfSaleApp.Forms
 
         private void removeCategoryButton_Click(object sender, EventArgs e)
         {
-            if ((MessageBox.Show("Are you sure you want to remove category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
+            if ((MessageBox.Show("Are you sure you want to remove category? \nLinks to this category will be deleted.", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)) == DialogResult.Yes)
             {
                 if (prodCatIDTextBox.Text != "0" || prodCatTextBox.Text != "" && prodCatDesTextBox.Text != "")
                 {
-                    string query = "delete from [Category] where id = @id";
+                    string query = "delete from Dish_Category where category_id = 222; delete from [Category] where id = 222;";
                     cmd = new SqlCommand(query, conn);
                     conn.Open();
                     cmd.Parameters.AddWithValue("@id", prodCatIDTextBox.Text);
