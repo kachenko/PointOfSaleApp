@@ -222,6 +222,7 @@ namespace PointOfSaleApp
             this.myAccountButton.TabIndex = 28;
             this.myAccountButton.Text = "MY ACCOUNT";
             this.myAccountButton.UseVisualStyleBackColor = true;
+            this.myAccountButton.Click += new System.EventHandler(this.myAccountButton_Click);
             // 
             // MenuForm
             // 

@@ -24,7 +24,6 @@ namespace PointOfSaleApp.Forms
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Dish' . Możesz go przenieść lub usunąć.
             this.dishTableAdapter.Fill(this.posDBDataSet.Dish);
-            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Dish' . Możesz go przenieść lub usunąć.
             nameLabel.Text = MyUserClass.userLogin.ToString();
             positLabel.Text = MyUserClass.userRole.ToString();
             showCategoryListView();

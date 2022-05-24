@@ -105,10 +105,16 @@ namespace PointOfSaleApp
 
         private void UsersButton_Click(object sender, EventArgs e)
         {
-            Forms.UsersManagmentForm uMF = new Forms.UsersManagmentForm();
+            Forms.UsersManagmentForm usersManagment = new Forms.UsersManagmentForm();
             this.Hide();
-            uMF.Show();
+            usersManagment.Show();
         }
 
+        private void myAccountButton_Click(object sender, EventArgs e)
+        {
+            Forms.MyAccountForm myAccount = new Forms.MyAccountForm();
+            this.Hide();
+            myAccount.Show();
+        }
     }
 }

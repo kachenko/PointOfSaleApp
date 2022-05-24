@@ -46,6 +46,7 @@ namespace PointOfSaleApp
                 {
                     MyUserClass.userId = int.Parse(row["id"].ToString());
                     MyUserClass.userLogin = row["login"].ToString();
+                    MyUserClass.userPassword = row["password"].ToString();
                     MyUserClass.userRole = row["role"].ToString();
                 }
                 MenuForm mf = new MenuForm();
