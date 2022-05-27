@@ -42,28 +42,28 @@ namespace PointOfSaleApp.Forms
                 userRoleTextBox.Text = row["role"].ToString();
                 userIsActiveTextBox.Text = row["isActive"].ToString();
 
-                loadUserPicture();
+                userPictureBox.Image = MyUserClass.loadUserPicture();
             }
         }
         
-        public void loadUserPicture()
-        {
-            byte[] getImage = new byte[0];
-            SqlCommand command1 = new SqlCommand("select image from [User] where id = " + MyUserClass.userId, conn);
-            SqlDataAdapter adapter1 = new SqlDataAdapter(command1);
-            command1.CommandType = CommandType.Text;
-            DataSet set = new DataSet();
-            adapter1.Fill(set);
-            foreach (DataRow dr in set.Tables[0].Rows)
-            {
-                getImage = (byte[])dr["image"];
-            }
-            byte[] imageData = getImage;
-            MemoryStream memoryStream = new MemoryStream(imageData);
-            userPictureBox.Image = Image.FromStream(memoryStream);
-        }
+        //static public Image loadUserPicture()
+        //{
+        //    byte[] getImage = new byte[0];
+        //    SqlCommand command1 = new SqlCommand("select image from [User] where id = " + MyUserClass.userId, conn);
+        //    SqlDataAdapter adapter1 = new SqlDataAdapter(command1);
+        //    command1.CommandType = CommandType.Text;
+        //    DataSet set = new DataSet();
+        //    adapter1.Fill(set);
+        //    foreach (DataRow dr in set.Tables[0].Rows)
+        //    {
+        //        getImage = (byte[])dr["image"];
+        //    }
+        //    byte[] imageData = getImage;
+        //    MemoryStream memoryStream = new MemoryStream(imageData);
+        //    return Image.FromStream(memoryStream);
+        //}
 
-        private void editUserButton_Click(object sender, EventArgs e)
+        private bool ableEditUserData()
         {
             if (MessageBox.Show("Are you sure you want to edit your data?", "Data editing.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
@@ -75,7 +75,15 @@ namespace PointOfSaleApp.Forms
                     userRoleTextBox.Enabled = true;
                 }
                 saveUserButton.Enabled = true;
+                editUserButton.Enabled = false;
+                return true;
             }
+            return false;
+        }
+
+        private void editUserButton_Click(object sender, EventArgs e)
+        {
+            ableEditUserData();
         }
         private void saveUserButton_Click(object sender, EventArgs e)
         {
@@ -110,12 +118,13 @@ namespace PointOfSaleApp.Forms
                 userRoleTextBox.Enabled = false;
             }
             saveUserButton.Enabled = false;
+            editUserButton.Enabled = true;
             MessageBox.Show("Your data updated", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void changeImageButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to edit your data?", "Data editing.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (ableEditUserData())
             {
                 Stream stream = null;
                 OpenFileDialog open = new OpenFileDialog();
@@ -124,7 +133,6 @@ namespace PointOfSaleApp.Forms
                 {
                     try
                     {
-                        //userPictureBox.Image = new Bitmap(open.FileName);
                         if ((stream = open.OpenFile()) != null)
                         {
                             string fileName = open.FileName;

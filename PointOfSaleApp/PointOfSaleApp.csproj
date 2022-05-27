@@ -259,10 +259,11 @@
     <None Include="Resources\padlock.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\f291c20922ce1ff1878b13afc2a49f19.jpg" />
+    <None Include="Resources\profile.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\profile.png" />
+    <Content Include="Resources\f291c20922ce1ff1878b13afc2a49f19.jpg" />
+    <Content Include="Resources\profile1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
