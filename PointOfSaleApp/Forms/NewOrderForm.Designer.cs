@@ -31,17 +31,23 @@ namespace PointOfSaleApp
 		{
             this.components = new System.ComponentModel.Container();
             this.infoPanel = new System.Windows.Forms.Panel();
-            this.disgQuantityTextBox = new System.Windows.Forms.TextBox();
+            this.dishNameTextBox = new System.Windows.Forms.TextBox();
+            this.dishIDTextBox = new System.Windows.Forms.TextBox();
+            this.dishIDLabel = new System.Windows.Forms.Label();
+            this.dishDescTextBox = new System.Windows.Forms.TextBox();
+            this.dishFullNameTextBox = new System.Windows.Forms.TextBox();
             this.dishFullNameLabel = new System.Windows.Forms.Label();
             this.dishDescriptionLabel = new System.Windows.Forms.Label();
             this.dishPriceTextBox = new System.Windows.Forms.TextBox();
             this.dishPriceLabel = new System.Windows.Forms.Label();
-            this.removeButton = new System.Windows.Forms.Button();
             this.addProductButton = new System.Windows.Forms.Button();
             this.dishQuantLabel = new System.Windows.Forms.Label();
             this.dishNameLabel = new System.Windows.Forms.Label();
+            this.removeButton = new System.Windows.Forms.Button();
             this.categoryButtonPanel = new System.Windows.Forms.Panel();
             this.billPanel = new System.Windows.Forms.Panel();
+            this.orderIDTextBox = new System.Windows.Forms.TextBox();
+            this.dataOrderGridView = new System.Windows.Forms.DataGridView();
             this.tableTextBox = new System.Windows.Forms.TextBox();
             this.totalBillLabel = new System.Windows.Forms.Label();
             this.changeButton = new System.Windows.Forms.Button();
@@ -68,61 +74,105 @@ namespace PointOfSaleApp
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dishFullNameTextBox = new System.Windows.Forms.TextBox();
-            this.dishDescTextBox = new System.Windows.Forms.TextBox();
-            this.dishNameTextBox = new System.Windows.Forms.TextBox();
-            this.dishIDTextBox = new System.Windows.Forms.TextBox();
-            this.dishIDLabel = new System.Windows.Forms.Label();
-            this.dataOrderGridView = new System.Windows.Forms.DataGridView();
-            this.orderIDTextBox = new System.Windows.Forms.TextBox();
-            this.orderIDLabel = new System.Windows.Forms.Label();
+            this.dishQuantityUpDown = new System.Windows.Forms.NumericUpDown();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderCreateButton = new System.Windows.Forms.Button();
             this.infoPanel.SuspendLayout();
             this.billPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataOrderGridView)).BeginInit();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dishBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.posDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDishGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataOrderGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishQuantityUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // infoPanel
             // 
+            this.infoPanel.Controls.Add(this.dishQuantityUpDown);
+            this.infoPanel.Controls.Add(this.dishNameTextBox);
             this.infoPanel.Controls.Add(this.dishIDTextBox);
             this.infoPanel.Controls.Add(this.dishIDLabel);
-            this.infoPanel.Controls.Add(this.dishNameTextBox);
             this.infoPanel.Controls.Add(this.dishDescTextBox);
             this.infoPanel.Controls.Add(this.dishFullNameTextBox);
-            this.infoPanel.Controls.Add(this.disgQuantityTextBox);
             this.infoPanel.Controls.Add(this.dishFullNameLabel);
             this.infoPanel.Controls.Add(this.dishDescriptionLabel);
             this.infoPanel.Controls.Add(this.dishPriceTextBox);
             this.infoPanel.Controls.Add(this.dishPriceLabel);
+            this.infoPanel.Controls.Add(this.removeButton);
             this.infoPanel.Controls.Add(this.addProductButton);
             this.infoPanel.Controls.Add(this.dishQuantLabel);
             this.infoPanel.Controls.Add(this.dishNameLabel);
             this.infoPanel.Location = new System.Drawing.Point(395, 173);
             this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(303, 427);
+            this.infoPanel.Size = new System.Drawing.Size(303, 458);
             this.infoPanel.TabIndex = 7;
             // 
-            // disgQuantityTextBox
+            // dishNameTextBox
             // 
-            this.disgQuantityTextBox.Enabled = false;
-            this.disgQuantityTextBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disgQuantityTextBox.Location = new System.Drawing.Point(102, 308);
-            this.disgQuantityTextBox.Name = "disgQuantityTextBox";
-            this.disgQuantityTextBox.Size = new System.Drawing.Size(120, 25);
-            this.disgQuantityTextBox.TabIndex = 10;
-            this.disgQuantityTextBox.Text = "1";
+            this.dishNameTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dishNameTextBox.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dishNameTextBox.Location = new System.Drawing.Point(101, 38);
+            this.dishNameTextBox.Multiline = true;
+            this.dishNameTextBox.Name = "dishNameTextBox";
+            this.dishNameTextBox.ReadOnly = true;
+            this.dishNameTextBox.Size = new System.Drawing.Size(196, 62);
+            this.dishNameTextBox.TabIndex = 14;
+            // 
+            // dishIDTextBox
+            // 
+            this.dishIDTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dishIDTextBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dishIDTextBox.Location = new System.Drawing.Point(101, 7);
+            this.dishIDTextBox.Name = "dishIDTextBox";
+            this.dishIDTextBox.ReadOnly = true;
+            this.dishIDTextBox.Size = new System.Drawing.Size(62, 25);
+            this.dishIDTextBox.TabIndex = 16;
+            // 
+            // dishIDLabel
+            // 
+            this.dishIDLabel.AutoSize = true;
+            this.dishIDLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dishIDLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dishIDLabel.Location = new System.Drawing.Point(4, 7);
+            this.dishIDLabel.Name = "dishIDLabel";
+            this.dishIDLabel.Size = new System.Drawing.Size(26, 23);
+            this.dishIDLabel.TabIndex = 15;
+            this.dishIDLabel.Text = "ID";
+            // 
+            // dishDescTextBox
+            // 
+            this.dishDescTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dishDescTextBox.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dishDescTextBox.Location = new System.Drawing.Point(101, 207);
+            this.dishDescTextBox.Multiline = true;
+            this.dishDescTextBox.Name = "dishDescTextBox";
+            this.dishDescTextBox.ReadOnly = true;
+            this.dishDescTextBox.Size = new System.Drawing.Size(196, 93);
+            this.dishDescTextBox.TabIndex = 13;
+            // 
+            // dishFullNameTextBox
+            // 
+            this.dishFullNameTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dishFullNameTextBox.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dishFullNameTextBox.Location = new System.Drawing.Point(101, 106);
+            this.dishFullNameTextBox.Multiline = true;
+            this.dishFullNameTextBox.Name = "dishFullNameTextBox";
+            this.dishFullNameTextBox.ReadOnly = true;
+            this.dishFullNameTextBox.Size = new System.Drawing.Size(196, 62);
+            this.dishFullNameTextBox.TabIndex = 12;
             // 
             // dishFullNameLabel
             // 
             this.dishFullNameLabel.AutoSize = true;
             this.dishFullNameLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dishFullNameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishFullNameLabel.Location = new System.Drawing.Point(4, 75);
+            this.dishFullNameLabel.Location = new System.Drawing.Point(4, 106);
             this.dishFullNameLabel.MaximumSize = new System.Drawing.Size(250, 0);
             this.dishFullNameLabel.Name = "dishFullNameLabel";
             this.dishFullNameLabel.Size = new System.Drawing.Size(91, 23);
@@ -134,7 +184,7 @@ namespace PointOfSaleApp
             this.dishDescriptionLabel.AutoSize = true;
             this.dishDescriptionLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dishDescriptionLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishDescriptionLabel.Location = new System.Drawing.Point(4, 183);
+            this.dishDescriptionLabel.Location = new System.Drawing.Point(4, 207);
             this.dishDescriptionLabel.MaximumSize = new System.Drawing.Size(250, 0);
             this.dishDescriptionLabel.Name = "dishDescriptionLabel";
             this.dishDescriptionLabel.Size = new System.Drawing.Size(99, 23);
@@ -143,43 +193,31 @@ namespace PointOfSaleApp
             // 
             // dishPriceTextBox
             // 
-            this.dishPriceTextBox.Enabled = false;
-            this.dishPriceTextBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dishPriceTextBox.Location = new System.Drawing.Point(101, 152);
+            this.dishPriceTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dishPriceTextBox.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dishPriceTextBox.Location = new System.Drawing.Point(101, 174);
             this.dishPriceTextBox.Name = "dishPriceTextBox";
-            this.dishPriceTextBox.Size = new System.Drawing.Size(120, 25);
+            this.dishPriceTextBox.ReadOnly = true;
+            this.dishPriceTextBox.Size = new System.Drawing.Size(120, 27);
             this.dishPriceTextBox.TabIndex = 7;
-            this.dishPriceTextBox.Text = "100";
             // 
             // dishPriceLabel
             // 
             this.dishPriceLabel.AutoSize = true;
             this.dishPriceLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dishPriceLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishPriceLabel.Location = new System.Drawing.Point(4, 154);
+            this.dishPriceLabel.Location = new System.Drawing.Point(4, 178);
             this.dishPriceLabel.Name = "dishPriceLabel";
-            this.dishPriceLabel.Size = new System.Drawing.Size(47, 23);
+            this.dishPriceLabel.Size = new System.Drawing.Size(51, 23);
             this.dishPriceLabel.TabIndex = 6;
-            this.dishPriceLabel.Text = "Price";
-            // 
-            // removeButton
-            // 
-            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.removeButton.Location = new System.Drawing.Point(90, 360);
-            this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(85, 55);
-            this.removeButton.TabIndex = 5;
-            this.removeButton.Text = "REMOVE";
-            this.removeButton.UseVisualStyleBackColor = true;
+            this.dishPriceLabel.Text = "Price:";
             // 
             // addProductButton
             // 
             this.addProductButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addProductButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addProductButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addProductButton.Location = new System.Drawing.Point(7, 363);
+            this.addProductButton.Location = new System.Drawing.Point(3, 400);
             this.addProductButton.Name = "addProductButton";
             this.addProductButton.Size = new System.Drawing.Size(85, 55);
             this.addProductButton.TabIndex = 4;
@@ -194,32 +232,47 @@ namespace PointOfSaleApp
             this.dishQuantLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.dishQuantLabel.Location = new System.Drawing.Point(4, 308);
             this.dishQuantLabel.Name = "dishQuantLabel";
-            this.dishQuantLabel.Size = new System.Drawing.Size(74, 23);
+            this.dishQuantLabel.Size = new System.Drawing.Size(78, 23);
             this.dishQuantLabel.TabIndex = 3;
-            this.dishQuantLabel.Text = "Quantity";
+            this.dishQuantLabel.Text = "Quantity:";
             // 
             // dishNameLabel
             // 
             this.dishNameLabel.AutoSize = true;
             this.dishNameLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dishNameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishNameLabel.Location = new System.Drawing.Point(3, 39);
+            this.dishNameLabel.Location = new System.Drawing.Point(3, 35);
             this.dishNameLabel.MaximumSize = new System.Drawing.Size(250, 0);
             this.dishNameLabel.Name = "dishNameLabel";
             this.dishNameLabel.Size = new System.Drawing.Size(75, 30);
             this.dishNameLabel.TabIndex = 1;
             this.dishNameLabel.Text = "Name";
             // 
+            // removeButton
+            // 
+            this.removeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.removeButton.Location = new System.Drawing.Point(215, 400);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(85, 55);
+            this.removeButton.TabIndex = 5;
+            this.removeButton.Text = "REMOVE";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+            // 
             // categoryButtonPanel
             // 
-            this.categoryButtonPanel.Location = new System.Drawing.Point(0, 33);
+            this.categoryButtonPanel.Location = new System.Drawing.Point(12, 33);
             this.categoryButtonPanel.Name = "categoryButtonPanel";
-            this.categoryButtonPanel.Size = new System.Drawing.Size(393, 317);
+            this.categoryButtonPanel.Size = new System.Drawing.Size(380, 317);
             this.categoryButtonPanel.TabIndex = 4;
             // 
             // billPanel
             // 
             this.billPanel.BackColor = System.Drawing.Color.PeachPuff;
+            this.billPanel.Controls.Add(this.orderCreateButton);
+            this.billPanel.Controls.Add(this.orderIDTextBox);
             this.billPanel.Controls.Add(this.dataOrderGridView);
             this.billPanel.Controls.Add(this.tableTextBox);
             this.billPanel.Controls.Add(this.totalBillLabel);
@@ -228,18 +281,49 @@ namespace PointOfSaleApp
             this.billPanel.Controls.Add(this.printButton);
             this.billPanel.Controls.Add(this.tableNrLabel);
             this.billPanel.Controls.Add(this.billLabel);
-            this.billPanel.Controls.Add(this.removeButton);
             this.billPanel.Location = new System.Drawing.Point(704, 173);
             this.billPanel.Name = "billPanel";
-            this.billPanel.Size = new System.Drawing.Size(278, 427);
+            this.billPanel.Size = new System.Drawing.Size(353, 458);
             this.billPanel.TabIndex = 5;
+            // 
+            // orderIDTextBox
+            // 
+            this.orderIDTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.orderIDTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.orderIDTextBox.Font = new System.Drawing.Font("Malgun Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderIDTextBox.Location = new System.Drawing.Point(76, 7);
+            this.orderIDTextBox.Name = "orderIDTextBox";
+            this.orderIDTextBox.ReadOnly = true;
+            this.orderIDTextBox.Size = new System.Drawing.Size(85, 20);
+            this.orderIDTextBox.TabIndex = 18;
+            // 
+            // dataOrderGridView
+            // 
+            this.dataOrderGridView.AllowUserToAddRows = false;
+            this.dataOrderGridView.AllowUserToDeleteRows = false;
+            this.dataOrderGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataOrderGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataOrderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataOrderGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.name,
+            this.quantity,
+            this.price});
+            this.dataOrderGridView.Location = new System.Drawing.Point(3, 111);
+            this.dataOrderGridView.Name = "dataOrderGridView";
+            this.dataOrderGridView.ReadOnly = true;
+            this.dataOrderGridView.RowHeadersWidth = 51;
+            this.dataOrderGridView.RowTemplate.Height = 24;
+            this.dataOrderGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataOrderGridView.Size = new System.Drawing.Size(343, 253);
+            this.dataOrderGridView.TabIndex = 14;
             // 
             // tableTextBox
             // 
-            this.tableTextBox.Enabled = false;
             this.tableTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableTextBox.Location = new System.Drawing.Point(129, 30);
+            this.tableTextBox.Location = new System.Drawing.Point(226, 38);
             this.tableTextBox.Name = "tableTextBox";
+            this.tableTextBox.ReadOnly = true;
             this.tableTextBox.Size = new System.Drawing.Size(120, 30);
             this.tableTextBox.TabIndex = 11;
             this.tableTextBox.Text = "Not Selected";
@@ -250,7 +334,7 @@ namespace PointOfSaleApp
             this.totalBillLabel.AutoSize = true;
             this.totalBillLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.totalBillLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.totalBillLabel.Location = new System.Drawing.Point(221, 327);
+            this.totalBillLabel.Location = new System.Drawing.Point(301, 367);
             this.totalBillLabel.Name = "totalBillLabel";
             this.totalBillLabel.Size = new System.Drawing.Size(45, 30);
             this.totalBillLabel.TabIndex = 13;
@@ -261,7 +345,7 @@ namespace PointOfSaleApp
             this.changeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.changeButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changeButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.changeButton.Location = new System.Drawing.Point(166, 70);
+            this.changeButton.Location = new System.Drawing.Point(263, 69);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(84, 35);
             this.changeButton.TabIndex = 10;
@@ -274,7 +358,7 @@ namespace PointOfSaleApp
             this.totalLabel.AutoSize = true;
             this.totalLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.totalLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.totalLabel.Location = new System.Drawing.Point(3, 332);
+            this.totalLabel.Location = new System.Drawing.Point(3, 367);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(72, 30);
             this.totalLabel.TabIndex = 12;
@@ -285,11 +369,11 @@ namespace PointOfSaleApp
             this.printButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.printButton.Location = new System.Drawing.Point(181, 360);
+            this.printButton.Location = new System.Drawing.Point(261, 400);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(85, 55);
             this.printButton.TabIndex = 10;
-            this.printButton.Text = "PRINT";
+            this.printButton.Text = "PRINT BILL";
             this.printButton.UseVisualStyleBackColor = true;
             // 
             // tableNrLabel
@@ -297,7 +381,7 @@ namespace PointOfSaleApp
             this.tableNrLabel.AutoSize = true;
             this.tableNrLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tableNrLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.tableNrLabel.Location = new System.Drawing.Point(4, 33);
+            this.tableNrLabel.Location = new System.Drawing.Point(141, 41);
             this.tableNrLabel.Name = "tableNrLabel";
             this.tableNrLabel.Size = new System.Drawing.Size(79, 23);
             this.tableNrLabel.TabIndex = 4;
@@ -308,7 +392,7 @@ namespace PointOfSaleApp
             this.billLabel.AutoSize = true;
             this.billLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.billLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.billLabel.Location = new System.Drawing.Point(3, 0);
+            this.billLabel.Location = new System.Drawing.Point(3, 4);
             this.billLabel.Name = "billLabel";
             this.billLabel.Size = new System.Drawing.Size(67, 30);
             this.billLabel.TabIndex = 0;
@@ -316,14 +400,12 @@ namespace PointOfSaleApp
             // 
             // mainPanel
             // 
-            this.mainPanel.Controls.Add(this.orderIDTextBox);
-            this.mainPanel.Controls.Add(this.orderIDLabel);
             this.mainPanel.Controls.Add(this.positLabel);
             this.mainPanel.Controls.Add(this.nameLabel);
             this.mainPanel.Controls.Add(this.userPictureBox);
             this.mainPanel.Location = new System.Drawing.Point(395, 33);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(575, 137);
+            this.mainPanel.Size = new System.Drawing.Size(662, 137);
             this.mainPanel.TabIndex = 6;
             // 
             // positLabel
@@ -377,15 +459,16 @@ namespace PointOfSaleApp
             this.dataDishGridView.AllowUserToAddRows = false;
             this.dataDishGridView.AllowUserToDeleteRows = false;
             this.dataDishGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataDishGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataDishGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDishGridView.Location = new System.Drawing.Point(0, 356);
+            this.dataDishGridView.Location = new System.Drawing.Point(12, 356);
             this.dataDishGridView.MultiSelect = false;
             this.dataDishGridView.Name = "dataDishGridView";
             this.dataDishGridView.ReadOnly = true;
             this.dataDishGridView.RowHeadersWidth = 51;
             this.dataDishGridView.RowTemplate.Height = 24;
             this.dataDishGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataDishGridView.Size = new System.Drawing.Size(392, 244);
+            this.dataDishGridView.Size = new System.Drawing.Size(380, 275);
             this.dataDishGridView.TabIndex = 9;
             this.dataDishGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDishGridView_CellClick);
             // 
@@ -398,7 +481,7 @@ namespace PointOfSaleApp
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1069, 30);
             this.menuStrip1.TabIndex = 42;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -410,7 +493,7 @@ namespace PointOfSaleApp
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -452,7 +535,7 @@ namespace PointOfSaleApp
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -473,96 +556,66 @@ namespace PointOfSaleApp
             this.dishesToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.dishesToolStripMenuItem.Text = "Dishes";
             // 
-            // dishFullNameTextBox
+            // dishQuantityUpDown
             // 
-            this.dishFullNameTextBox.Enabled = false;
-            this.dishFullNameTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dishFullNameTextBox.Location = new System.Drawing.Point(101, 75);
-            this.dishFullNameTextBox.Multiline = true;
-            this.dishFullNameTextBox.Name = "dishFullNameTextBox";
-            this.dishFullNameTextBox.Size = new System.Drawing.Size(196, 71);
-            this.dishFullNameTextBox.TabIndex = 12;
-            this.dishFullNameTextBox.Text = "Not Selected";
-            this.dishFullNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dishQuantityUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dishQuantityUpDown.Location = new System.Drawing.Point(101, 307);
+            this.dishQuantityUpDown.Name = "dishQuantityUpDown";
+            this.dishQuantityUpDown.Size = new System.Drawing.Size(89, 24);
+            this.dishQuantityUpDown.TabIndex = 17;
+            this.dishQuantityUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dishQuantityUpDown.ValueChanged += new System.EventHandler(this.dishQuantityUpDown_ValueChanged);
             // 
-            // dishDescTextBox
+            // id
             // 
-            this.dishDescTextBox.Enabled = false;
-            this.dishDescTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dishDescTextBox.Location = new System.Drawing.Point(101, 183);
-            this.dishDescTextBox.Multiline = true;
-            this.dishDescTextBox.Name = "dishDescTextBox";
-            this.dishDescTextBox.Size = new System.Drawing.Size(196, 93);
-            this.dishDescTextBox.TabIndex = 13;
-            this.dishDescTextBox.Text = "Not Selected";
-            this.dishDescTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
-            // dishNameTextBox
+            // name
             // 
-            this.dishNameTextBox.Enabled = false;
-            this.dishNameTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dishNameTextBox.Location = new System.Drawing.Point(101, 39);
-            this.dishNameTextBox.Name = "dishNameTextBox";
-            this.dishNameTextBox.Size = new System.Drawing.Size(120, 30);
-            this.dishNameTextBox.TabIndex = 14;
-            this.dishNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
             // 
-            // dishIDTextBox
+            // quantity
             // 
-            this.dishIDTextBox.Enabled = false;
-            this.dishIDTextBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dishIDTextBox.Location = new System.Drawing.Point(101, 7);
-            this.dishIDTextBox.Name = "dishIDTextBox";
-            this.dishIDTextBox.Size = new System.Drawing.Size(62, 25);
-            this.dishIDTextBox.TabIndex = 16;
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.MinimumWidth = 6;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             // 
-            // dishIDLabel
+            // price
             // 
-            this.dishIDLabel.AutoSize = true;
-            this.dishIDLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dishIDLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishIDLabel.Location = new System.Drawing.Point(4, 7);
-            this.dishIDLabel.Name = "dishIDLabel";
-            this.dishIDLabel.Size = new System.Drawing.Size(26, 23);
-            this.dishIDLabel.TabIndex = 15;
-            this.dishIDLabel.Text = "ID";
+            this.price.HeaderText = "Price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
-            // dataOrderGridView
+            // orderCreateButton
             // 
-            this.dataOrderGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataOrderGridView.Location = new System.Drawing.Point(3, 111);
-            this.dataOrderGridView.Name = "dataOrderGridView";
-            this.dataOrderGridView.RowHeadersWidth = 51;
-            this.dataOrderGridView.RowTemplate.Height = 24;
-            this.dataOrderGridView.Size = new System.Drawing.Size(272, 213);
-            this.dataOrderGridView.TabIndex = 14;
-            // 
-            // orderIDTextBox
-            // 
-            this.orderIDTextBox.Enabled = false;
-            this.orderIDTextBox.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderIDTextBox.Location = new System.Drawing.Point(510, 8);
-            this.orderIDTextBox.Name = "orderIDTextBox";
-            this.orderIDTextBox.Size = new System.Drawing.Size(62, 25);
-            this.orderIDTextBox.TabIndex = 18;
-            // 
-            // orderIDLabel
-            // 
-            this.orderIDLabel.AutoSize = true;
-            this.orderIDLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderIDLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.orderIDLabel.Location = new System.Drawing.Point(429, 8);
-            this.orderIDLabel.Name = "orderIDLabel";
-            this.orderIDLabel.Size = new System.Drawing.Size(75, 23);
-            this.orderIDLabel.TabIndex = 17;
-            this.orderIDLabel.Text = "Order ID";
+            this.orderCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderCreateButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderCreateButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.orderCreateButton.Location = new System.Drawing.Point(170, 400);
+            this.orderCreateButton.Name = "orderCreateButton";
+            this.orderCreateButton.Size = new System.Drawing.Size(85, 55);
+            this.orderCreateButton.TabIndex = 19;
+            this.orderCreateButton.Text = "CREATE";
+            this.orderCreateButton.UseVisualStyleBackColor = true;
             // 
             // NewOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
-            this.ClientSize = new System.Drawing.Size(982, 603);
+            this.ClientSize = new System.Drawing.Size(1069, 643);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dataDishGridView);
             this.Controls.Add(this.mainPanel);
@@ -578,6 +631,7 @@ namespace PointOfSaleApp
             this.infoPanel.PerformLayout();
             this.billPanel.ResumeLayout(false);
             this.billPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataOrderGridView)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
@@ -586,7 +640,7 @@ namespace PointOfSaleApp
             ((System.ComponentModel.ISupportInitialize)(this.dataDishGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataOrderGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishQuantityUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,7 +669,6 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Button changeButton;
         private System.Windows.Forms.Label totalBillLabel;
-        private System.Windows.Forms.TextBox disgQuantityTextBox;
         private System.Windows.Forms.TextBox tableTextBox;
         private posDBDataSet posDBDataSet;
         private System.Windows.Forms.BindingSource dishBindingSource;
@@ -639,6 +692,11 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Label dishIDLabel;
         private System.Windows.Forms.DataGridView dataOrderGridView;
         private System.Windows.Forms.TextBox orderIDTextBox;
-        private System.Windows.Forms.Label orderIDLabel;
+        private System.Windows.Forms.NumericUpDown dishQuantityUpDown;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
+        private System.Windows.Forms.Button orderCreateButton;
     }
 }

@@ -14,6 +14,8 @@ namespace PointOfSaleApp
 	public partial class NewOrderForm : Form
 	{
         int s_category_id = 0;
+        // private static DataTable dataTabDish = new DataTable();
+
         SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
 
         public NewOrderForm()
@@ -29,6 +31,7 @@ namespace PointOfSaleApp
             table.ShowDialog();
             tableTextBox.Text = OrderClass.orderTableNr.ToString();
             loadCategoryButtons();
+            setNewOrderNumber();
         }
 
         private void NewOrderForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -46,18 +49,42 @@ namespace PointOfSaleApp
             }
         }
 
+        private void clearData()
+        {
+            dishIDTextBox.Text = "";
+            dishNameTextBox.Text = "";
+            dishFullNameTextBox.Text = "";
+            dishPriceTextBox.Text = "";
+            dishDescTextBox.Text = "";
+            dishQuantityUpDown.Value = 1;
+        }
+
         private void setNewOrderNumber()
         {
-            string query = "select top 1 id from[Order] order by datetime desc";
-            SqlCommand command = new SqlCommand(query, conn);
-            orderIDTextBox.Text = command.ExecuteScalar().ToString(); 
+            string query = "select top 1 id from [Order] order by id desc";
+            try
+            {
+                SqlCommand command = new SqlCommand(query, conn);
+                conn.Open();
+                object lastOrder = command.ExecuteScalar();
+                if (lastOrder != null)
+                {
+                    string lastOrderString = Convert.ToString(lastOrder);
+                    orderIDTextBox.Text = lastOrderString;
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void loadCategoryButtons()
         {
             // count buttons
             int counter = 0;
-            Point buttonPoint = new Point(0, 0);
+            Point buttonPoint = new Point(-70, 0);
             string query = "select * from [Category]";
             DataTable table = new DataTable();
             SqlCommand command = new SqlCommand(query, conn);
@@ -89,14 +116,27 @@ namespace PointOfSaleApp
 
         private void loadDishDataGridView()
         {
+            clearData();
+            dataDishGridView.Rows.Clear();
+            dataDishGridView.Refresh();
             string query = "select Dish.* from [Dish] join Dish_Category on Dish.id = Dish_Category.dish_id join Category on Dish_Category.category_id = Category.id where category_id = " + s_category_id;
             SqlCommand command = new SqlCommand(query, conn);
             conn.Open();
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
             adapter.Fill(table);
-            
-            dataDishGridView.DataSource = table;
+
+            dataDishGridView.ColumnCount = 3;
+            dataDishGridView.Columns[0].Name = "ID";
+            dataDishGridView.Columns[1].Name = "Name";
+            dataDishGridView.Columns[2].Name = "Price";
+
+            foreach (DataRow row in table.Rows)
+            {
+                string[] dataGridViewRow = new string[] 
+                    { row["id"].ToString(), row["name"].ToString(), row["price"].ToString() };
+                dataDishGridView.Rows.Add(dataGridViewRow);
+            }
 
             conn.Close();
         }
@@ -137,16 +177,104 @@ namespace PointOfSaleApp
 
         private void dataDishGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dishIDTextBox.Text = dataDishGridView.CurrentRow.Cells["id"].Value.ToString();
-            dishNameTextBox.Text = dataDishGridView.CurrentRow.Cells["name"].Value.ToString();
-            dishFullNameTextBox.Text = dataDishGridView.CurrentRow.Cells["full_name"].Value.ToString();
-            dishPriceTextBox.Text = dataDishGridView.CurrentRow.Cells["price"].Value.ToString();
-            dishDescTextBox.Text = dataDishGridView.CurrentRow.Cells["description"].Value.ToString();
+            conn.Open();
+            dishQuantityUpDown.Value = 1;
+            int id = int.Parse(dataDishGridView.CurrentRow.Cells["id"].Value.ToString());
+            string query = "select * from [Dish] where id = " + id;
+            SqlCommand command = new SqlCommand(query, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                dishIDTextBox.Text = reader["id"].ToString();
+                dishNameTextBox.Text = reader["name"].ToString();
+                dishFullNameTextBox.Text = reader["full_name"].ToString();
+                dishPriceTextBox.Text = reader["price"].ToString();
+                dishDescTextBox.Text = reader["description"].ToString();
+            }
+            conn.Close();
+        }
+
+        private void dishQuantityUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(dataDishGridView.CurrentRow.Cells["id"].Value.ToString());
+                int rowIndex = dataDishGridView.CurrentCell.RowIndex;
+                int quantity = (int)dishQuantityUpDown.Value;
+                int price = int.Parse(dataDishGridView.Rows[rowIndex].Cells["price"].Value.ToString()); 
+                dishPriceTextBox.Text = (quantity * price).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int dish_id = int.Parse(dishIDTextBox.Text);
+                OrderClass.AddDishID(dish_id);
+                dataOrderGridView.ColumnCount = 4;
+                dataOrderGridView.Columns[0].Name = "ID";
+                dataOrderGridView.Columns[1].Name = "Name";
+                dataOrderGridView.Columns[2].Name = "Quantity";
+                dataOrderGridView.Columns[3].Name = "Price";
 
+                string[] dataGridViewRow = new string[] 
+                    { dishIDTextBox.Text, dishNameTextBox.Text, dishQuantityUpDown.Value.ToString(), dishPriceTextBox.Text };
+                dataOrderGridView.Rows.Add(dataGridViewRow);
+
+                double sum = 0;
+                for (int i = 0; i < dataOrderGridView.Rows.Count; i++)
+                {
+                    sum += Convert.ToDouble(dataOrderGridView.Rows[i].Cells["price"].Value);
+                }
+                totalBillLabel.Text = sum.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow item in dataOrderGridView.SelectedRows)
+                {
+                    dataOrderGridView.Rows.RemoveAt(item.Index);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+        /*
+         if (MessageBox.Show("Create an Order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            {
+                try
+                {
+                    OrderClass.orderId = int.Parse(dishIDTextBox.Text);
+                    OrderClass.orderTableNr = int.Parse(tableTextBox.Text);
+                    OrderClass.orderTime = DateTime.Now;
+                    OrderClass.orderPrice = int.Parse(dishPriceTextBox.Text);
+                    OrderClass.orderIsActive = true;
+                    string query = "[sp_create_order] " + OrderClass.orderTableNr + ", " + OrderClass.orderTime + ", " + OrderClass.orderPrice + ", " + MyUserClass.userId + ", " + OrderClass.orderIsActive;
+                    SqlCommand command = new SqlCommand(query, conn);
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+         * */
     }
 }

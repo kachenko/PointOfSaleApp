@@ -184,7 +184,7 @@
     <Compile Include="Forms\UsersManagmentForm.Designer.cs">
       <DependentUpon>UsersManagmentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderClass.cs" />
+    <Compile Include="Classes\OrderClass.cs" />
     <Compile Include="posDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -192,7 +192,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MyUserClass.cs" />
+    <Compile Include="Classes\MyUserClass.cs" />
     <EmbeddedResource Include="Forms\MyAccountForm.resx">
       <DependentUpon>MyAccountForm.cs</DependentUpon>
     </EmbeddedResource>

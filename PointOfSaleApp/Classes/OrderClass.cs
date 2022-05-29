@@ -12,8 +12,8 @@ namespace PointOfSaleApp
         private static int table_nr;
         private static DateTime time;
         private static double price;
-        private static string user;
         private static bool isActive;
+        private static List<int> dishes_id = new List<int>();
 
         public static int orderId
         {
@@ -35,15 +35,20 @@ namespace PointOfSaleApp
             get { return price; }
             set { price = value; }
         }
-        public static string orderUser
-        {
-            get { return user; }
-            set { user = value; }
-        }
         public static bool orderIsActive
         {
             get { return isActive; }
             set { isActive = value; }
+        }
+        public static List<int> orderDishId
+        {
+            get { return dishes_id; }
+            set { dishes_id = value; }
+        }
+
+        public static void AddDishID(int id)
+        {
+            dishes_id.Add(id);
         }
     }
 }
