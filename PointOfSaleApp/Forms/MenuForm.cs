@@ -116,5 +116,12 @@ namespace PointOfSaleApp
             this.Hide();
             myAccount.Show();
         }
+
+        private void myOrdersButton_Click(object sender, EventArgs e)
+        {
+            Forms.OrdersForm orders = new Forms.OrdersForm();
+            this.Hide();
+            orders.Show();
+        }
     }
 }

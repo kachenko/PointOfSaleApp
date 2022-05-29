@@ -14,7 +14,6 @@ namespace PointOfSaleApp
 	public partial class NewOrderForm : Form
 	{
         int s_category_id = 0;
-        // private static DataTable dataTabDish = new DataTable();
 
         SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
 
@@ -26,12 +25,10 @@ namespace PointOfSaleApp
         {
             nameLabel.Text = MyUserClass.userLogin.ToString();
             positLabel.Text = MyUserClass.userRole.ToString();
-            userPictureBox.Image = MyUserClass.loadUserPicture();
             Forms.OrderTableForm table = new Forms.OrderTableForm();
             table.ShowDialog();
             tableTextBox.Text = OrderClass.orderTableNr.ToString();
             loadCategoryButtons();
-            setNewOrderNumber();
         }
 
         private void NewOrderForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,27 +54,6 @@ namespace PointOfSaleApp
             dishPriceTextBox.Text = "";
             dishDescTextBox.Text = "";
             dishQuantityUpDown.Value = 1;
-        }
-
-        private void setNewOrderNumber()
-        {
-            string query = "select top 1 id from [Order] order by id desc";
-            try
-            {
-                SqlCommand command = new SqlCommand(query, conn);
-                conn.Open();
-                object lastOrder = command.ExecuteScalar();
-                if (lastOrder != null)
-                {
-                    string lastOrderString = Convert.ToString(lastOrder);
-                    orderIDTextBox.Text = lastOrderString;
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void loadCategoryButtons()
@@ -222,9 +198,30 @@ namespace PointOfSaleApp
                 dataOrderGridView.Columns[2].Name = "Quantity";
                 dataOrderGridView.Columns[3].Name = "Price";
 
-                string[] dataGridViewRow = new string[] 
-                    { dishIDTextBox.Text, dishNameTextBox.Text, dishQuantityUpDown.Value.ToString(), dishPriceTextBox.Text };
-                dataOrderGridView.Rows.Add(dataGridViewRow);
+                int rowIndex = dataOrderGridView.Rows.Add();
+                DataGridViewRow gridViewRow = dataOrderGridView.Rows[rowIndex];
+                gridViewRow.Cells["id"].Value = dishIDTextBox.Text;
+                gridViewRow.Cells["name"].Value = dishNameTextBox.Text;
+                gridViewRow.Cells["quantity"].Value = dishQuantityUpDown.Value;
+                gridViewRow.Cells["price"].Value = dishPriceTextBox.Text;
+
+                for (int curRow = 0; curRow < dataOrderGridView.RowCount - 1; curRow++)
+                {
+                    var Row = dataOrderGridView.Rows[curRow];
+                    int id = Convert.ToInt32(Row.Cells["id"].Value);
+                    for (int row = curRow + 1; row < dataOrderGridView.RowCount; row++)
+                    {
+                        var Row2 = dataOrderGridView.Rows[row];
+                        int idCompare = Convert.ToInt32(Row2.Cells["id"].Value);
+                        if (id == idCompare)
+                        {
+                            Row.Cells["quantity"].Value = Convert.ToInt32(Row.Cells["quantity"].Value) + Convert.ToInt32(Row2.Cells["quantity"].Value);
+                            Row.Cells["price"].Value = Convert.ToDecimal(Row.Cells["price"].Value) + Convert.ToDecimal(Row2.Cells["price"].Value); // price
+                            dataOrderGridView.Rows.Remove(Row2);
+                            row--;
+                        }
+                    }
+                }
 
                 double sum = 0;
                 for (int i = 0; i < dataOrderGridView.Rows.Count; i++)
@@ -254,27 +251,86 @@ namespace PointOfSaleApp
             }
         }
 
+        private int orderCreate() // return int orderID
+        {
+            // string query = "[sp_create_order] @orderTableNr, @orderTime, @orderPrice, @userId, 1;";
+//            string query = "[sp_create_order] " + tableTextBox.Text + ", " + DateTime.Now + ", " + totalBillLabel.Text + ", " + MyUserClass.userId + ", 1;";
 
+            SqlCommand command = new SqlCommand("[sp_create_order]", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@p_table_nr", tableTextBox.Text);
+            command.Parameters.AddWithValue("@p_datetime", DateTime.Now);
+            command.Parameters.AddWithValue("@p_price", totalBillLabel.Text);
+            command.Parameters.AddWithValue("@p_user_id", MyUserClass.userId);
+            command.Parameters.AddWithValue("@p_isActive", 1);
 
-        /*
-         if (MessageBox.Show("Create an Order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            command.Parameters.Add("@order_id", System.Data.SqlDbType.SmallInt).Direction = System.Data.ParameterDirection.ReturnValue;
+            
+            conn.Open();
+            command.ExecuteNonQuery();
+            int retval = (int)command.Parameters["@order_id"].Value;
+            conn.Close();
+            return retval;
+        }
+
+        private void dishAddToOrder(int orderID)
+        {
+            // fill DataTable
+            DataTable table = new DataTable();
+            foreach (DataGridViewColumn column in dataOrderGridView.Columns)
+                table.Columns.Add(column.HeaderText);
+            foreach (DataGridViewRow row in dataOrderGridView.Rows)
+            {
+                table.Rows.Add();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    table.Rows[table.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+                }
+            }
+
+            string query2 = "insert into [Order_Dish](order_id, dish_id, quantity) values(@order_id, @dish_id, @quantity)";
+            SqlCommand command1 = new SqlCommand(query2, conn);
+            // add value in db
+            foreach (DataRow row in table.Rows)
+            {
+                conn.Open();
+                command1.Parameters.AddWithValue("@order_id", orderID);
+                command1.Parameters.AddWithValue("@dish_id", row["id"]);
+                command1.Parameters.AddWithValue("@quantity", row["quantity"]);
+                command1.ExecuteNonQuery();
+                conn.Close();
+                command1.Parameters.Clear();
+            }
+        }
+
+        private void orderCreateButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Create an Order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 try
                 {
-                    OrderClass.orderId = int.Parse(dishIDTextBox.Text);
-                    OrderClass.orderTableNr = int.Parse(tableTextBox.Text);
-                    OrderClass.orderTime = DateTime.Now;
-                    OrderClass.orderPrice = int.Parse(dishPriceTextBox.Text);
-                    OrderClass.orderIsActive = true;
-                    string query = "[sp_create_order] " + OrderClass.orderTableNr + ", " + OrderClass.orderTime + ", " + OrderClass.orderPrice + ", " + MyUserClass.userId + ", " + OrderClass.orderIsActive;
-                    SqlCommand command = new SqlCommand(query, conn);
-                    command.ExecuteNonQuery();
+                    int orderID = orderCreate();
+                    dishAddToOrder(orderID);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    MessageBox.Show("Order is created", "Create Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Forms.OrdersForm orders = new Forms.OrdersForm();
+                    this.Hide();
+                    orders.Show();
+                }
             }
-         * */
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MenuForm menu = new MenuForm();
+            this.Hide();
+            menu.Show();
+        }
     }
 }

@@ -87,6 +87,7 @@ namespace PointOfSaleApp
             this.myOrdersButton.TabIndex = 4;
             this.myOrdersButton.Text = "MY ORDERS";
             this.myOrdersButton.UseVisualStyleBackColor = true;
+            this.myOrdersButton.Click += new System.EventHandler(this.myOrdersButton_Click);
             // 
             // menuButton
             // 

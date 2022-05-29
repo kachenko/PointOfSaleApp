@@ -15,6 +15,7 @@ namespace PointOfSaleApp
         private static int id;
         private static string login;
         private static string password;
+        private static string full_name;
         private static string role;
 
         public static int userId
@@ -33,6 +34,11 @@ namespace PointOfSaleApp
         {
             get { return password; }
             set { password = value; }
+        }
+        public static string userFullName
+        {
+            get { return full_name; }
+            set { full_name = value; }
         }
 
         public static string userRole
