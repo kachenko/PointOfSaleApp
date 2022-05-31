@@ -31,6 +31,7 @@ namespace PointOfSaleApp
 		{
             this.components = new System.ComponentModel.Container();
             this.infoPanel = new System.Windows.Forms.Panel();
+            this.dishInfoLabel = new System.Windows.Forms.Label();
             this.dishQuantityUpDown = new System.Windows.Forms.NumericUpDown();
             this.dishNameTextBox = new System.Windows.Forms.TextBox();
             this.dishIDTextBox = new System.Windows.Forms.TextBox();
@@ -49,11 +50,14 @@ namespace PointOfSaleApp
             this.billPanel = new System.Windows.Forms.Panel();
             this.orderCreateButton = new System.Windows.Forms.Button();
             this.dataOrderGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableTextBox = new System.Windows.Forms.TextBox();
             this.totalBillLabel = new System.Windows.Forms.Label();
             this.changeButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
-            this.printButton = new System.Windows.Forms.Button();
             this.tableNrLabel = new System.Windows.Forms.Label();
             this.billLabel = new System.Windows.Forms.Label();
             this.positLabel = new System.Windows.Forms.Label();
@@ -73,11 +77,6 @@ namespace PointOfSaleApp
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dishInfoLabel = new System.Windows.Forms.Label();
             this.infoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dishQuantityUpDown)).BeginInit();
             this.billPanel.SuspendLayout();
@@ -109,6 +108,17 @@ namespace PointOfSaleApp
             this.infoPanel.Name = "infoPanel";
             this.infoPanel.Size = new System.Drawing.Size(303, 557);
             this.infoPanel.TabIndex = 7;
+            // 
+            // dishInfoLabel
+            // 
+            this.dishInfoLabel.AutoSize = true;
+            this.dishInfoLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dishInfoLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.dishInfoLabel.Location = new System.Drawing.Point(6, 4);
+            this.dishInfoLabel.Name = "dishInfoLabel";
+            this.dishInfoLabel.Size = new System.Drawing.Size(188, 30);
+            this.dishInfoLabel.TabIndex = 18;
+            this.dishInfoLabel.Text = "Dish Information";
             // 
             // dishQuantityUpDown
             // 
@@ -288,7 +298,6 @@ namespace PointOfSaleApp
             this.billPanel.Controls.Add(this.totalBillLabel);
             this.billPanel.Controls.Add(this.changeButton);
             this.billPanel.Controls.Add(this.totalLabel);
-            this.billPanel.Controls.Add(this.printButton);
             this.billPanel.Controls.Add(this.tableNrLabel);
             this.billPanel.Controls.Add(this.billLabel);
             this.billPanel.Location = new System.Drawing.Point(704, 33);
@@ -301,7 +310,7 @@ namespace PointOfSaleApp
             this.orderCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.orderCreateButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderCreateButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.orderCreateButton.Location = new System.Drawing.Point(174, 499);
+            this.orderCreateButton.Location = new System.Drawing.Point(265, 499);
             this.orderCreateButton.Name = "orderCreateButton";
             this.orderCreateButton.Size = new System.Drawing.Size(85, 55);
             this.orderCreateButton.TabIndex = 19;
@@ -329,6 +338,38 @@ namespace PointOfSaleApp
             this.dataOrderGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataOrderGridView.Size = new System.Drawing.Size(343, 353);
             this.dataOrderGridView.TabIndex = 14;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 50;
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 74;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.MinimumWidth = 6;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
             // 
             // tableTextBox
             // 
@@ -375,18 +416,6 @@ namespace PointOfSaleApp
             this.totalLabel.Size = new System.Drawing.Size(72, 30);
             this.totalLabel.TabIndex = 12;
             this.totalLabel.Text = "Total:";
-            // 
-            // printButton
-            // 
-            this.printButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.printButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.printButton.Location = new System.Drawing.Point(265, 499);
-            this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(85, 55);
-            this.printButton.TabIndex = 10;
-            this.printButton.Text = "PRINT BILL";
-            this.printButton.UseVisualStyleBackColor = true;
             // 
             // tableNrLabel
             // 
@@ -491,7 +520,7 @@ namespace PointOfSaleApp
             // newSessionToolStripMenuItem
             // 
             this.newSessionToolStripMenuItem.Name = "newSessionToolStripMenuItem";
-            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.newSessionToolStripMenuItem.Text = "New Session";
             // 
             // navigateToolStripMenuItem
@@ -499,26 +528,26 @@ namespace PointOfSaleApp
             this.navigateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
             this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
-            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.navigateToolStripMenuItem.Text = "Navigate";
             // 
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -548,49 +577,6 @@ namespace PointOfSaleApp
             this.dishesToolStripMenuItem.Name = "dishesToolStripMenuItem";
             this.dishesToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.dishesToolStripMenuItem.Text = "Dishes";
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 50;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.name.HeaderText = "Name";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 74;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.MinimumWidth = 6;
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Price";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            // 
-            // dishInfoLabel
-            // 
-            this.dishInfoLabel.AutoSize = true;
-            this.dishInfoLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dishInfoLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishInfoLabel.Location = new System.Drawing.Point(6, 4);
-            this.dishInfoLabel.Name = "dishInfoLabel";
-            this.dishInfoLabel.Size = new System.Drawing.Size(188, 30);
-            this.dishInfoLabel.TabIndex = 18;
-            this.dishInfoLabel.Text = "Dish Information";
             // 
             // NewOrderForm
             // 
@@ -643,7 +629,6 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Label tableNrLabel;
         private System.Windows.Forms.Label dishDescriptionLabel;
         private System.Windows.Forms.Label dishFullNameLabel;
-        private System.Windows.Forms.Button printButton;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Button changeButton;
         private System.Windows.Forms.Label totalBillLabel;

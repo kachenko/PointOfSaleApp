@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Text;
+using System.Text; 
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -54,13 +54,13 @@ namespace PointOfSaleApp.Forms
             }
         }
 
-        private void loadOrders(int userID, int isChecked)
+        private void loadOrders(int userID)
         {
             try
             {
                 dataOrdersGridView.Rows.Clear();
                 dataOrdersGridView.Refresh();
-                string query = "select * from [Order] where user_id = " + userID + " and isActive = " + isChecked;
+                string query = "select * from [Order] where user_id = " + userID + " and isActive = " + Convert.ToInt32(activeOrdersCheckBox.Checked);
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -110,10 +110,7 @@ namespace PointOfSaleApp.Forms
             if (usersComboBox.SelectedItem != null)
             {
                 DataRowView dataRow = usersComboBox.SelectedItem as DataRowView;
-                if (activeOrdersCheckBox.Checked)
-                    loadOrders(int.Parse(dataRow.Row["id"].ToString()), 1);
-                else
-                    loadOrders(int.Parse(dataRow.Row["id"].ToString()), 0);
+                loadOrders(int.Parse(dataRow.Row["id"].ToString()));
             }
             dataDishesGridView.Rows.Clear();
         }
@@ -123,10 +120,7 @@ namespace PointOfSaleApp.Forms
             if (usersComboBox.SelectedItem != null)
             {
                 DataRowView dataRow = usersComboBox.SelectedItem as DataRowView;
-                if (activeOrdersCheckBox.Checked)
-                    loadOrders(int.Parse(dataRow.Row["id"].ToString()), 1);
-                else
-                    loadOrders(int.Parse(dataRow.Row["id"].ToString()), 0);
+                loadOrders(int.Parse(dataRow.Row["id"].ToString()));
             }
         }
 
@@ -135,6 +129,7 @@ namespace PointOfSaleApp.Forms
             try
             {
                 int id = int.Parse(dataOrdersGridView.CurrentRow.Cells["id"].Value.ToString());
+                OrderClass.orderId = id;
 
                 conn.Open();
                 string query = "select * from [Order] where id = " + id;
@@ -147,8 +142,15 @@ namespace PointOfSaleApp.Forms
                     orderDateTextBox.Text = reader["datetime"].ToString();
                     orderFullPriceTextBox.Text = reader["price"].ToString();
                     orderIsActiveTextBox.Text = reader["isActive"].ToString();
+                    if (reader["isActive"].ToString() == "0")
+                    {
+                        editOrderButton.Enabled = false;
+                    }
+                    else
+                    {
+                        editOrderButton.Enabled = true;
+                    }
                 }
-
                 conn.Close();
 
                 loadDishes(id);
@@ -186,7 +188,85 @@ namespace PointOfSaleApp.Forms
 
         private void printBillButton_Click(object sender, EventArgs e)
         {
+            // wydruk paragonu
+        }
 
+        private void orderCloseButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to close this order now?", "Close Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    int selectedIndex = dataOrdersGridView.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dataOrdersGridView.Rows[selectedIndex];
+                    OrderClass.orderId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+
+                    OrderClass.orderIsActive = bool.Parse(selectedRow.Cells["isActive"].Value.ToString());
+                    
+                    SqlCommand command = new SqlCommand("[sp_whose_order]", conn);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_user_id", MyUserClass.userId);
+                    command.Parameters.AddWithValue("@p_order_id", OrderClass.orderId);
+                    conn.Open();
+                    int result = (int)command.ExecuteScalar();
+                    conn.Close();
+
+                    if (result == 1 || OrderClass.orderIsActive == false || MyUserClass.userRole == "Administrator")
+                    {
+                        Forms.PaymentForm payment = new Forms.PaymentForm();
+                        payment.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You cannot close order that was not created by you or that has already been closed.", "Delete Order", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void editOrderButton_Click(object sender, EventArgs e)
+        {
+            Forms.EditOrderForm editOrder = new EditOrderForm();
+            this.Hide();
+            editOrder.Show();
+        }
+
+        private void deleteOrderButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to delete this order?", "Delete Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand command = new SqlCommand("[sp_delete_order]", conn); 
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_order_id", OrderClass.orderId);
+                    command.Parameters.AddWithValue("@p_user_id", MyUserClass.userId);
+                    int isDelete = command.ExecuteNonQuery();
+                    if (isDelete > 0)
+                    {
+                        MessageBox.Show("Order deleted.", "Delete Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                    MessageBox.Show("Order not deleted - an error occurred.", "Delete Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    conn.Close();
+
+                    dataOrdersGridView.Rows.Clear();
+                    DataRowView dataRow = usersComboBox.SelectedItem as DataRowView;
+                    loadOrders(int.Parse(dataRow.Row["id"].ToString()));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }

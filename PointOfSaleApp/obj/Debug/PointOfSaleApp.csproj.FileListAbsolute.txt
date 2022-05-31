@@ -147,3 +147,14 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\zh-Hant
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.CopyComplete
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.MyAccountForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.OrdersForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\RdlCompile.cache
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\RdlCompile.compiled
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.PaymentForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.UsersManagementForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddUserForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.EditUserForm.resources

@@ -156,6 +156,5 @@ namespace PointOfSaleApp.Forms
             this.Hide();
             menu.Show();
         }
-
     }
 }

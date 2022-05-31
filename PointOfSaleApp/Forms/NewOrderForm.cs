@@ -191,7 +191,6 @@ namespace PointOfSaleApp
             try
             {
                 int dish_id = int.Parse(dishIDTextBox.Text);
-                OrderClass.AddDishID(dish_id);
                 dataOrderGridView.ColumnCount = 4;
                 dataOrderGridView.Columns[0].Name = "ID";
                 dataOrderGridView.Columns[1].Name = "Name";
@@ -253,9 +252,6 @@ namespace PointOfSaleApp
 
         private int orderCreate() // return int orderID
         {
-            // string query = "[sp_create_order] @orderTableNr, @orderTime, @orderPrice, @userId, 1;";
-//            string query = "[sp_create_order] " + tableTextBox.Text + ", " + DateTime.Now + ", " + totalBillLabel.Text + ", " + MyUserClass.userId + ", 1;";
-
             SqlCommand command = new SqlCommand("[sp_create_order]", conn);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@p_table_nr", tableTextBox.Text);
@@ -305,11 +301,12 @@ namespace PointOfSaleApp
 
         private void orderCreateButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Create an Order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (MessageBox.Show("Create an order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 try
                 {
                     int orderID = orderCreate();
+                    OrderClass.orderId = orderID;
                     dishAddToOrder(orderID);
                 }
                 catch (Exception ex)
@@ -319,9 +316,12 @@ namespace PointOfSaleApp
                 finally
                 {
                     MessageBox.Show("Order is created", "Create Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Forms.PaymentForm payment = new Forms.PaymentForm();
+                    //payment.Show();
+                    //this.Hide();
                     Forms.OrdersForm orders = new Forms.OrdersForm();
-                    this.Hide();
                     orders.Show();
+                    this.Hide();
                 }
             }
         }

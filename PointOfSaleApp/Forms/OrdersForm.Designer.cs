@@ -41,6 +41,11 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataOrdersGridView = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.table_nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usersComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.editOrderButton = new System.Windows.Forms.Button();
@@ -61,11 +66,7 @@ namespace PointOfSaleApp.Forms
             this.positLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.activeOrdersCheckBox = new System.Windows.Forms.CheckBox();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.table_nr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderCloseButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataOrdersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDishesGridView)).BeginInit();
@@ -80,7 +81,7 @@ namespace PointOfSaleApp.Forms
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 30);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,7 +99,7 @@ namespace PointOfSaleApp.Forms
             // newSessionToolStripMenuItem
             // 
             this.newSessionToolStripMenuItem.Name = "newSessionToolStripMenuItem";
-            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.newSessionToolStripMenuItem.Text = "New Session";
             // 
             // navigateToolStripMenuItem
@@ -106,26 +107,26 @@ namespace PointOfSaleApp.Forms
             this.navigateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
             this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
-            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.navigateToolStripMenuItem.Text = "Navigate";
             // 
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -178,6 +179,47 @@ namespace PointOfSaleApp.Forms
             this.dataOrdersGridView.TabIndex = 44;
             this.dataOrdersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOrdersGridView_CellClick);
             // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 50;
+            // 
+            // table_nr
+            // 
+            this.table_nr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.table_nr.HeaderText = "Table Nr";
+            this.table_nr.MinimumWidth = 6;
+            this.table_nr.Name = "table_nr";
+            this.table_nr.ReadOnly = true;
+            this.table_nr.Width = 92;
+            // 
+            // datetime
+            // 
+            this.datetime.HeaderText = "Date";
+            this.datetime.MinimumWidth = 6;
+            this.datetime.Name = "datetime";
+            this.datetime.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.price.HeaderText = "Price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            this.price.Width = 69;
+            // 
+            // isActive
+            // 
+            this.isActive.HeaderText = "Active?";
+            this.isActive.MinimumWidth = 6;
+            this.isActive.Name = "isActive";
+            this.isActive.ReadOnly = true;
+            // 
             // usersComboBox
             // 
             this.usersComboBox.FormattingEnabled = true;
@@ -211,6 +253,7 @@ namespace PointOfSaleApp.Forms
             this.editOrderButton.TabIndex = 47;
             this.editOrderButton.Text = "EDIT";
             this.editOrderButton.UseVisualStyleBackColor = true;
+            this.editOrderButton.Click += new System.EventHandler(this.editOrderButton_Click);
             // 
             // deleteOrderButton
             // 
@@ -224,6 +267,7 @@ namespace PointOfSaleApp.Forms
             this.deleteOrderButton.TabIndex = 48;
             this.deleteOrderButton.Text = "DELETE";
             this.deleteOrderButton.UseVisualStyleBackColor = false;
+            this.deleteOrderButton.Click += new System.EventHandler(this.deleteOrderButton_Click);
             // 
             // printBillButton
             // 
@@ -366,7 +410,7 @@ namespace PointOfSaleApp.Forms
             this.dataDishesGridView.ReadOnly = true;
             this.dataDishesGridView.RowHeadersWidth = 51;
             this.dataDishesGridView.RowTemplate.Height = 24;
-            this.dataDishesGridView.Size = new System.Drawing.Size(286, 339);
+            this.dataDishesGridView.Size = new System.Drawing.Size(286, 287);
             this.dataDishesGridView.TabIndex = 67;
             // 
             // positLabel
@@ -405,46 +449,18 @@ namespace PointOfSaleApp.Forms
             this.activeOrdersCheckBox.UseVisualStyleBackColor = true;
             this.activeOrdersCheckBox.CheckedChanged += new System.EventHandler(this.activeOrdersCheckBox_CheckedChanged);
             // 
-            // id
+            // orderCloseButton
             // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 50;
-            // 
-            // table_nr
-            // 
-            this.table_nr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.table_nr.HeaderText = "Table Nr";
-            this.table_nr.MinimumWidth = 6;
-            this.table_nr.Name = "table_nr";
-            this.table_nr.ReadOnly = true;
-            this.table_nr.Width = 92;
-            // 
-            // datetime
-            // 
-            this.datetime.HeaderText = "Date";
-            this.datetime.MinimumWidth = 6;
-            this.datetime.Name = "datetime";
-            this.datetime.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.price.HeaderText = "Price";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
-            this.price.Width = 69;
-            // 
-            // isActive
-            // 
-            this.isActive.HeaderText = "Active?";
-            this.isActive.MinimumWidth = 6;
-            this.isActive.Name = "isActive";
-            this.isActive.ReadOnly = true;
+            this.orderCloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.orderCloseButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderCloseButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.orderCloseButton.Location = new System.Drawing.Point(885, 513);
+            this.orderCloseButton.Name = "orderCloseButton";
+            this.orderCloseButton.Size = new System.Drawing.Size(85, 55);
+            this.orderCloseButton.TabIndex = 71;
+            this.orderCloseButton.Text = "CLOSE ORDER";
+            this.orderCloseButton.UseVisualStyleBackColor = true;
+            this.orderCloseButton.Click += new System.EventHandler(this.orderCloseButton_Click);
             // 
             // OrdersForm
             // 
@@ -452,6 +468,7 @@ namespace PointOfSaleApp.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.orderCloseButton);
             this.Controls.Add(this.activeOrdersCheckBox);
             this.Controls.Add(this.positLabel);
             this.Controls.Add(this.nameLabel);
@@ -527,5 +544,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn datetime;
         private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.DataGridViewTextBoxColumn isActive;
+        private System.Windows.Forms.Button orderCloseButton;
     }
 }

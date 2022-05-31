@@ -1,7 +1,7 @@
 ﻿
 namespace PointOfSaleApp.Forms
 {
-    partial class UsersManagmentForm
+    partial class EditUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,18 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // EditUserForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "UsersManagmentForm";
+            this.BackColor = System.Drawing.Color.Linen;
+            this.ClientSize = new System.Drawing.Size(428, 572);
+            this.Name = "EditUserForm";
+            this.Text = "POSi - Edit User";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PointOfSaleApp.Forms
 {
-    public partial class UsersManagmentForm : Form
+    public partial class EditUserForm : Form
     {
-        public UsersManagmentForm()
+        public EditUserForm()
         {
             InitializeComponent();
         }
