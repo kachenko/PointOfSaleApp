@@ -435,9 +435,9 @@ namespace PointOfSaleApp
             this.billLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.billLabel.Location = new System.Drawing.Point(3, 4);
             this.billLabel.Name = "billLabel";
-            this.billLabel.Size = new System.Drawing.Size(67, 30);
+            this.billLabel.Size = new System.Drawing.Size(52, 30);
             this.billLabel.TabIndex = 0;
-            this.billLabel.Text = "Bill #";
+            this.billLabel.Text = "Bill ";
             // 
             // positLabel
             // 

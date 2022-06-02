@@ -169,10 +169,9 @@ namespace PointOfSaleApp.Forms
             {
                 if (prodCatIDTextBox.Text != "0" || prodCatTextBox.Text != "" && prodCatDesTextBox.Text != "")
                 {
-                    string query = "delete from Dish_Category where category_id = 222; delete from [Category] where id = 222;";
+                    string query = "delete from Dish_Category where category_id = " + int.Parse(prodCatIDTextBox.Text) + "; delete from [Category] where id = " + int.Parse(prodCatIDTextBox.Text) + ";";
                     cmd = new SqlCommand(query, conn);
                     conn.Open();
-                    cmd.Parameters.AddWithValue("@id", prodCatIDTextBox.Text);
                     cmd.ExecuteNonQuery();
                     conn.Close();
                     MessageBox.Show("Category " + prodCatTextBox.Text + " deleted", "Category Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -224,6 +223,13 @@ namespace PointOfSaleApp.Forms
         private void categoryGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MenuForm menu = new MenuForm();
+            this.Hide();
+            menu.Show();
         }
     }
 }

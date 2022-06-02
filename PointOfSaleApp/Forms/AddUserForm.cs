@@ -16,5 +16,10 @@ namespace PointOfSaleApp.Forms
         {
             InitializeComponent();
         }
+
+        private void saveUserButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

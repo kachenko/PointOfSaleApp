@@ -23,7 +23,32 @@ namespace PointOfSaleApp.Forms
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             orderIDTextBox.Text = OrderClass.orderId.ToString();
+            loadPMethodsComboBox();
             loadItems(OrderClass.orderId);
+        }
+
+        private void loadPMethodsComboBox()
+        {
+            try
+            {
+                string query = "select id, name from [PaymentMethod]";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                paymentTypeComboBox.DataSource = table;
+                paymentTypeComboBox.DisplayMember = "name";
+                paymentTypeComboBox.ValueMember = "id";
+                paymentTypeComboBox.Enabled = true;
+                
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void loadItems(int orderID)
@@ -32,8 +57,9 @@ namespace PointOfSaleApp.Forms
             {
                 dataPriceGridView.Rows.Clear();
                 dataPriceGridView.Refresh();
-                string query = "select *, od.quantity * d.price [price_dish], o.price [order_price] from [Dish] d join [Order_Dish] od on d.id = od.dish_id join [Order] o on o.id = od.order_id where od.order_id = " + orderID;
+
                 conn.Open();
+                string query = "select * from [Order_Dish] od left join [Dish] d on od.dish_id = d.id where order_id = " + orderID;
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable table = new DataTable();
@@ -42,21 +68,17 @@ namespace PointOfSaleApp.Forms
                 foreach (DataRow row in table.Rows)
                 {
                     string[] dataGridViewRow = new string[]
-                        { row["dish_id"].ToString(), row["name"].ToString(), row["quantity"].ToString(), row["price_dish"].ToString() };
+                        { row["name"].ToString(), row["quantity"].ToString(), row["price"].ToString() };
                     dataPriceGridView.Rows.Add(dataGridViewRow);
                 }
                 conn.Close();
 
-                string query2 = "select * from [Order] where id = " + OrderClass.orderId;
-                conn.Open();
-                SqlCommand command2 = new SqlCommand(query2, conn);
-                SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
-                DataTable table2 = new DataTable();
-                adapter2.Fill(table2);
-                foreach (DataRow row2 in table2.Rows)
+                decimal amount = 0;
+                foreach (DataRow row in table.Rows)
                 {
-                    orderTotalTextBox.Text = row2["price"].ToString();
+                    amount += decimal.Parse(row["price"].ToString());
                 }
+                orderTotalTextBox.Text = amount.ToString();
                 conn.Close();
             }
             catch (Exception ex)
@@ -67,11 +89,27 @@ namespace PointOfSaleApp.Forms
 
         private void closeOrderButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(paymentTypeComboBox.Text))
+            {
+                MessageBox.Show("Select payment type", "Close Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
             if (orderTotalTextBox.Text != "" || orderReceivedTextBox.Text != "" || orderChangeTextBox.Text != "")
             {
+                if (paymentTypeComboBox.SelectedItem.ToString() == "Card")
+                {
+                    panel1.Visible = false;
+                }
+                else
+                {
+                    panel1.Visible = true;
+                }
+                DataRowView dataRow = paymentTypeComboBox.SelectedItem as DataRowView;
+                int paymentID = int.Parse(dataRow.Row["id"].ToString());
                 SqlCommand command = new SqlCommand("[sp_close_order]", conn);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@p_order_id", OrderClass.orderId); 
+                command.Parameters.AddWithValue("@p_order_id", OrderClass.orderId);
+                command.Parameters.AddWithValue("@p_pmethod_id", paymentID);
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
@@ -106,9 +144,17 @@ namespace PointOfSaleApp.Forms
 
         private void editOrderButton_Click(object sender, EventArgs e)
         {
-            Forms.EditOrderForm editOrder = new Forms.EditOrderForm();
-            this.Hide();
-            editOrder.Show();
+            try
+            {
+                OrderClass.orderId = int.Parse(orderIDTextBox.Text);
+                Forms.EditOrderForm editOrder = new EditOrderForm();
+                this.Hide();
+                editOrder.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

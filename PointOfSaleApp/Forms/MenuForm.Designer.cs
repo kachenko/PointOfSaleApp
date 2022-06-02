@@ -85,7 +85,7 @@ namespace PointOfSaleApp
             this.myOrdersButton.Name = "myOrdersButton";
             this.myOrdersButton.Size = new System.Drawing.Size(183, 113);
             this.myOrdersButton.TabIndex = 4;
-            this.myOrdersButton.Text = "MY ORDERS";
+            this.myOrdersButton.Text = "ALL ORDERS";
             this.myOrdersButton.UseVisualStyleBackColor = true;
             this.myOrdersButton.Click += new System.EventHandler(this.myOrdersButton_Click);
             // 
@@ -111,7 +111,7 @@ namespace PointOfSaleApp
             this.dishButton.Name = "dishButton";
             this.dishButton.Size = new System.Drawing.Size(183, 113);
             this.dishButton.TabIndex = 6;
-            this.dishButton.Text = "DISH";
+            this.dishButton.Text = "DISHES";
             this.dishButton.UseVisualStyleBackColor = true;
             this.dishButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -208,7 +208,7 @@ namespace PointOfSaleApp
             this.categoryButton.Name = "categoryButton";
             this.categoryButton.Size = new System.Drawing.Size(183, 113);
             this.categoryButton.TabIndex = 27;
-            this.categoryButton.Text = "CATEGORY";
+            this.categoryButton.Text = "CATEGORIES";
             this.categoryButton.UseVisualStyleBackColor = true;
             this.categoryButton.Click += new System.EventHandler(this.button1_Click);
             // 

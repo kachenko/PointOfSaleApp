@@ -41,10 +41,6 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataUsersGridView = new System.Windows.Forms.DataGridView();
-            this.deleteOrderButton = new System.Windows.Forms.Button();
-            this.editUserButton = new System.Windows.Forms.Button();
-            this.addUserButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.login = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +48,10 @@ namespace PointOfSaleApp.Forms
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteOrderButton = new System.Windows.Forms.Button();
+            this.editUserButton = new System.Windows.Forms.Button();
+            this.addUserButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.changePasswdButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataUsersGridView)).BeginInit();
@@ -84,7 +84,7 @@ namespace PointOfSaleApp.Forms
             // newSessionToolStripMenuItem
             // 
             this.newSessionToolStripMenuItem.Name = "newSessionToolStripMenuItem";
-            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.newSessionToolStripMenuItem.Text = "New Session";
             // 
             // navigateToolStripMenuItem
@@ -92,26 +92,26 @@ namespace PointOfSaleApp.Forms
             this.navigateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
             this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
-            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.navigateToolStripMenuItem.Text = "Navigate";
             // 
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -166,55 +166,6 @@ namespace PointOfSaleApp.Forms
             this.dataUsersGridView.Size = new System.Drawing.Size(958, 449);
             this.dataUsersGridView.TabIndex = 45;
             // 
-            // deleteOrderButton
-            // 
-            this.deleteOrderButton.BackColor = System.Drawing.Color.Tomato;
-            this.deleteOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteOrderButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.deleteOrderButton.Location = new System.Drawing.Point(194, 536);
-            this.deleteOrderButton.Name = "deleteOrderButton";
-            this.deleteOrderButton.Size = new System.Drawing.Size(85, 55);
-            this.deleteOrderButton.TabIndex = 50;
-            this.deleteOrderButton.Text = "DELETE";
-            this.deleteOrderButton.UseVisualStyleBackColor = false;
-            // 
-            // editUserButton
-            // 
-            this.editUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.editUserButton.Location = new System.Drawing.Point(103, 536);
-            this.editUserButton.Name = "editUserButton";
-            this.editUserButton.Size = new System.Drawing.Size(85, 55);
-            this.editUserButton.TabIndex = 49;
-            this.editUserButton.Text = "EDIT";
-            this.editUserButton.UseVisualStyleBackColor = true;
-            // 
-            // addUserButton
-            // 
-            this.addUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.addUserButton.Location = new System.Drawing.Point(12, 536);
-            this.addUserButton.Name = "addUserButton";
-            this.addUserButton.Size = new System.Drawing.Size(85, 55);
-            this.addUserButton.TabIndex = 51;
-            this.addUserButton.Text = "ADD";
-            this.addUserButton.UseVisualStyleBackColor = true;
-            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label1.Location = new System.Drawing.Point(12, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 30);
-            this.label1.TabIndex = 52;
-            this.label1.Text = "Users:";
-            // 
             // id
             // 
             this.id.HeaderText = "ID";
@@ -264,6 +215,55 @@ namespace PointOfSaleApp.Forms
             this.isActive.Name = "isActive";
             this.isActive.ReadOnly = true;
             // 
+            // deleteOrderButton
+            // 
+            this.deleteOrderButton.BackColor = System.Drawing.Color.Tomato;
+            this.deleteOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteOrderButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.deleteOrderButton.Location = new System.Drawing.Point(194, 536);
+            this.deleteOrderButton.Name = "deleteOrderButton";
+            this.deleteOrderButton.Size = new System.Drawing.Size(85, 55);
+            this.deleteOrderButton.TabIndex = 50;
+            this.deleteOrderButton.Text = "DELETE";
+            this.deleteOrderButton.UseVisualStyleBackColor = false;
+            // 
+            // editUserButton
+            // 
+            this.editUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.editUserButton.Location = new System.Drawing.Point(103, 536);
+            this.editUserButton.Name = "editUserButton";
+            this.editUserButton.Size = new System.Drawing.Size(85, 55);
+            this.editUserButton.TabIndex = 49;
+            this.editUserButton.Text = "EDIT";
+            this.editUserButton.UseVisualStyleBackColor = true;
+            // 
+            // addUserButton
+            // 
+            this.addUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.addUserButton.Location = new System.Drawing.Point(12, 536);
+            this.addUserButton.Name = "addUserButton";
+            this.addUserButton.Size = new System.Drawing.Size(85, 55);
+            this.addUserButton.TabIndex = 51;
+            this.addUserButton.Text = "ADD";
+            this.addUserButton.UseVisualStyleBackColor = true;
+            this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Malgun Gothic Semilight", 13F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label1.Location = new System.Drawing.Point(12, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 30);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "Users:";
+            // 
             // changePasswdButton
             // 
             this.changePasswdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -275,6 +275,7 @@ namespace PointOfSaleApp.Forms
             this.changePasswdButton.TabIndex = 53;
             this.changePasswdButton.Text = "CHANGE PASSWORD";
             this.changePasswdButton.UseVisualStyleBackColor = true;
+            this.changePasswdButton.Click += new System.EventHandler(this.changePasswdButton_Click);
             // 
             // UsersManagementForm
             // 

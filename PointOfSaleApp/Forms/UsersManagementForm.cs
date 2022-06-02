@@ -57,7 +57,26 @@ namespace PointOfSaleApp.Forms
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void changePasswdButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
+                Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                Classes.SelectedUserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
+
+                Forms.ChangePasswordForm changePassword = new ChangePasswordForm();
+                this.Close();
+                changePassword.Show();
+            } 
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

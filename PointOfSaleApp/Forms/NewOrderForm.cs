@@ -35,7 +35,7 @@ namespace PointOfSaleApp
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show("Do you really want to exit? NewOrderForm", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Do you really want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     Application.Exit();
                 }
@@ -58,35 +58,42 @@ namespace PointOfSaleApp
 
         private void loadCategoryButtons()
         {
-            // count buttons
-            int counter = 0;
-            Point buttonPoint = new Point(-70, 0);
-            string query = "select * from [Category]";
-            DataTable table = new DataTable();
-            SqlCommand command = new SqlCommand(query, conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            adapter.Fill(table);
-
-            foreach (DataRow row in table.Rows)
+            try
             {
-                Button categoryButton = new Button();
-                categoryButton.Size = new Size(65, 35);
-                categoryButton.Font = new Font("Malgun Gothic", 8, FontStyle.Regular);
-                categoryButton.FlatStyle = FlatStyle.Flat;
-                if (counter == 3)
-                {
-                    // next line
-                    buttonPoint = new Point(buttonPoint.X - 210, buttonPoint.Y + 45);
-                    counter = 0;
-                }
-                categoryButton.Location = new Point(buttonPoint.X + 70, buttonPoint.Y);
-                categoryButton.Name = "category" + row["name"] + "Button";
-                categoryButton.Text = row["name"].ToString();
-                categoryButtonPanel.Controls.Add(categoryButton);
-                buttonPoint = categoryButton.Location;
-                counter++;
+                // count buttons
+                int counter = 0;
+                Point buttonPoint = new Point(-70, 0);
+                string query = "select * from [Category]";
+                DataTable table = new DataTable();
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(table);
 
-                categoryButton.Click += new EventHandler(this.categoryButtonClick);
+                foreach (DataRow row in table.Rows)
+                {
+                    Button categoryButton = new Button();
+                    categoryButton.Size = new Size(70, 40);
+                    categoryButton.Font = new Font("Malgun Gothic", 8, FontStyle.Regular);
+                    categoryButton.FlatStyle = FlatStyle.Flat;
+                    if (counter == 3)
+                    {
+                        // next line
+                        buttonPoint = new Point(buttonPoint.X - 225, buttonPoint.Y + 45);
+                        counter = 0;
+                    }
+                    categoryButton.Location = new Point(buttonPoint.X + 75, buttonPoint.Y);
+                    categoryButton.Name = "category" + row["name"] + "Button";
+                    categoryButton.Text = row["name"].ToString();
+                    categoryButtonPanel.Controls.Add(categoryButton);
+                    buttonPoint = categoryButton.Location;
+                    counter++;
+
+                    categoryButton.Click += new EventHandler(this.categoryButtonClick);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -188,65 +195,79 @@ namespace PointOfSaleApp
 
         private void addProductButton_Click(object sender, EventArgs e)
         {
-            try
+            if (dishIDTextBox.Text != "" && dishNameTextBox.Text != "" && dishPriceTextBox.Text != "")
             {
-                int dish_id = int.Parse(dishIDTextBox.Text);
-                dataOrderGridView.ColumnCount = 4;
-                dataOrderGridView.Columns[0].Name = "ID";
-                dataOrderGridView.Columns[1].Name = "Name";
-                dataOrderGridView.Columns[2].Name = "Quantity";
-                dataOrderGridView.Columns[3].Name = "Price";
-
-                int rowIndex = dataOrderGridView.Rows.Add();
-                DataGridViewRow gridViewRow = dataOrderGridView.Rows[rowIndex];
-                gridViewRow.Cells["id"].Value = dishIDTextBox.Text;
-                gridViewRow.Cells["name"].Value = dishNameTextBox.Text;
-                gridViewRow.Cells["quantity"].Value = dishQuantityUpDown.Value;
-                gridViewRow.Cells["price"].Value = dishPriceTextBox.Text;
-
-                for (int curRow = 0; curRow < dataOrderGridView.RowCount - 1; curRow++)
+                try
                 {
-                    var Row = dataOrderGridView.Rows[curRow];
-                    int id = Convert.ToInt32(Row.Cells["id"].Value);
-                    for (int row = curRow + 1; row < dataOrderGridView.RowCount; row++)
+                    int dish_id = int.Parse(dishIDTextBox.Text);
+                    dataOrderGridView.ColumnCount = 4;
+                    dataOrderGridView.Columns[0].Name = "ID";
+                    dataOrderGridView.Columns[1].Name = "Name";
+                    dataOrderGridView.Columns[2].Name = "Quantity";
+                    dataOrderGridView.Columns[3].Name = "Price";
+
+                    int rowIndex = dataOrderGridView.Rows.Add();
+                    DataGridViewRow gridViewRow = dataOrderGridView.Rows[rowIndex];
+                    gridViewRow.Cells["id"].Value = dishIDTextBox.Text;
+                    gridViewRow.Cells["name"].Value = dishNameTextBox.Text;
+                    gridViewRow.Cells["quantity"].Value = dishQuantityUpDown.Value;
+                    gridViewRow.Cells["price"].Value = dishPriceTextBox.Text;
+
+                    for (int curRow = 0; curRow < dataOrderGridView.RowCount - 1; curRow++)
                     {
-                        var Row2 = dataOrderGridView.Rows[row];
-                        int idCompare = Convert.ToInt32(Row2.Cells["id"].Value);
-                        if (id == idCompare)
+                        var Row = dataOrderGridView.Rows[curRow];
+                        int id = Convert.ToInt32(Row.Cells["id"].Value);
+                        for (int row = curRow + 1; row < dataOrderGridView.RowCount; row++)
                         {
-                            Row.Cells["quantity"].Value = Convert.ToInt32(Row.Cells["quantity"].Value) + Convert.ToInt32(Row2.Cells["quantity"].Value);
-                            Row.Cells["price"].Value = Convert.ToDecimal(Row.Cells["price"].Value) + Convert.ToDecimal(Row2.Cells["price"].Value); // price
-                            dataOrderGridView.Rows.Remove(Row2);
-                            row--;
+                            var Row2 = dataOrderGridView.Rows[row];
+                            int idCompare = Convert.ToInt32(Row2.Cells["id"].Value);
+                            if (id == idCompare)
+                            {
+                                Row.Cells["quantity"].Value = Convert.ToInt32(Row.Cells["quantity"].Value) + Convert.ToInt32(Row2.Cells["quantity"].Value);
+                                Row.Cells["price"].Value = Convert.ToDecimal(Row.Cells["price"].Value) + Convert.ToDecimal(Row2.Cells["price"].Value); // price
+                                dataOrderGridView.Rows.Remove(Row2);
+                                row--;
+                            }
                         }
                     }
-                }
 
-                double sum = 0;
-                for (int i = 0; i < dataOrderGridView.Rows.Count; i++)
-                {
-                    sum += Convert.ToDouble(dataOrderGridView.Rows[i].Cells["price"].Value);
+                    double sum = 0;
+                    for (int i = 0; i < dataOrderGridView.Rows.Count; i++)
+                    {
+                        sum += Convert.ToDouble(dataOrderGridView.Rows[i].Cells["price"].Value);
+                    }
+                    totalBillLabel.Text = sum.ToString();
                 }
-                totalBillLabel.Text = sum.ToString();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("You have not chosen a dish.", "New Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void removeButton_Click(object sender, EventArgs e)
         {
-            try
+            if (dataOrderGridView.SelectedRows.Count > 0)
             {
-                foreach (DataGridViewRow item in dataOrderGridView.SelectedRows)
+                try
                 {
-                    dataOrderGridView.Rows.RemoveAt(item.Index);
+                    foreach (DataGridViewRow item in dataOrderGridView.SelectedRows)
+                    {
+                        dataOrderGridView.Rows.RemoveAt(item.Index);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("You have not selected a dish to remove.", "New Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -256,9 +277,9 @@ namespace PointOfSaleApp
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@p_table_nr", tableTextBox.Text);
             command.Parameters.AddWithValue("@p_datetime", DateTime.Now);
-            command.Parameters.AddWithValue("@p_price", totalBillLabel.Text);
             command.Parameters.AddWithValue("@p_user_id", MyUserClass.userId);
             command.Parameters.AddWithValue("@p_isActive", 1);
+            command.Parameters.AddWithValue("@p_price", decimal.Parse(totalBillLabel.Text));
 
             command.Parameters.Add("@order_id", System.Data.SqlDbType.SmallInt).Direction = System.Data.ParameterDirection.ReturnValue;
             
@@ -301,28 +322,35 @@ namespace PointOfSaleApp
 
         private void orderCreateButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Create an order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (dataOrderGridView.Rows.Count > 0)
             {
-                try
+                if (MessageBox.Show("Create an order?", "Create Order", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
                 {
-                    int orderID = orderCreate();
-                    OrderClass.orderId = orderID;
-                    dishAddToOrder(orderID);
+                    try
+                    {
+                        int orderID = orderCreate();
+                        OrderClass.orderId = orderID;
+                        dishAddToOrder(orderID);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        MessageBox.Show("Order is created", "Create Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Forms.PaymentForm payment = new Forms.PaymentForm();
+                        //payment.Show();
+                        //this.Hide();
+                        Forms.OrdersForm orders = new Forms.OrdersForm();
+                        orders.Show();
+                        this.Hide();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    MessageBox.Show("Order is created", "Create Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //Forms.PaymentForm payment = new Forms.PaymentForm();
-                    //payment.Show();
-                    //this.Hide();
-                    Forms.OrdersForm orders = new Forms.OrdersForm();
-                    orders.Show();
-                    this.Hide();
-                }
+            }
+            else
+            {
+                MessageBox.Show("You cannot create an empty order.", "New Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

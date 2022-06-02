@@ -41,10 +41,6 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataPriceGridView = new System.Windows.Forms.DataGridView();
-            this.dish_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price_dish = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderTotalTextBox = new System.Windows.Forms.TextBox();
             this.itemOrderLabel = new System.Windows.Forms.Label();
             this.orderTotalLabel = new System.Windows.Forms.Label();
@@ -61,6 +57,9 @@ namespace PointOfSaleApp.Forms
             this.paymentTypeLabel = new System.Windows.Forms.Label();
             this.paymentTypeComboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price_dish = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataPriceGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -158,7 +157,6 @@ namespace PointOfSaleApp.Forms
             this.dataPriceGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataPriceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataPriceGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dish_id,
             this.name,
             this.quantity,
             this.price_dish});
@@ -170,38 +168,10 @@ namespace PointOfSaleApp.Forms
             this.dataPriceGridView.Size = new System.Drawing.Size(385, 460);
             this.dataPriceGridView.TabIndex = 45;
             // 
-            // dish_id
-            // 
-            this.dish_id.HeaderText = "ID";
-            this.dish_id.MinimumWidth = 6;
-            this.dish_id.Name = "dish_id";
-            this.dish_id.ReadOnly = true;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.MinimumWidth = 6;
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            // 
-            // price_dish
-            // 
-            this.price_dish.HeaderText = "Price";
-            this.price_dish.MinimumWidth = 6;
-            this.price_dish.Name = "price_dish";
-            this.price_dish.ReadOnly = true;
-            // 
             // orderTotalTextBox
             // 
             this.orderTotalTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderTotalTextBox.Location = new System.Drawing.Point(110, 11);
+            this.orderTotalTextBox.Location = new System.Drawing.Point(527, 193);
             this.orderTotalTextBox.Name = "orderTotalTextBox";
             this.orderTotalTextBox.ReadOnly = true;
             this.orderTotalTextBox.Size = new System.Drawing.Size(136, 45);
@@ -223,7 +193,7 @@ namespace PointOfSaleApp.Forms
             this.orderTotalLabel.AutoSize = true;
             this.orderTotalLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderTotalLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.orderTotalLabel.Location = new System.Drawing.Point(29, 26);
+            this.orderTotalLabel.Location = new System.Drawing.Point(446, 208);
             this.orderTotalLabel.Name = "orderTotalLabel";
             this.orderTotalLabel.Size = new System.Drawing.Size(64, 23);
             this.orderTotalLabel.TabIndex = 61;
@@ -234,7 +204,7 @@ namespace PointOfSaleApp.Forms
             this.orderReceivedLabel.AutoSize = true;
             this.orderReceivedLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderReceivedLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.orderReceivedLabel.Location = new System.Drawing.Point(15, 77);
+            this.orderReceivedLabel.Location = new System.Drawing.Point(3, 22);
             this.orderReceivedLabel.Name = "orderReceivedLabel";
             this.orderReceivedLabel.Size = new System.Drawing.Size(89, 23);
             this.orderReceivedLabel.TabIndex = 62;
@@ -243,7 +213,7 @@ namespace PointOfSaleApp.Forms
             // orderReceivedTextBox
             // 
             this.orderReceivedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderReceivedTextBox.Location = new System.Drawing.Point(110, 62);
+            this.orderReceivedTextBox.Location = new System.Drawing.Point(98, 7);
             this.orderReceivedTextBox.Name = "orderReceivedTextBox";
             this.orderReceivedTextBox.Size = new System.Drawing.Size(136, 45);
             this.orderReceivedTextBox.TabIndex = 63;
@@ -251,7 +221,7 @@ namespace PointOfSaleApp.Forms
             // orderChangeTextBox
             // 
             this.orderChangeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.orderChangeTextBox.Location = new System.Drawing.Point(110, 113);
+            this.orderChangeTextBox.Location = new System.Drawing.Point(98, 58);
             this.orderChangeTextBox.Name = "orderChangeTextBox";
             this.orderChangeTextBox.ReadOnly = true;
             this.orderChangeTextBox.Size = new System.Drawing.Size(136, 45);
@@ -262,7 +232,7 @@ namespace PointOfSaleApp.Forms
             this.orderChangeLabel.AutoSize = true;
             this.orderChangeLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.orderChangeLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.orderChangeLabel.Location = new System.Drawing.Point(22, 128);
+            this.orderChangeLabel.Location = new System.Drawing.Point(10, 73);
             this.orderChangeLabel.Name = "orderChangeLabel";
             this.orderChangeLabel.Size = new System.Drawing.Size(82, 23);
             this.orderChangeLabel.TabIndex = 64;
@@ -273,7 +243,7 @@ namespace PointOfSaleApp.Forms
             this.calculateOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calculateOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calculateOrderButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.calculateOrderButton.Location = new System.Drawing.Point(261, 103);
+            this.calculateOrderButton.Location = new System.Drawing.Point(249, 48);
             this.calculateOrderButton.Name = "calculateOrderButton";
             this.calculateOrderButton.Size = new System.Drawing.Size(107, 55);
             this.calculateOrderButton.TabIndex = 66;
@@ -345,11 +315,11 @@ namespace PointOfSaleApp.Forms
             // paymentTypeLabel
             // 
             this.paymentTypeLabel.AutoSize = true;
-            this.paymentTypeLabel.Font = new System.Drawing.Font("Malgun Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paymentTypeLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paymentTypeLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.paymentTypeLabel.Location = new System.Drawing.Point(412, 89);
             this.paymentTypeLabel.Name = "paymentTypeLabel";
-            this.paymentTypeLabel.Size = new System.Drawing.Size(138, 25);
+            this.paymentTypeLabel.Size = new System.Drawing.Size(134, 25);
             this.paymentTypeLabel.TabIndex = 73;
             this.paymentTypeLabel.Text = "Payment Type:";
             // 
@@ -365,17 +335,36 @@ namespace PointOfSaleApp.Forms
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.orderTotalTextBox);
-            this.panel1.Controls.Add(this.orderTotalLabel);
             this.panel1.Controls.Add(this.orderReceivedLabel);
             this.panel1.Controls.Add(this.orderReceivedTextBox);
             this.panel1.Controls.Add(this.orderChangeLabel);
             this.panel1.Controls.Add(this.orderChangeTextBox);
             this.panel1.Controls.Add(this.calculateOrderButton);
-            this.panel1.Location = new System.Drawing.Point(417, 171);
+            this.panel1.Location = new System.Drawing.Point(429, 237);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(368, 174);
+            this.panel1.Size = new System.Drawing.Size(356, 116);
             this.panel1.TabIndex = 74;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.MinimumWidth = 6;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // price_dish
+            // 
+            this.price_dish.HeaderText = "Price";
+            this.price_dish.MinimumWidth = 6;
+            this.price_dish.Name = "price_dish";
+            this.price_dish.ReadOnly = true;
             // 
             // PaymentForm
             // 
@@ -383,6 +372,8 @@ namespace PointOfSaleApp.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(802, 603);
+            this.Controls.Add(this.orderTotalTextBox);
+            this.Controls.Add(this.orderTotalLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.paymentTypeLabel);
             this.Controls.Add(this.paymentTypeComboBox);
@@ -434,13 +425,12 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Button closeOrderButton;
         private System.Windows.Forms.TextBox orderIDTextBox;
         private System.Windows.Forms.Label orderIDLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dish_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price_dish;
         private System.Windows.Forms.Button editOrderButton;
         private System.Windows.Forms.Label paymentTypeLabel;
         private System.Windows.Forms.ComboBox paymentTypeComboBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price_dish;
     }
 }

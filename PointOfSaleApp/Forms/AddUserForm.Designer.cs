@@ -75,6 +75,7 @@ namespace PointOfSaleApp.Forms
             this.saveUserButton.TabIndex = 80;
             this.saveUserButton.Text = "SAVE";
             this.saveUserButton.UseVisualStyleBackColor = true;
+            this.saveUserButton.Click += new System.EventHandler(this.saveUserButton_Click);
             // 
             // editUserButton
             // 

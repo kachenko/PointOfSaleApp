@@ -199,7 +199,7 @@ namespace PointOfSaleApp.Forms
                 {
                     int selectedIndex = dataOrdersGridView.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = dataOrdersGridView.Rows[selectedIndex];
-                    OrderClass.orderId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                    //OrderClass.orderId = int.Parse(selectedRow.Cells["id"].Value.ToString());
 
                     OrderClass.orderIsActive = bool.Parse(selectedRow.Cells["isActive"].Value.ToString());
                     
@@ -231,9 +231,17 @@ namespace PointOfSaleApp.Forms
 
         private void editOrderButton_Click(object sender, EventArgs e)
         {
-            Forms.EditOrderForm editOrder = new EditOrderForm();
-            this.Hide();
-            editOrder.Show();
+            try
+            {
+                // OrderClass.orderId = int.Parse(orderIDTextBox.Text);
+                Forms.EditOrderForm editOrder = new EditOrderForm();
+                this.Hide();
+                editOrder.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void deleteOrderButton_Click(object sender, EventArgs e)
@@ -261,6 +269,7 @@ namespace PointOfSaleApp.Forms
                     dataOrdersGridView.Rows.Clear();
                     DataRowView dataRow = usersComboBox.SelectedItem as DataRowView;
                     loadOrders(int.Parse(dataRow.Row["id"].ToString()));
+                    OrderClass.orderId = 0;
                 }
                 catch (Exception ex)
                 {
