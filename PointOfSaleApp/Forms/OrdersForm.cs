@@ -189,6 +189,19 @@ namespace PointOfSaleApp.Forms
         private void printBillButton_Click(object sender, EventArgs e)
         {
             // wydruk paragonu
+            try
+            {
+                int selectedIndex = dataOrdersGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataOrdersGridView.Rows[selectedIndex];
+                OrderClass.orderId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+
+                PrintBillForm printBill = new PrintBillForm();
+                printBill.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void orderCloseButton_Click(object sender, EventArgs e)

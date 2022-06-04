@@ -45,6 +45,21 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
@@ -127,8 +142,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="billDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>billDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Classes\CryptographyClass.cs" />
     <Compile Include="Classes\SelectedUserClass.cs" />
+    <Compile Include="dailyReportDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +244,24 @@
     <Compile Include="Forms\PaymentForm.Designer.cs">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PrintBillForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintBillForm.Designer.cs">
+      <DependentUpon>PrintBillForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PrintReportPerDay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintReportPerDay.Designer.cs">
+      <DependentUpon>PrintReportPerDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportsForm.Designer.cs">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UsersManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +323,15 @@
     <EmbeddedResource Include="Forms\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintBillForm.resx">
+      <DependentUpon>PrintBillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintReportPerDay.resx">
+      <DependentUpon>PrintReportPerDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportsForm.resx">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UsersManagementForm.resx">
       <DependentUpon>UsersManagementForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,7 +345,30 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="BillPrint.rdlc" />
+    <EmbeddedResource Include="Reports\BillPrint.rdlc" />
+    <EmbeddedResource Include="Reports\PerDayReport.rdlc" />
+    <None Include="billDataSet.xsc">
+      <DependentUpon>billDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="billDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>billDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="billDataSet.xss">
+      <DependentUpon>billDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dailyReportDataSet.xsc">
+      <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="dailyReportDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dailyReportDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dailyReportDataSet.xss">
+      <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="posDBDataSet.xsc">
       <DependentUpon>posDBDataSet.xsd</DependentUpon>

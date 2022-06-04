@@ -123,5 +123,12 @@ namespace PointOfSaleApp
             this.Hide();
             orders.Show();
         }
+
+        private void reportsButton_Click(object sender, EventArgs e)
+        {
+            Forms.ReportsForm reports = new Forms.ReportsForm();
+            this.Hide();
+            reports.Show();
+        }
     }
 }

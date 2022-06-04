@@ -47,6 +47,8 @@ namespace PointOfSaleApp
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryButton = new System.Windows.Forms.Button();
             this.myAccountButton = new System.Windows.Forms.Button();
+            this.reportsButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -225,12 +227,34 @@ namespace PointOfSaleApp
             this.myAccountButton.UseVisualStyleBackColor = true;
             this.myAccountButton.Click += new System.EventHandler(this.myAccountButton_Click);
             // 
+            // reportsButton
+            // 
+            this.reportsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reportsButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.reportsButton.Location = new System.Drawing.Point(754, 421);
+            this.reportsButton.Name = "reportsButton";
+            this.reportsButton.Size = new System.Drawing.Size(183, 113);
+            this.reportsButton.TabIndex = 29;
+            this.reportsButton.Text = "REPORTS";
+            this.reportsButton.UseVisualStyleBackColor = true;
+            this.reportsButton.Click += new System.EventHandler(this.reportsButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(12, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(958, 218);
+            this.panel1.TabIndex = 30;
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.reportsButton);
             this.Controls.Add(this.myAccountButton);
             this.Controls.Add(this.categoryButton);
             this.Controls.Add(this.menuStrip1);
@@ -271,5 +295,7 @@ namespace PointOfSaleApp
         private System.Windows.Forms.ToolStripMenuItem dishesToolStripMenuItem;
         private System.Windows.Forms.Button categoryButton;
         private System.Windows.Forms.Button myAccountButton;
+        private System.Windows.Forms.Button reportsButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }
