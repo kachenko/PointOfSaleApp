@@ -68,7 +68,7 @@ namespace PointOfSaleApp.Forms
                     conn.Open();
                     SqlCommand command = new SqlCommand(query, conn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("User password updated successfully", "Change User Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User password updated successfully.", "Change User Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
                   
                     conn.Close();
                 }

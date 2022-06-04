@@ -156,6 +156,7 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.passwordLabel);
             this.Name = "ChangePasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSi - Change Password";
             this.Load += new System.EventHandler(this.ChangePasswordForm_Load);
             this.ResumeLayout(false);

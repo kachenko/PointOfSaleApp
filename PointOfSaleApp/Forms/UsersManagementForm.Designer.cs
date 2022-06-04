@@ -227,6 +227,7 @@ namespace PointOfSaleApp.Forms
             this.deleteOrderButton.TabIndex = 50;
             this.deleteOrderButton.Text = "DELETE";
             this.deleteOrderButton.UseVisualStyleBackColor = false;
+            this.deleteOrderButton.Click += new System.EventHandler(this.deleteOrderButton_Click);
             // 
             // editUserButton
             // 
@@ -239,6 +240,7 @@ namespace PointOfSaleApp.Forms
             this.editUserButton.TabIndex = 49;
             this.editUserButton.Text = "EDIT";
             this.editUserButton.UseVisualStyleBackColor = true;
+            this.editUserButton.Click += new System.EventHandler(this.editUserButton_Click);
             // 
             // addUserButton
             // 
@@ -291,6 +293,7 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.dataUsersGridView);
             this.Controls.Add(this.menuStrip1);
             this.Name = "UsersManagementForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSi - Users";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

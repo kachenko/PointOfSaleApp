@@ -250,9 +250,14 @@ namespace PointOfSaleApp.Forms
             {
                 try
                 {
-                    foreach (DataGridViewRow item in dataOrderGridView.SelectedRows)
+                    foreach (DataGridViewRow selectedRow in dataOrderGridView.SelectedRows)
                     {
-                        dataOrderGridView.Rows.RemoveAt(item.Index);
+                        dataOrderGridView.Rows.RemoveAt(selectedRow.Index);
+                        string query = "DELETE FROM [Order_Dish] WHERE order_id = " + orderIDTextBox.Text + " AND dish_id = " + selectedRow.Cells[0].Value.ToString();
+                        SqlCommand command = new SqlCommand(query, conn);
+                        conn.Open();
+                        command.ExecuteNonQuery();
+                        conn.Close();
                     }
                 }
                 catch (Exception ex)
@@ -343,9 +348,9 @@ namespace PointOfSaleApp.Forms
                         MessageBox.Show("Order edited.", "Edit Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //Forms.PaymentForm payment = new Forms.PaymentForm();
                         //payment.Show();
-                        //this.Hide();
-                        Forms.OrdersForm orders = new Forms.OrdersForm();
-                        orders.Show();
+                        ////this.Hide();
+                        //Forms.OrdersForm orders = new Forms.OrdersForm();
+                        //orders.Show();
                         this.Hide();
                     }
                 }

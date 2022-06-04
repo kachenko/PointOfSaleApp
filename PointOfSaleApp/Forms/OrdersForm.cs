@@ -262,7 +262,7 @@ namespace PointOfSaleApp.Forms
                     }
                     else
                     {
-                    MessageBox.Show("Order not deleted - an error occurred.", "Delete Order", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Order not deleted - an error occurred.", "Delete Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     conn.Close();
 

@@ -34,7 +34,7 @@ namespace PointOfSaleApp.Forms
             {
                 dataUsersGridView.Rows.Clear();
                 dataUsersGridView.Refresh();
-                string query = "select * from [User]";
+                string query = "select * from [User] order by 1";
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -57,7 +57,10 @@ namespace PointOfSaleApp.Forms
 
         private void addUserButton_Click(object sender, EventArgs e)
         {
-            
+            Forms.AddUserForm addUser = new AddUserForm();
+            addUser.ShowDialog();
+
+            loadUsers();
         }
 
         private void changePasswdButton_Click(object sender, EventArgs e)
@@ -70,10 +73,67 @@ namespace PointOfSaleApp.Forms
                 Classes.SelectedUserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
 
                 Forms.ChangePasswordForm changePassword = new ChangePasswordForm();
-                this.Close();
-                changePassword.Show();
+                changePassword.ShowDialog();
             } 
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void editUserButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
+                Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                Classes.SelectedUserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
+
+                Forms.EditUserForm editUser = new EditUserForm();
+                editUser.ShowDialog();
+                loadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void deleteOrderButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataUsersGridView.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show("Are you sure you want to delete a new user?", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        SqlCommand command = new SqlCommand("[sp_delete_user]", conn); 
+                        command.CommandType = System.Data.CommandType.StoredProcedure;
+                        int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
+                        DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
+                        command.Parameters.AddWithValue("@p_user_id", int.Parse(selectedRow.Cells["id"].Value.ToString()));
+                        conn.Open();
+                        int isDelete = command.ExecuteNonQuery();
+                        if (isDelete > 0)
+                        {
+                            MessageBox.Show("User deleted.", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("User not deleted - an error occurred.", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        conn.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select data.", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                }
+
+                loadUsers();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
