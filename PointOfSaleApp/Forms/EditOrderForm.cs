@@ -130,6 +130,7 @@ namespace PointOfSaleApp.Forms
 
             conn.Close();
         }
+
         private void categoryButtonClick(object sender, EventArgs e)
         {
             Button buttonClick = sender as Button;

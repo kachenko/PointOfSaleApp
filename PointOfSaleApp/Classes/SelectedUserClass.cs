@@ -15,6 +15,7 @@ namespace PointOfSaleApp.Classes
         private static int id;
         private static string login;
         private static string password;
+        private static string role;
         public static int userId
         {
             get { return id; }
@@ -29,6 +30,12 @@ namespace PointOfSaleApp.Classes
         {
             get { return password; }
             set { password = value; }
+        }
+
+        public static string userRole
+        {
+            get { return role; }
+            set { role = value; }
         }
 
         static public Image loadUserPicture()

@@ -28,7 +28,7 @@ namespace PointOfSaleApp.Forms
 
         private void loadUserData()
         {
-            string query = "select * from [User] where id = " + MyUserClass.userId;
+            string query = "select u.*, ur.id [role_id], ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id where u.id = " + MyUserClass.userId;
             DataTable table = new DataTable();
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -39,29 +39,37 @@ namespace PointOfSaleApp.Forms
                 userLoginTextBox.Text = row["login"].ToString();
                 userFullNameTextBox.Text = row["full_name"].ToString();
                 userAddressTextBox.Text = row["address"].ToString();
-                userRoleTextBox.Text = row["role"].ToString();
+                // userRoleTextBox.Text = row["role"].ToString();
+                loadRoleComboBox();
                 userIsActiveTextBox.Text = row["isActive"].ToString();
 
                 userPictureBox.Image = MyUserClass.loadUserPicture();
             }
         }
-        
-        //static public Image loadUserPicture()
-        //{
-        //    byte[] getImage = new byte[0];
-        //    SqlCommand command1 = new SqlCommand("select image from [User] where id = " + MyUserClass.userId, conn);
-        //    SqlDataAdapter adapter1 = new SqlDataAdapter(command1);
-        //    command1.CommandType = CommandType.Text;
-        //    DataSet set = new DataSet();
-        //    adapter1.Fill(set);
-        //    foreach (DataRow dr in set.Tables[0].Rows)
-        //    {
-        //        getImage = (byte[])dr["image"];
-        //    }
-        //    byte[] imageData = getImage;
-        //    MemoryStream memoryStream = new MemoryStream(imageData);
-        //    return Image.FromStream(memoryStream);
-        //}
+
+        private void loadRoleComboBox()
+        {
+            try
+            {
+                string query = "select id, name from [UserRole]";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                userRoleComboBox.DataSource = table;
+                userRoleComboBox.DisplayMember = "name";
+                userRoleComboBox.ValueMember = "id";
+                userRoleComboBox.Enabled = true;
+
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         private bool ableEditUserData()
         {
@@ -70,10 +78,10 @@ namespace PointOfSaleApp.Forms
                 userFullNameTextBox.Enabled = true;
                 userAddressTextBox.Enabled = true;
                 userPhoneTextBox.Enabled = true;
-                if (MyUserClass.userRole == "Admin")
-                {
-                    userRoleTextBox.Enabled = true;
-                }
+                //if (MyUserClass.userRole == "Admin")
+                //{
+                //    userRoleTextBox.Enabled = true;
+                //}
                 saveUserButton.Enabled = true;
                 editUserButton.Enabled = false;
                 return true;
@@ -91,11 +99,13 @@ namespace PointOfSaleApp.Forms
             {
                 conn.Open();
                 //string query = "update [User] set login = @login, password = @password, full_name = @full_name, address = @address, phone = @phone, role = @role, image = @image where id = " + MyUserClass.userId;
+                DataRowView dataRow = userRoleComboBox.SelectedItem as DataRowView;
+                int roleID = int.Parse(dataRow.Row["id"].ToString());
                 string query = "update [User] set login = '" + userLoginTextBox.Text + "'," +
                     "full_name = '" + userFullNameTextBox.Text + "', " + 
                     "address = '" + userAddressTextBox.Text + "', " +
                     "phone = '" + userPhoneTextBox.Text + "', " +
-                    "role = '" + userRoleTextBox.Text + "', " +
+                    "role_id = '" + roleID + "', " +
                     "image = @image where id = " + MyUserClass.userId;
                 SqlCommand command = new SqlCommand(query, conn);
                 MemoryStream stream = new MemoryStream();
@@ -113,10 +123,10 @@ namespace PointOfSaleApp.Forms
             userFullNameTextBox.Enabled = false;
             userAddressTextBox.Enabled = false;
             userPhoneTextBox.Enabled = false;
-            if (MyUserClass.userRole == "Admin")
-            {
-                userRoleTextBox.Enabled = false;
-            }
+            //if (MyUserClass.userRole == "Admin")
+            //{
+            //    userRoleTextBox.Enabled = false;
+            //}
             saveUserButton.Enabled = false;
             editUserButton.Enabled = true;
             MessageBox.Show("Your data updated", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -34,7 +34,7 @@ namespace PointOfSaleApp.Forms
             {
                 dataUsersGridView.Rows.Clear();
                 dataUsersGridView.Refresh();
-                string query = "select * from [User] order by 1";
+                string query = "select u.*, ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id order by 1";
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -89,10 +89,13 @@ namespace PointOfSaleApp.Forms
                 DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
                 Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
                 Classes.SelectedUserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
+                Classes.SelectedUserClass.userRole = selectedRow.Cells["role"].Value.ToString();
 
                 Forms.EditUserForm editUser = new EditUserForm();
                 editUser.ShowDialog();
                 loadUsers();
+
+                
             }
             catch (Exception ex)
             {
@@ -112,7 +115,8 @@ namespace PointOfSaleApp.Forms
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                        command.Parameters.AddWithValue("@p_user_id", int.Parse(selectedRow.Cells["id"].Value.ToString()));
+                        Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                        command.Parameters.AddWithValue("@p_user_id", Classes.SelectedUserClass.userId);
                         conn.Open();
                         int isDelete = command.ExecuteNonQuery();
                         if (isDelete > 0)
@@ -130,13 +134,21 @@ namespace PointOfSaleApp.Forms
                 {
                     MessageBox.Show("Please select data.", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 }
-
+                clearSelectedUser();
                 loadUsers();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void clearSelectedUser()
+        {
+            Classes.SelectedUserClass.userId = 0;
+            Classes.SelectedUserClass.userLogin = null;
+            Classes.SelectedUserClass.userPassword = null;
+            Classes.SelectedUserClass.userRole = null;
         }
     }
 }

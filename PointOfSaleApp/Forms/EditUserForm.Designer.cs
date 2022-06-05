@@ -48,7 +48,6 @@ namespace PointOfSaleApp.Forms
             this.userFullNameLabel = new System.Windows.Forms.Label();
             this.userLoginLabel = new System.Windows.Forms.Label();
             this.userPictureBox = new System.Windows.Forms.PictureBox();
-            this.userRoleTextBox = new System.Windows.Forms.TextBox();
             this.userPhoneTextBox = new System.Windows.Forms.TextBox();
             this.userAddressTextBox = new System.Windows.Forms.TextBox();
             this.userFullNameTextBox = new System.Windows.Forms.TextBox();
@@ -56,6 +55,7 @@ namespace PointOfSaleApp.Forms
             this.userLabel = new System.Windows.Forms.Label();
             this.userIDTextBox = new System.Windows.Forms.TextBox();
             this.changePasswdButton = new System.Windows.Forms.Button();
+            this.userRoleComboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -81,13 +81,13 @@ namespace PointOfSaleApp.Forms
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
             // 
             this.newSessionToolStripMenuItem.Name = "newSessionToolStripMenuItem";
-            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.newSessionToolStripMenuItem.Text = "New Session";
             // 
             // navigateToolStripMenuItem
@@ -95,26 +95,26 @@ namespace PointOfSaleApp.Forms
             this.navigateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
             this.navigateToolStripMenuItem.Name = "navigateToolStripMenuItem";
-            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.navigateToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.navigateToolStripMenuItem.Text = "Navigate";
             // 
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
             this.menuToolStripMenuItem.Text = "Menu";
             this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -124,7 +124,7 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -237,13 +237,6 @@ namespace PointOfSaleApp.Forms
             this.userPictureBox.TabIndex = 90;
             this.userPictureBox.TabStop = false;
             // 
-            // userRoleTextBox
-            // 
-            this.userRoleTextBox.Location = new System.Drawing.Point(307, 307);
-            this.userRoleTextBox.Name = "userRoleTextBox";
-            this.userRoleTextBox.Size = new System.Drawing.Size(248, 22);
-            this.userRoleTextBox.TabIndex = 89;
-            // 
             // userPhoneTextBox
             // 
             this.userPhoneTextBox.Location = new System.Drawing.Point(307, 279);
@@ -306,12 +299,21 @@ namespace PointOfSaleApp.Forms
             this.changePasswdButton.UseVisualStyleBackColor = true;
             this.changePasswdButton.Click += new System.EventHandler(this.changePasswdButton_Click);
             // 
+            // userRoleComboBox
+            // 
+            this.userRoleComboBox.FormattingEnabled = true;
+            this.userRoleComboBox.Location = new System.Drawing.Point(307, 311);
+            this.userRoleComboBox.Name = "userRoleComboBox";
+            this.userRoleComboBox.Size = new System.Drawing.Size(249, 24);
+            this.userRoleComboBox.TabIndex = 103;
+            // 
             // EditUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(567, 433);
+            this.Controls.Add(this.userRoleComboBox);
             this.Controls.Add(this.changePasswdButton);
             this.Controls.Add(this.userLabel);
             this.Controls.Add(this.userIDTextBox);
@@ -324,7 +326,6 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.userFullNameLabel);
             this.Controls.Add(this.userLoginLabel);
             this.Controls.Add(this.userPictureBox);
-            this.Controls.Add(this.userRoleTextBox);
             this.Controls.Add(this.userPhoneTextBox);
             this.Controls.Add(this.userAddressTextBox);
             this.Controls.Add(this.userFullNameTextBox);
@@ -361,7 +362,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label userFullNameLabel;
         private System.Windows.Forms.Label userLoginLabel;
         private System.Windows.Forms.PictureBox userPictureBox;
-        private System.Windows.Forms.TextBox userRoleTextBox;
         private System.Windows.Forms.TextBox userPhoneTextBox;
         private System.Windows.Forms.TextBox userAddressTextBox;
         private System.Windows.Forms.TextBox userFullNameTextBox;
@@ -369,5 +369,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label userLabel;
         private System.Windows.Forms.TextBox userIDTextBox;
         private System.Windows.Forms.Button changePasswdButton;
+        private System.Windows.Forms.ComboBox userRoleComboBox;
     }
 }

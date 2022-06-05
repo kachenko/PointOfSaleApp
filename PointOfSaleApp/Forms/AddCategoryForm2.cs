@@ -31,7 +31,7 @@ namespace PointOfSaleApp.Forms
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'posDBDataSet.Category' . Możesz go przenieść lub usunąć.
             this.categoryTableAdapter.Fill(this.posDBDataSet.Category);
             nameLabel.Text = MyUserClass.userLogin.ToString();
-            positLabel.Text = MyUserClass.userRole.ToString();
+            positLabel.Text = MyUserClass.userRoleId.ToString();
         }
 
         private void ClearData()

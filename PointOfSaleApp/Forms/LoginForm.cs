@@ -44,7 +44,7 @@ namespace PointOfSaleApp
             // string password = "";
             bool isExist = false;
             conn.Open();
-            string query = "select * from [User] where login = '" + LoginTextBox.Text + "'";
+            string query = "select u.*, ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id where login = '" + LoginTextBox.Text + "'";
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
@@ -53,7 +53,9 @@ namespace PointOfSaleApp
                 MyUserClass.userLogin = reader["login"].ToString();
                 MyUserClass.userPassword = reader["password"].ToString();
                 MyUserClass.userFullName = reader["full_name"].ToString();
+                MyUserClass.userRoleId = int.Parse(reader["role_id"].ToString());
                 MyUserClass.userRole = reader["role"].ToString();
+                MyUserClass.userIsActive = bool.Parse(reader["isActive"].ToString());
                 // password = reader.GetString(2);
                 isExist = true;
             }
@@ -65,6 +67,10 @@ namespace PointOfSaleApp
                     MenuForm mf = new MenuForm();
                     this.Hide();
                     mf.Show();
+                }
+                else if (MyUserClass.userIsActive == false)
+                {
+                    MessageBox.Show("You don't have access. Contact the administrator.", "Validation Error", MessageBoxButtons.OK);
                 }
                 else
                 {

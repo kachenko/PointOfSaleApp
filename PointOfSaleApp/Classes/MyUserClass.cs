@@ -16,7 +16,10 @@ namespace PointOfSaleApp
         private static string login;
         private static string password;
         private static string full_name;
+        private static bool isActive;
+        private static int role_id;
         private static string role;
+
 
         public static int userId
         {
@@ -39,6 +42,17 @@ namespace PointOfSaleApp
         {
             get { return full_name; }
             set { full_name = value; }
+        }
+        public static bool userIsActive
+        {
+            get { return isActive; }
+            set { isActive = value; }
+        }
+
+        public static int userRoleId
+        {
+            get { return role_id; }
+            set { role_id = value; }
         }
 
         public static string userRole

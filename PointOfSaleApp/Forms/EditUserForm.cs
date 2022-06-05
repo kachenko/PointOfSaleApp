@@ -26,12 +26,13 @@ namespace PointOfSaleApp.Forms
         {
             try
             {
-                string query = "select * from [User] where id = " + Classes.SelectedUserClass.userId;
+                string query = "select u.*, ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id where u.id = " + Classes.SelectedUserClass.userId + " order by 1";
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
+                conn.Close();
 
                 foreach (DataRow row in table.Rows)
                 {
@@ -41,16 +42,43 @@ namespace PointOfSaleApp.Forms
                     userLoginTextBox.Text = row["login"].ToString();
                     userAddressTextBox.Text = row["address"].ToString();
                     userPhoneTextBox.Text = row["phone"].ToString();
-                    userRoleTextBox.Text = row["role"].ToString();
+                    // userRoleTextBox.Text = row["role"].ToString();
+                    loadRoleComboBox();
+                    var myRole = userRoleComboBox.Items.Cast<Object>()
+                                   .Where(x => userRoleComboBox.GetItemText(x).Equals(Classes.SelectedUserClass.userRole))
+                                   .FirstOrDefault();
+                    userRoleComboBox.SelectedItem = myRole;
                     if (row["image"] != System.DBNull.Value)
                         userPictureBox.Image = Classes.SelectedUserClass.loadUserPicture();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void loadRoleComboBox()
+        {
+            try
+            {
+                string query = "select id, name from [UserRole]";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                userRoleComboBox.DataSource = table;
+                userRoleComboBox.DisplayMember = "name";
+                userRoleComboBox.ValueMember = "id";
+                userRoleComboBox.Enabled = true;
+
+                conn.Open();
+                command.ExecuteNonQuery();
                 conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                conn.Close();
             }
         }
 
@@ -90,7 +118,7 @@ namespace PointOfSaleApp.Forms
         {
             try
             {
-                if (userLoginTextBox.Text != "" && userRoleTextBox.Text != "")
+                if (userLoginTextBox.Text != "" && userRoleComboBox.Text != "")
                 {
                     if (MessageBox.Show("Are you sure you want to edit user?", "Edit User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
@@ -101,7 +129,9 @@ namespace PointOfSaleApp.Forms
                         command.Parameters.AddWithValue("@p_full_name", userFullNameTextBox.Text);
                         command.Parameters.AddWithValue("@p_address", userAddressTextBox.Text);
                         command.Parameters.AddWithValue("@p_phone", userPhoneTextBox.Text);
-                        command.Parameters.AddWithValue("@p_role", userRoleTextBox.Text);
+                        DataRowView dataRow = userRoleComboBox.SelectedItem as DataRowView;
+                        int roleID = int.Parse(dataRow.Row["id"].ToString());
+                        command.Parameters.AddWithValue("@p_role_id", roleID);
 
                         MemoryStream stream = new MemoryStream();
                         userPictureBox.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);

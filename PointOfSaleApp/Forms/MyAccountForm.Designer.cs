@@ -52,13 +52,13 @@ namespace PointOfSaleApp.Forms
             this.userLoginLabel = new System.Windows.Forms.Label();
             this.userIDLabel = new System.Windows.Forms.Label();
             this.userPictureBox = new System.Windows.Forms.PictureBox();
-            this.userRoleTextBox = new System.Windows.Forms.TextBox();
             this.userPhoneTextBox = new System.Windows.Forms.TextBox();
             this.userAddressTextBox = new System.Windows.Forms.TextBox();
             this.userFullNameTextBox = new System.Windows.Forms.TextBox();
             this.userIsActiveTextBox = new System.Windows.Forms.TextBox();
             this.userLoginTextBox = new System.Windows.Forms.TextBox();
             this.userIDTextBox = new System.Windows.Forms.TextBox();
+            this.userRoleComboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -287,14 +287,6 @@ namespace PointOfSaleApp.Forms
             this.userPictureBox.TabIndex = 89;
             this.userPictureBox.TabStop = false;
             // 
-            // userRoleTextBox
-            // 
-            this.userRoleTextBox.Enabled = false;
-            this.userRoleTextBox.Location = new System.Drawing.Point(305, 338);
-            this.userRoleTextBox.Name = "userRoleTextBox";
-            this.userRoleTextBox.Size = new System.Drawing.Size(248, 22);
-            this.userRoleTextBox.TabIndex = 88;
-            // 
             // userPhoneTextBox
             // 
             this.userPhoneTextBox.Enabled = false;
@@ -345,12 +337,21 @@ namespace PointOfSaleApp.Forms
             this.userIDTextBox.Size = new System.Drawing.Size(79, 22);
             this.userIDTextBox.TabIndex = 82;
             // 
+            // userRoleComboBox
+            // 
+            this.userRoleComboBox.FormattingEnabled = true;
+            this.userRoleComboBox.Location = new System.Drawing.Point(305, 338);
+            this.userRoleComboBox.Name = "userRoleComboBox";
+            this.userRoleComboBox.Size = new System.Drawing.Size(250, 24);
+            this.userRoleComboBox.TabIndex = 101;
+            // 
             // MyAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(567, 483);
+            this.Controls.Add(this.userRoleComboBox);
             this.Controls.Add(this.changeImageButton);
             this.Controls.Add(this.saveUserButton);
             this.Controls.Add(this.editUserButton);
@@ -363,7 +364,6 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.userLoginLabel);
             this.Controls.Add(this.userIDLabel);
             this.Controls.Add(this.userPictureBox);
-            this.Controls.Add(this.userRoleTextBox);
             this.Controls.Add(this.userPhoneTextBox);
             this.Controls.Add(this.userAddressTextBox);
             this.Controls.Add(this.userFullNameTextBox);
@@ -408,12 +408,12 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label userLoginLabel;
         private System.Windows.Forms.Label userIDLabel;
         private System.Windows.Forms.PictureBox userPictureBox;
-        private System.Windows.Forms.TextBox userRoleTextBox;
         private System.Windows.Forms.TextBox userPhoneTextBox;
         private System.Windows.Forms.TextBox userAddressTextBox;
         private System.Windows.Forms.TextBox userFullNameTextBox;
         private System.Windows.Forms.TextBox userIsActiveTextBox;
         private System.Windows.Forms.TextBox userLoginTextBox;
         private System.Windows.Forms.TextBox userIDTextBox;
+        private System.Windows.Forms.ComboBox userRoleComboBox;
     }
 }
