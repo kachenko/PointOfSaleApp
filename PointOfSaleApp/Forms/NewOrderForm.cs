@@ -271,7 +271,7 @@ namespace PointOfSaleApp
             }
         }
 
-        private int orderCreate() // return int orderID
+        private int orderCreate() 
         {
             SqlCommand command = new SqlCommand("[sp_create_order]", conn);
             command.CommandType = CommandType.StoredProcedure;

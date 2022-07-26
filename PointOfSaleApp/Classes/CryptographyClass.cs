@@ -10,55 +10,31 @@ namespace PointOfSaleApp.Classes
 {
     class CryptographyClass
     {
-        public static string Encrypt(string encryptString)
-        {        
-            string EncryptKey = "+KbPeShVmYq3s6v9y$B&E)H@McQfTjWn";
-            byte[] clearByte = Encoding.Unicode.GetBytes(encryptString);
-            using (Aes encryptor = Aes.Create())
+        public static bool MatchSHA1(byte[] p1, byte[] p2)
+        {
+            bool result = false;
+            if (p1 != null && p2 != null)
             {
-                Rfc2898DeriveBytes rfc = new Rfc2898DeriveBytes(EncryptKey, new byte[]
+                if (p1.Length == p2.Length)
                 {
-                    0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
-                });
-                encryptor.Key = rfc.GetBytes(32);
-                encryptor.IV = rfc.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    result = true;
+                    for (int i = 0; i < p1.Length; i++)
                     {
-                        cs.Write(clearByte, 0, clearByte.Length);
-                        cs.Close();
+                        if (p1[i] != p2[i])
+                        {
+                            result = false;
+                            break;
+                        }
                     }
-                    encryptString = Convert.ToBase64String(ms.ToArray());
                 }
             }
-            return encryptString;
+            return result;
         }
 
-        public static string Decrypt(string cipherText)
+        public static byte[] GetSHA1(string userID, string password)
         {
-            string EncryptKey = "+KbPeShVmYq3s6v9y$B&E)H@McQfTjWn";
-            cipherText = cipherText.Replace(" ", "+");
-            byte[] cipherBytes = Convert.FromBase64String(cipherText);
-            using (Aes encryptor = Aes.Create())
-            {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptKey, new byte[]
-                {
-                    0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
-                });
-                encryptor.Key = pdb.GetBytes(32);
-                encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
-                    {
-                        cs.Write(cipherBytes, 0, cipherBytes.Length);
-                        cs.Close();
-                    }
-                    cipherText = Encoding.Unicode.GetString(ms.ToArray());
-                }
-            }
-            return cipherText;
+            SHA1CryptoServiceProvider sha = new SHA1CryptoServiceProvider();
+            return sha.ComputeHash(System.Text.Encoding.ASCII.GetBytes(userID + password));
         }
     }
 }

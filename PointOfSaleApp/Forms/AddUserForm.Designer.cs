@@ -38,7 +38,6 @@ namespace PointOfSaleApp.Forms
             this.userFullNameLabel = new System.Windows.Forms.Label();
             this.userLoginLabel = new System.Windows.Forms.Label();
             this.userPictureBox = new System.Windows.Forms.PictureBox();
-            this.userRoleTextBox = new System.Windows.Forms.TextBox();
             this.userPhoneTextBox = new System.Windows.Forms.TextBox();
             this.userAddressTextBox = new System.Windows.Forms.TextBox();
             this.userFullNameTextBox = new System.Windows.Forms.TextBox();
@@ -55,6 +54,7 @@ namespace PointOfSaleApp.Forms
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userRoleComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +123,7 @@ namespace PointOfSaleApp.Forms
             this.userAddressLabel.AutoSize = true;
             this.userAddressLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
             this.userAddressLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.userAddressLabel.Location = new System.Drawing.Point(169, 188);
+            this.userAddressLabel.Location = new System.Drawing.Point(169, 186);
             this.userAddressLabel.Name = "userAddressLabel";
             this.userAddressLabel.Size = new System.Drawing.Size(89, 28);
             this.userAddressLabel.TabIndex = 75;
@@ -161,13 +161,6 @@ namespace PointOfSaleApp.Forms
             this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.userPictureBox.TabIndex = 70;
             this.userPictureBox.TabStop = false;
-            // 
-            // userRoleTextBox
-            // 
-            this.userRoleTextBox.Location = new System.Drawing.Point(306, 301);
-            this.userRoleTextBox.Name = "userRoleTextBox";
-            this.userRoleTextBox.Size = new System.Drawing.Size(248, 22);
-            this.userRoleTextBox.TabIndex = 69;
             // 
             // userPhoneTextBox
             // 
@@ -228,7 +221,7 @@ namespace PointOfSaleApp.Forms
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -271,7 +264,7 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -292,12 +285,21 @@ namespace PointOfSaleApp.Forms
             this.dishesToolStripMenuItem.Size = new System.Drawing.Size(163, 26);
             this.dishesToolStripMenuItem.Text = "Dishes";
             // 
+            // userRoleComboBox
+            // 
+            this.userRoleComboBox.FormattingEnabled = true;
+            this.userRoleComboBox.Location = new System.Drawing.Point(305, 301);
+            this.userRoleComboBox.Name = "userRoleComboBox";
+            this.userRoleComboBox.Size = new System.Drawing.Size(249, 24);
+            this.userRoleComboBox.TabIndex = 105;
+            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(567, 393);
+            this.Controls.Add(this.userRoleComboBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.userPasswordTextBox);
             this.Controls.Add(this.changeImageButton);
@@ -309,13 +311,14 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.userFullNameLabel);
             this.Controls.Add(this.userLoginLabel);
             this.Controls.Add(this.userPictureBox);
-            this.Controls.Add(this.userRoleTextBox);
             this.Controls.Add(this.userPhoneTextBox);
             this.Controls.Add(this.userAddressTextBox);
             this.Controls.Add(this.userFullNameTextBox);
             this.Controls.Add(this.userLoginTextBox);
             this.Name = "AddUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "POSi - Add User";
+            this.Load += new System.EventHandler(this.AddUserForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -335,7 +338,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label userFullNameLabel;
         private System.Windows.Forms.Label userLoginLabel;
         private System.Windows.Forms.PictureBox userPictureBox;
-        private System.Windows.Forms.TextBox userRoleTextBox;
         private System.Windows.Forms.TextBox userPhoneTextBox;
         private System.Windows.Forms.TextBox userAddressTextBox;
         private System.Windows.Forms.TextBox userFullNameTextBox;
@@ -352,5 +354,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dishesToolStripMenuItem;
+        private System.Windows.Forms.ComboBox userRoleComboBox;
     }
 }

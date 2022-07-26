@@ -26,7 +26,7 @@ namespace PointOfSaleApp.Forms
         {
             try
             {
-                string query = "select u.*, ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id where u.id = " + Classes.SelectedUserClass.userId + " order by 1";
+                string query = "select u.*, ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id where u.id = " + Classes.UserClass.userId + " order by 1";
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -45,11 +45,10 @@ namespace PointOfSaleApp.Forms
                     // userRoleTextBox.Text = row["role"].ToString();
                     loadRoleComboBox();
                     var myRole = userRoleComboBox.Items.Cast<Object>()
-                                   .Where(x => userRoleComboBox.GetItemText(x).Equals(Classes.SelectedUserClass.userRole))
+                                   .Where(x => userRoleComboBox.GetItemText(x).Equals(Classes.UserClass.userRole))
                                    .FirstOrDefault();
                     userRoleComboBox.SelectedItem = myRole;
-                    if (row["image"] != System.DBNull.Value)
-                        userPictureBox.Image = Classes.SelectedUserClass.loadUserPicture();
+                    userPictureBox.Image = Classes.UserClass.loadUserPicture();
                 }
             }
             catch (Exception ex)
@@ -162,8 +161,8 @@ namespace PointOfSaleApp.Forms
         {
             try
             {
-                Classes.SelectedUserClass.userId = int.Parse(userIDTextBox.Text);
-                Classes.SelectedUserClass.userLogin = userLoginTextBox.Text;
+                Classes.UserClass.userId = int.Parse(userIDTextBox.Text);
+                Classes.UserClass.userLogin = userLoginTextBox.Text;
 
                 Forms.ChangePasswordForm changePassword = new ChangePasswordForm();
                 changePassword.ShowDialog();

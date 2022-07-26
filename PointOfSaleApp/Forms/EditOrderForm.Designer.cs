@@ -47,10 +47,6 @@ namespace PointOfSaleApp.Forms
             this.orderIDTextBox = new System.Windows.Forms.TextBox();
             this.orderSaveButton = new System.Windows.Forms.Button();
             this.dataOrderGridView = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableTextBox = new System.Windows.Forms.TextBox();
             this.totalBillLabel = new System.Windows.Forms.Label();
             this.changeButton = new System.Windows.Forms.Button();
@@ -74,6 +70,10 @@ namespace PointOfSaleApp.Forms
             this.dishQuantLabel = new System.Windows.Forms.Label();
             this.dishNameLabel = new System.Windows.Forms.Label();
             this.categoryButtonPanel = new System.Windows.Forms.Panel();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDishGridView)).BeginInit();
             this.billPanel.SuspendLayout();
@@ -267,38 +267,6 @@ namespace PointOfSaleApp.Forms
             this.dataOrderGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataOrderGridView.Size = new System.Drawing.Size(343, 353);
             this.dataOrderGridView.TabIndex = 14;
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 50;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.name.HeaderText = "Name";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 74;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Quantity";
-            this.quantity.MinimumWidth = 6;
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "Price";
-            this.price.MinimumWidth = 6;
-            this.price.Name = "price";
-            this.price.ReadOnly = true;
             // 
             // tableTextBox
             // 
@@ -570,6 +538,36 @@ namespace PointOfSaleApp.Forms
             this.categoryButtonPanel.Size = new System.Drawing.Size(380, 317);
             this.categoryButtonPanel.TabIndex = 46;
             // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.id.HeaderText = "ID";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 50;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.MinimumWidth = 6;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // price
+            // 
+            this.price.HeaderText = "Price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.ReadOnly = true;
+            // 
             // EditOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -619,10 +617,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Panel billPanel;
         private System.Windows.Forms.Button orderSaveButton;
         private System.Windows.Forms.DataGridView dataOrderGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
         private System.Windows.Forms.TextBox tableTextBox;
         private System.Windows.Forms.Label totalBillLabel;
         private System.Windows.Forms.Button changeButton;
@@ -647,5 +641,9 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.Label dishNameLabel;
         private System.Windows.Forms.Panel categoryButtonPanel;
         private System.Windows.Forms.TextBox orderIDTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn price;
     }
 }

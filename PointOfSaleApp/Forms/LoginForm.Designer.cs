@@ -30,7 +30,7 @@ namespace PointOfSaleApp
         private void InitializeComponent()
         {
             this.loginLabel = new System.Windows.Forms.Label();
-            this.LoginTextBox = new System.Windows.Forms.TextBox();
+            this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passTextBox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
@@ -38,6 +38,7 @@ namespace PointOfSaleApp
             this.txtLabel2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.adminForgotPasswordLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,12 +55,12 @@ namespace PointOfSaleApp
             // 
             // LoginTextBox
             // 
-            this.LoginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LoginTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginTextBox.Location = new System.Drawing.Point(99, 298);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(249, 23);
-            this.LoginTextBox.TabIndex = 2;
+            this.loginTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.loginTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginTextBox.Location = new System.Drawing.Point(99, 298);
+            this.loginTextBox.Name = "LoginTextBox";
+            this.loginTextBox.Size = new System.Drawing.Size(249, 23);
+            this.loginTextBox.TabIndex = 2;
             // 
             // passTextBox
             // 
@@ -88,7 +89,7 @@ namespace PointOfSaleApp
             this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKButton.Font = new System.Drawing.Font("Malgun Gothic Semilight", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OKButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.OKButton.Location = new System.Drawing.Point(12, 398);
+            this.OKButton.Location = new System.Drawing.Point(12, 383);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(336, 45);
             this.OKButton.TabIndex = 5;
@@ -122,7 +123,7 @@ namespace PointOfSaleApp
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::PointOfSaleApp.Properties.Resources.POSi_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(109, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(109, 60);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(156, 106);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -140,18 +141,32 @@ namespace PointOfSaleApp
             this.label1.TabIndex = 8;
             this.label1.Text = "Point Of Sale System";
             // 
+            // adminForgotPasswordLabel
+            // 
+            this.adminForgotPasswordLabel.AutoSize = true;
+            this.adminForgotPasswordLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 8F);
+            this.adminForgotPasswordLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.adminForgotPasswordLabel.Location = new System.Drawing.Point(113, 435);
+            this.adminForgotPasswordLabel.Name = "adminForgotPasswordLabel";
+            this.adminForgotPasswordLabel.Size = new System.Drawing.Size(192, 38);
+            this.adminForgotPasswordLabel.TabIndex = 9;
+            this.adminForgotPasswordLabel.Text = "Are you an admin and have \r\nyou forgotten your password?";
+            this.adminForgotPasswordLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.adminForgotPasswordLabel.Click += new System.EventHandler(this.adminForgotPasswordLabel_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Linen;
-            this.ClientSize = new System.Drawing.Size(360, 469);
+            this.ClientSize = new System.Drawing.Size(360, 482);
+            this.Controls.Add(this.adminForgotPasswordLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLabel2);
             this.Controls.Add(this.textLabel);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.passTextBox);
             this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.LoginTextBox);
+            this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.pictureBox1);
             this.Name = "LoginForm";
@@ -168,13 +183,14 @@ namespace PointOfSaleApp
 
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label loginLabel;
-		private System.Windows.Forms.TextBox LoginTextBox;
+		private System.Windows.Forms.TextBox loginTextBox;
 		private System.Windows.Forms.TextBox passTextBox;
 		private System.Windows.Forms.Label passwordLabel;
 		private System.Windows.Forms.Button OKButton;
 		private System.Windows.Forms.Label textLabel;
 		private System.Windows.Forms.Label txtLabel2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label adminForgotPasswordLabel;
     }
 }
 

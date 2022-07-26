@@ -13,7 +13,7 @@ namespace PointOfSaleApp.Forms
 {
     public partial class ChangePasswordForm : Form
     {
-        SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
+        SqlConnection conn = Classes.DataBaseConnectionClass.GetConnection();
         string defaultPassword = "12345";
 
         public ChangePasswordForm()
@@ -21,7 +21,7 @@ namespace PointOfSaleApp.Forms
             InitializeComponent();
             passwordTextBox.Text = defaultPassword;
             passwordTextBox.UseSystemPasswordChar = true;
-            loadUserInfo(Classes.SelectedUserClass.userId);
+            loadUserInfo(Classes.UserClass.userId);
         }
 
         public void loadUserInfo(int id)
@@ -58,15 +58,18 @@ namespace PointOfSaleApp.Forms
 
         private void changePassButton_Click(object sender, EventArgs e)
         {
+            string passwordText = passwordTextBox.Text;
+            string loginText = loginTextBox.Text;
             try
             {
                 if (loginTextBox.Text != "" && passwordTextBox.Text != "")
                 {
-                    Classes.SelectedUserClass.userPassword = Classes.CryptographyClass.Encrypt(passwordTextBox.Text);
-                    string query = "UPDATE [User] SET password = '" + Classes.SelectedUserClass.userPassword + "' where id = " + int.Parse(userIDTextBox.Text);
-
+                    passwordText = System.Text.Encoding.Default.GetString(Classes.CryptographyClass.GetSHA1(loginText, passwordText)); // Classes.CryptographyClass.GetSHA1(loginTextBox.Text, passwordTextBox.Text).ToString(); //.Encrypt(passwordTextBox.Text);
                     conn.Open();
-                    SqlCommand command = new SqlCommand(query, conn);
+                    SqlCommand command = new SqlCommand("[sp_update_user_password]", conn);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@p_id", int.Parse(userIDTextBox.Text));
+                    command.Parameters.AddWithValue("@p_password", passwordText);
                     command.ExecuteNonQuery();
                     MessageBox.Show("User password updated successfully.", "Change User Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
                   

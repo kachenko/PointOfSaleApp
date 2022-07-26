@@ -59,7 +59,7 @@ namespace PointOfSaleApp.Forms
                 dataPriceGridView.Refresh();
 
                 conn.Open();
-                string query = "select * from [Order_Dish] od left join [Dish] d on od.dish_id = d.id where order_id = " + orderID;
+                string query = "select name, quantity, d.price * quantity [price] from [Order] o join [Order_Dish] od on o.id = od.order_id join [Dish] d on od.dish_id = d.id where order_id = " + orderID;
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable table = new DataTable();
@@ -73,12 +73,12 @@ namespace PointOfSaleApp.Forms
                 }
                 conn.Close();
 
-                decimal amount = 0;
-                foreach (DataRow row in table.Rows)
-                {
-                    amount += decimal.Parse(row["price"].ToString());
-                }
-                orderTotalTextBox.Text = amount.ToString();
+                query = "select price from [Order] where id = " + orderID;
+                SqlCommand command1 = new SqlCommand(query, conn);
+                conn.Open();
+                object result = command1.ExecuteScalar();
+                double resultPrice = double.Parse(result.ToString());
+                orderTotalTextBox.Text = resultPrice.ToString();
                 conn.Close();
             }
             catch (Exception ex)

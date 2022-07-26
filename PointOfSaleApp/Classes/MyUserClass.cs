@@ -16,9 +16,11 @@ namespace PointOfSaleApp
         private static string login;
         private static string password;
         private static string full_name;
-        private static bool isActive;
+        private static string address;
+        private static string phone;
         private static int role_id;
         private static string role;
+        private static bool isActive;
 
 
         public static int userId
@@ -60,6 +62,9 @@ namespace PointOfSaleApp
             get { return role; }
             set { role = value; }
         }
+
+        public static string userAddress { get => address; set => address = value; }
+        public static string userPhone { get => phone; set => phone = value; }
 
         static public Image loadUserPicture()
         {

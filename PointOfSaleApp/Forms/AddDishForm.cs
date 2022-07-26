@@ -45,6 +45,22 @@ namespace PointOfSaleApp.Forms
                     item.SubItems.Add(row["name"].ToString());
                     dishCatListView.Items.Add(item);
                 }
+                if (Classes.CategoryClass.categoryId != 0)
+                {
+                    ListViewItem itemSelect = new ListViewItem(Classes.CategoryClass.categoryId.ToString());
+                    itemSelect.SubItems.Add(Classes.CategoryClass.categoryName);
+                    dishCatSelectListView.Items.Add(itemSelect);
+                }
+                foreach (ListViewItem categoryItem in dishCatListView.Items)
+                {
+                    foreach (ListViewItem selectCategoryItem in dishCatSelectListView.Items)
+                    {
+                        if (selectCategoryItem.Text == categoryItem.Text)
+                        {
+                            dishCatListView.Items.Remove(categoryItem);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -125,17 +141,17 @@ namespace PointOfSaleApp.Forms
 
         private void AddDishForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                if (MessageBox.Show("Do you really want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
-            }
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    if (MessageBox.Show("Do you really want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //    {
+            //        Application.Exit();
+            //    }
+            //    else
+            //    {
+            //        e.Cancel = true;
+            //    }
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -14,7 +14,7 @@ namespace PointOfSaleApp.Forms
 {
     public partial class AddUserForm : Form
     {
-        SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
+        SqlConnection conn = Classes.DataBaseConnectionClass.GetConnection(); // new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
 
         public AddUserForm()
         {
@@ -25,20 +25,25 @@ namespace PointOfSaleApp.Forms
         {
             try
             {
-                if (userLoginTextBox.Text != "" && userPasswordTextBox.Text != "" && userRoleTextBox.Text != "")
+                if (userLoginTextBox.Text != "" && userPasswordTextBox.Text != "" && userRoleComboBox.Text != "")
                 {
                     if (MessageBox.Show("Are you sure you want to add a new user?", "Add User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        Classes.SelectedUserClass.userPassword = Classes.CryptographyClass.Encrypt(userPasswordTextBox.Text);
+                        string loginText = userLoginTextBox.Text;
+                        string passwordText = userPasswordTextBox.Text;
+                        passwordText = System.Text.Encoding.Default.GetString(Classes.CryptographyClass.GetSHA1(loginText, passwordText)); 
 
                         SqlCommand command = new SqlCommand("[sp_add_user]", conn);
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@p_login", userLoginTextBox.Text);
-                        command.Parameters.AddWithValue("@p_password", userPasswordTextBox.Text);
+                        command.Parameters.AddWithValue("@p_password", passwordText);
                         command.Parameters.AddWithValue("@p_full_name", userFullNameTextBox.Text);
                         command.Parameters.AddWithValue("@p_address", userAddressTextBox.Text);
                         command.Parameters.AddWithValue("@p_phone", userPhoneTextBox.Text);
-                        command.Parameters.AddWithValue("@p_role", userRoleTextBox.Text);
+                        // command.Parameters.AddWithValue("@p_role", userRoleTextBox.Text);
+                        DataRowView dataRow = userRoleComboBox.SelectedItem as DataRowView;
+                        int roleID = int.Parse(dataRow.Row["id"].ToString());
+                        command.Parameters.AddWithValue("@p_role_id", roleID);
 
                         MemoryStream stream = new MemoryStream();
                         userPictureBox.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -58,6 +63,30 @@ namespace PointOfSaleApp.Forms
                 {
                     MessageBox.Show("Please enter details.", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void loadRoleComboBox()
+        {
+            try
+            {
+                string query = "select id, name from [UserRole]";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                userRoleComboBox.DataSource = table;
+                userRoleComboBox.DisplayMember = "name";
+                userRoleComboBox.ValueMember = "id";
+                userRoleComboBox.Enabled = true;
+
+                conn.Open();
+                command.ExecuteNonQuery();
+                conn.Close();
             }
             catch (Exception ex)
             {
@@ -95,6 +124,11 @@ namespace PointOfSaleApp.Forms
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void AddUserForm_Load(object sender, EventArgs e)
+        {
+            loadRoleComboBox();
         }
     }
 }

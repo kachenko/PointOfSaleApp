@@ -216,3 +216,10 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\zh-CHT\
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.AssemblyReference.cache
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.PrintReportPerDay.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.ReportsForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.DishesMenuForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddEditTablesForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.IdentityModel.Protocols.xml
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.ChangeAdminPasswordForm.resources

@@ -502,7 +502,7 @@ namespace PointOfSaleApp
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1069, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1069, 30);
             this.menuStrip1.TabIndex = 42;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -514,7 +514,7 @@ namespace PointOfSaleApp
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -557,7 +557,7 @@ namespace PointOfSaleApp
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -593,7 +593,7 @@ namespace PointOfSaleApp
             this.Controls.Add(this.categoryButtonPanel);
             this.Name = "NewOrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "POS - New Order";
+            this.Text = "a";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewOrderForm_FormClosing);
             this.Load += new System.EventHandler(this.NewOrderForm_Load);
             this.infoPanel.ResumeLayout(false);

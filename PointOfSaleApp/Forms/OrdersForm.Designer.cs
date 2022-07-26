@@ -93,7 +93,7 @@ namespace PointOfSaleApp.Forms
             this.logoutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -136,7 +136,7 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem,
             this.dishesToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 26);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // productsToolStripMenuItem
@@ -175,6 +175,7 @@ namespace PointOfSaleApp.Forms
             this.dataOrdersGridView.ReadOnly = true;
             this.dataOrdersGridView.RowHeadersWidth = 51;
             this.dataOrdersGridView.RowTemplate.Height = 24;
+            this.dataOrdersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataOrdersGridView.Size = new System.Drawing.Size(665, 429);
             this.dataOrdersGridView.TabIndex = 44;
             this.dataOrdersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOrdersGridView_CellClick);

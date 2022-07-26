@@ -27,8 +27,7 @@ namespace PointOfSaleApp.Forms
         private void perDayButton_Click(object sender, EventArgs e)
         {
             Forms.PrintReportPerDay perDay = new PrintReportPerDay();
-            this.Hide();
-            perDay.Show();
+            perDay.ShowDialog();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace PointOfSaleApp
         }
         private void MenuForm_Load(object sender, EventArgs e)
         {
-            if(MyUserClass.userRole == "Admin")
+            if (MyUserClass.userRoleId == 1)
             {
                 newOrderButton.Visible = true;
                 myOrdersButton.Visible = true;
@@ -27,8 +27,9 @@ namespace PointOfSaleApp
                 categoryButton.Visible = true;
                 usersButton.Visible = true;
                 myAccountButton.Visible = true;
+                reportsButton.Visible = true;
             }
-            else if (MyUserClass.userRole == "Waiter")
+            else
             {
                 newOrderButton.Visible = true;
                 myOrdersButton.Visible = true;
@@ -37,6 +38,7 @@ namespace PointOfSaleApp
                 categoryButton.Visible = false;
                 usersButton.Visible = false;
                 myAccountButton.Visible = true;
+                reportsButton.Visible = false;
             }
         }
 
@@ -75,8 +77,8 @@ namespace PointOfSaleApp
         private void addButton_Click(object sender, EventArgs e)
         {
             Forms.AddDishForm addDish = new Forms.AddDishForm();
-            this.Hide();
-            addDish.Show();
+            // this.Hide();
+            addDish.ShowDialog();
         }
 
         private void categoryButton_Click(object sender, EventArgs e)
@@ -93,7 +95,9 @@ namespace PointOfSaleApp
 
         private void MenuButton_Click(object sender, EventArgs e)
         {
-
+            Forms.DishesMenuForm dishesMenu = new Forms.DishesMenuForm();
+            this.Hide();
+            dishesMenu.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,6 +133,13 @@ namespace PointOfSaleApp
             Forms.ReportsForm reports = new Forms.ReportsForm();
             this.Hide();
             reports.Show();
+        }
+
+        private void tablesButton_Click(object sender, EventArgs e)
+        {
+            Forms.AddEditTablesForm addEditTables = new Forms.AddEditTablesForm();
+            this.Hide();
+            addEditTables.Show();
         }
     }
 }

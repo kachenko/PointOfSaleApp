@@ -69,8 +69,8 @@ namespace PointOfSaleApp.Forms
             {
                 int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
-                Classes.SelectedUserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
+                Classes.UserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                Classes.UserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
 
                 Forms.ChangePasswordForm changePassword = new ChangePasswordForm();
                 changePassword.ShowDialog();
@@ -87,9 +87,9 @@ namespace PointOfSaleApp.Forms
             {
                 int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
-                Classes.SelectedUserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
-                Classes.SelectedUserClass.userRole = selectedRow.Cells["role"].Value.ToString();
+                Classes.UserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                Classes.UserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
+                Classes.UserClass.userRole = selectedRow.Cells["role"].Value.ToString();
 
                 Forms.EditUserForm editUser = new EditUserForm();
                 editUser.ShowDialog();
@@ -115,8 +115,8 @@ namespace PointOfSaleApp.Forms
                         command.CommandType = System.Data.CommandType.StoredProcedure;
                         int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                        Classes.SelectedUserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
-                        command.Parameters.AddWithValue("@p_user_id", Classes.SelectedUserClass.userId);
+                        Classes.UserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                        command.Parameters.AddWithValue("@p_user_id", Classes.UserClass.userId);
                         conn.Open();
                         int isDelete = command.ExecuteNonQuery();
                         if (isDelete > 0)
@@ -145,10 +145,10 @@ namespace PointOfSaleApp.Forms
 
         private void clearSelectedUser()
         {
-            Classes.SelectedUserClass.userId = 0;
-            Classes.SelectedUserClass.userLogin = null;
-            Classes.SelectedUserClass.userPassword = null;
-            Classes.SelectedUserClass.userRole = null;
+            Classes.UserClass.userId = 0;
+            Classes.UserClass.userLogin = null;
+            Classes.UserClass.userPassword = null;
+            Classes.UserClass.userRole = null;
         }
     }
 }

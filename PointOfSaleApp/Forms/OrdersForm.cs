@@ -13,7 +13,7 @@ namespace PointOfSaleApp.Forms
 {
     public partial class OrdersForm : Form
     {
-        SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
+        SqlConnection conn = Classes.DataBaseConnectionClass.GetConnection();
 
         public OrdersForm()
         {
@@ -172,7 +172,7 @@ namespace PointOfSaleApp.Forms
             dataDishesGridView.Columns[2].Name = "Quantity";
             dataDishesGridView.Columns[3].Name = "Price";
 
-            string query = "select * from [Order_Dish] od join [Dish] d on d.id = od.dish_id where od.order_id = " + orderID;
+            string query = "select dish_id, d.name, od.quantity, od.quantity * d.price [price] from [Order] o join [Order_Dish] od on o.id = od.order_id join [Dish] d on d.id = od.dish_id where od.order_id = " + orderID;
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
@@ -195,8 +195,9 @@ namespace PointOfSaleApp.Forms
                 DataGridViewRow selectedRow = dataOrdersGridView.Rows[selectedIndex];
                 OrderClass.orderId = int.Parse(selectedRow.Cells["id"].Value.ToString());
 
-                PrintBillForm printBill = new PrintBillForm();
+                Forms.PrintBillForm printBill = new PrintBillForm();
                 printBill.ShowDialog();
+
             }
             catch (Exception ex)
             {

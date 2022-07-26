@@ -32,8 +32,10 @@ namespace PointOfSaleApp.Forms
         {
             nameLabel.Text = MyUserClass.userLogin.ToString();
             positLabel.Text = MyUserClass.userRole.ToString();
+            tableTextBox.Text = OrderClass.orderTableNr.ToString();
             loadCategoryButtons();
             loadOrder();
+
         }
 
         private void loadOrder()
@@ -42,7 +44,7 @@ namespace PointOfSaleApp.Forms
 
             dataOrderGridView.Rows.Clear();
             dataOrderGridView.Refresh();
-            string query = "select * from [Dish] d join [Order_Dish] on [Order_Dish].dish_id = d.id where [Order_Dish].order_id = " + OrderClass.orderId;
+            string query = "select dish_id, d.name, od.quantity, od.quantity * d.price [price] from [Order] o join [Order_Dish] od on o.id = od.order_id join [Dish] d on d.id = od.dish_id where od.order_id = " + OrderClass.orderId;
             conn.Open();
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -52,11 +54,21 @@ namespace PointOfSaleApp.Forms
             foreach (DataRow row in table.Rows)
             {
                 string[] dataGridViewRow = new string[]
-                    { row["id"].ToString(), row["name"].ToString(), row["quantity"].ToString(), row["price"].ToString() };
+                    { row["dish_id"].ToString(), row["name"].ToString(), row["quantity"].ToString(), row["price"].ToString() };
                 dataOrderGridView.Rows.Add(dataGridViewRow);
             }
 
             conn.Close();
+
+            decimal totalPrice = Convert.ToDecimal(table.Compute("SUM(Price)", string.Empty));
+
+            //string query2 = "select price from [Order] where id = " + OrderClass.orderId;
+            //SqlCommand command1 = new SqlCommand(query2, conn);
+            //conn.Open();
+            //object result = command1.ExecuteScalar();
+            //double resultPrice = double.Parse(result.ToString());
+            //conn.Close();
+            totalBillLabel.Text = totalPrice.ToString();
 
         }
 
@@ -260,6 +272,13 @@ namespace PointOfSaleApp.Forms
                         command.ExecuteNonQuery();
                         conn.Close();
                     }
+
+                    double sum = 0;
+                    for (int i = 0; i < dataOrderGridView.Rows.Count; i++)
+                    {
+                        sum += Convert.ToDouble(dataOrderGridView.Rows[i].Cells["price"].Value);
+                    }
+                    totalBillLabel.Text = sum.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -319,6 +338,13 @@ namespace PointOfSaleApp.Forms
                     conn.Close();
                     command1.Parameters.Clear();
                 }
+
+                decimal totalPrice = decimal.Parse(totalBillLabel.Text);
+                string query = "update [Order] set price = " + totalBillLabel.Text + " where id = " + OrderClass.orderId;
+                SqlCommand command = new SqlCommand(query, conn);
+                conn.Open();
+                command.ExecuteScalar();
+                conn.Close();
             }
             catch (Exception ex)
             {
