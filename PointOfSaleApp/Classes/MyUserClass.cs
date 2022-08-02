@@ -63,24 +63,59 @@ namespace PointOfSaleApp
             set { role = value; }
         }
 
-        public static string userAddress { get => address; set => address = value; }
-        public static string userPhone { get => phone; set => phone = value; }
+        public static string userAddress 
+        {
+            get { return address; }
+            set { address = value; }
+        }
+        public static string userPhone 
+        {
+            get { return phone; }
+            set { phone = value; }
+        }
 
-        static public Image loadUserPicture()
+        static public Image loadUserImage()
         {
             byte[] getImage = new byte[0];
-            SqlCommand command1 = new SqlCommand("select image from [User] where id = " + MyUserClass.userId, new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true"));
-            SqlDataAdapter adapter1 = new SqlDataAdapter(command1);
-            command1.CommandType = CommandType.Text;
+            int myUserId = MyUserClass.userId;
+            string query = "select image from [User] where id = " + myUserId;
+            SqlConnection conn = Classes.DataBaseConnectionClass.GetConnection();
+            SqlCommand command = new SqlCommand(query, conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            command.CommandType = CommandType.Text;
             DataSet set = new DataSet();
-            adapter1.Fill(set);
+            adapter.Fill(set);
             foreach (DataRow dr in set.Tables[0].Rows)
             {
-                getImage = (byte[])dr["image"];
+                if (!dr["image"].Equals(System.DBNull.Value))
+                    getImage = (byte[])dr["image"];
+                else
+                    continue;
             }
-            byte[] imageData = getImage;
-            MemoryStream memoryStream = new MemoryStream(imageData);
-            return Image.FromStream(memoryStream);
+            if (getImage != null && getImage.Length > 0)
+            {
+                byte[] imageData = getImage;
+                MemoryStream memoryStream = new MemoryStream(imageData);
+                return Image.FromStream(memoryStream);
+            }
+            else
+            {
+                string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+                return Image.FromFile(projectDirectory + "/PointOfSaleApp/Resources/profile.png");
+            }
+        }
+
+        internal static void ClearMyUser()
+        {
+            userId = 0;
+            userLogin = string.Empty;
+            userPassword = string.Empty;
+            userFullName = string.Empty;
+            userAddress = string.Empty;
+            userPhone = string.Empty;
+            userRoleId = 0;
+            userRole = string.Empty;
+            userIsActive = false;
         }
     }
 }

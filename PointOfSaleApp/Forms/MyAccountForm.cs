@@ -14,7 +14,7 @@ namespace PointOfSaleApp.Forms
 {
     public partial class MyAccountForm : Form
     {
-        SqlConnection conn = new SqlConnection("data source=DESKTOP-FBVOGLE\\SQLEXPRESS;initial catalog=posDB;integrated security=true");
+        SqlConnection conn = Classes.DataBaseConnectionClass.GetConnection();
         public MyAccountForm()
         {
             InitializeComponent();
@@ -22,35 +22,31 @@ namespace PointOfSaleApp.Forms
 
         private void MyAccountForm_Load(object sender, EventArgs e)
         {
-            nameLabel.Text = MyUserClass.userLogin.ToString();
-            loadUserData();
+            try
+            {
+                nameLabel.Text = MyUserClass.userLogin.ToString();
+                loadUserData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void loadUserData()
         {
-            string query = "select u.*, ur.id [role_id], ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id where u.id = " + MyUserClass.userId;
-            DataTable table = new DataTable();
-            SqlCommand command = new SqlCommand(query, conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            adapter.Fill(table);
-            foreach (DataRow row in table.Rows)
-            {
-                userIDTextBox.Text = row["id"].ToString();
-                userLoginTextBox.Text = row["login"].ToString();
-                userFullNameTextBox.Text = row["full_name"].ToString();
-                userAddressTextBox.Text = row["address"].ToString();
-                // userRoleTextBox.Text = row["role"].ToString();
-                loadRoleComboBox();
-                userIsActiveTextBox.Text = row["isActive"].ToString();
-
-                userPictureBox.Image = MyUserClass.loadUserPicture();
-            }
+            userIDTextBox.Text = MyUserClass.userId.ToString();
+            userLoginTextBox.Text = MyUserClass.userLogin;
+            userFullNameTextBox.Text = MyUserClass.userFullName;
+            userAddressTextBox.Text = MyUserClass.userAddress;
+            loadRoleComboBox();
+            userRoleComboBox.SelectedValue = MyUserClass.userRoleId;
+            userIsActiveTextBox.Text = MyUserClass.userIsActive.ToString();
+            userPictureBox.Image = MyUserClass.loadUserImage();
         }
 
         private void loadRoleComboBox()
         {
-            try
-            {
                 string query = "select id, name from [UserRole]";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -60,81 +56,122 @@ namespace PointOfSaleApp.Forms
                 userRoleComboBox.DisplayMember = "name";
                 userRoleComboBox.ValueMember = "id";
                 userRoleComboBox.Enabled = true;
-
                 conn.Open();
                 command.ExecuteNonQuery();
                 conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
-        private bool ableEditUserData()
+        private void ableEditUserData()
         {
-            if (MessageBox.Show("Are you sure you want to edit your data?", "Data editing.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                userFullNameTextBox.Enabled = true;
-                userAddressTextBox.Enabled = true;
-                userPhoneTextBox.Enabled = true;
-                //if (MyUserClass.userRole == "Admin")
-                //{
-                //    userRoleTextBox.Enabled = true;
-                //}
-                saveUserButton.Enabled = true;
-                editUserButton.Enabled = false;
-                return true;
-            }
-            return false;
+            userFullNameTextBox.Enabled = true;
+            userAddressTextBox.Enabled = true;
+            userPhoneTextBox.Enabled = true;
+            if (MyUserClass.userRoleId == 1)
+                userRoleComboBox.Enabled = true;
+            saveUserButton.Enabled = true;
+            editUserButton.Enabled = false;
         }
 
-        private void editUserButton_Click(object sender, EventArgs e)
-        {
-            ableEditUserData();
-        }
-        private void saveUserButton_Click(object sender, EventArgs e)
+    private void editUserButton_Click(object sender, EventArgs e)
+    {
+        if (MessageBox.Show("Are you sure you want to edit your data?", "Data editing.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
         {
             try
             {
-                conn.Open();
-                //string query = "update [User] set login = @login, password = @password, full_name = @full_name, address = @address, phone = @phone, role = @role, image = @image where id = " + MyUserClass.userId;
-                DataRowView dataRow = userRoleComboBox.SelectedItem as DataRowView;
-                int roleID = int.Parse(dataRow.Row["id"].ToString());
-                string query = "update [User] set login = '" + userLoginTextBox.Text + "'," +
-                    "full_name = '" + userFullNameTextBox.Text + "', " + 
-                    "address = '" + userAddressTextBox.Text + "', " +
-                    "phone = '" + userPhoneTextBox.Text + "', " +
-                    "role_id = '" + roleID + "', " +
-                    "image = @image where id = " + MyUserClass.userId;
-                SqlCommand command = new SqlCommand(query, conn);
-                MemoryStream stream = new MemoryStream();
-                userPictureBox.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
-                byte[] setImage = stream.ToArray();
-                command.Parameters.AddWithValue("@image", setImage);
-                command.ExecuteNonQuery();
-                conn.Close();
+                ableEditUserData();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+    }
 
-            userFullNameTextBox.Enabled = false;
-            userAddressTextBox.Enabled = false;
-            userPhoneTextBox.Enabled = false;
-            //if (MyUserClass.userRole == "Admin")
-            //{
-            //    userRoleTextBox.Enabled = false;
-            //}
-            saveUserButton.Enabled = false;
-            editUserButton.Enabled = true;
-            MessageBox.Show("Your data updated", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void saveUserData()
+        {
+            DataRowView dataRow = userRoleComboBox.SelectedItem as DataRowView;
+
+            int p_userID = MyUserClass.userId;
+
+            string p_login;
+            if (userLoginTextBox.Text == null || userLoginTextBox.Text == "")
+                p_login = null;
+            else
+                p_login = userLoginTextBox.Text;
+
+            string p_full_name;
+            if (userFullNameTextBox.Text == null || userFullNameTextBox.Text == "")
+                p_full_name = null;
+            else
+                p_full_name = userFullNameTextBox.Text;
+
+            string p_address;
+            if (userAddressTextBox.Text == null || userAddressTextBox.Text == "")
+                p_address = null;
+            else
+                p_address = userFullNameTextBox.Text;
+
+
+            string p_phone;
+            if (userPhoneTextBox.Text == null || userPhoneTextBox.Text == "")
+                p_phone = null;
+            else
+                p_phone = userFullNameTextBox.Text;
+
+            int p_roleID = int.Parse(dataRow.Row["id"].ToString()); 
+            if (p_roleID == 0)
+                p_roleID = 4;
+
+            MemoryStream stream = new MemoryStream();
+            userPictureBox.Image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+            byte[] setImage = stream.ToArray();
+
+            SqlCommand command = new SqlCommand("[sp_update_user]", conn);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@p_user_id", MyUserClass.userId);
+            command.Parameters.AddWithValue("@p_login", p_login);
+            command.Parameters.AddWithValue("@p_full_name", p_full_name);
+            command.Parameters.AddWithValue("@p_address", p_address);
+            command.Parameters.AddWithValue("@p_phone", p_phone);
+            command.Parameters.AddWithValue("@p_role_id", p_roleID);
+            command.Parameters.AddWithValue("@p_image", setImage);
+            int isSuccess = command.ExecuteNonQuery();
+
+            if (isSuccess == 1)
+                MessageBox.Show("Your data updated.", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Your data is not updated.", "Data Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void saveUserButton_Click(object sender, EventArgs e)
+        {
+
+            if (MessageBox.Show("Are you sure you want to save your data?", "Data editing.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                try
+                {
+                    conn.Open();
+                    saveUserData();
+                    conn.Close();
+
+                    userFullNameTextBox.Enabled = false;
+                    userAddressTextBox.Enabled = false;
+                    userPhoneTextBox.Enabled = false;
+                    if (MyUserClass.userRoleId == 1)
+                        userRoleComboBox.Enabled = false;
+                    saveUserButton.Enabled = false;
+                    editUserButton.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void changeImageButton_Click(object sender, EventArgs e)
         {
-            if (ableEditUserData())
+            if (MessageBox.Show("Are you sure you want to edit your data?", "Data editing.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 Stream stream = null;
                 OpenFileDialog open = new OpenFileDialog();
@@ -165,6 +202,33 @@ namespace PointOfSaleApp.Forms
             MenuForm menu = new MenuForm();
             this.Hide();
             menu.Show();
+        }
+
+        private void returnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("You want to return.\nAre you sure you want to end your session?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.Hide();
+                MyUserClass.ClearMyUser();
+                LoginForm login = new LoginForm();
+                login.Show();
+            }
+        }
+
+        private void newSessionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to end your session?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.Hide();
+                MyUserClass.ClearMyUser();
+                LoginForm login = new LoginForm();
+                login.Show();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

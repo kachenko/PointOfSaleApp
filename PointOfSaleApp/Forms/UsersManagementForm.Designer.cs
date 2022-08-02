@@ -41,14 +41,7 @@ namespace PointOfSaleApp.Forms
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dishesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataUsersGridView = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.login = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.full_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isActive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteOrderButton = new System.Windows.Forms.Button();
+            this.deleteUserButton = new System.Windows.Forms.Button();
             this.editUserButton = new System.Windows.Forms.Button();
             this.addUserButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -149,14 +142,6 @@ namespace PointOfSaleApp.Forms
             this.dataUsersGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataUsersGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataUsersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataUsersGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.login,
-            this.full_name,
-            this.address,
-            this.phone,
-            this.role,
-            this.isActive});
             this.dataUsersGridView.Location = new System.Drawing.Point(12, 72);
             this.dataUsersGridView.Name = "dataUsersGridView";
             this.dataUsersGridView.ReadOnly = true;
@@ -166,68 +151,19 @@ namespace PointOfSaleApp.Forms
             this.dataUsersGridView.Size = new System.Drawing.Size(958, 449);
             this.dataUsersGridView.TabIndex = 45;
             // 
-            // id
+            // deleteUserButton
             // 
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // login
-            // 
-            this.login.HeaderText = "Login";
-            this.login.MinimumWidth = 6;
-            this.login.Name = "login";
-            this.login.ReadOnly = true;
-            // 
-            // full_name
-            // 
-            this.full_name.HeaderText = "Full Name";
-            this.full_name.MinimumWidth = 6;
-            this.full_name.Name = "full_name";
-            this.full_name.ReadOnly = true;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "Address";
-            this.address.MinimumWidth = 6;
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // phone
-            // 
-            this.phone.HeaderText = "Phone";
-            this.phone.MinimumWidth = 6;
-            this.phone.Name = "phone";
-            this.phone.ReadOnly = true;
-            // 
-            // role
-            // 
-            this.role.HeaderText = "Role";
-            this.role.MinimumWidth = 6;
-            this.role.Name = "role";
-            this.role.ReadOnly = true;
-            // 
-            // isActive
-            // 
-            this.isActive.HeaderText = "Active?";
-            this.isActive.MinimumWidth = 6;
-            this.isActive.Name = "isActive";
-            this.isActive.ReadOnly = true;
-            // 
-            // deleteOrderButton
-            // 
-            this.deleteOrderButton.BackColor = System.Drawing.Color.Tomato;
-            this.deleteOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteOrderButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.deleteOrderButton.Location = new System.Drawing.Point(194, 536);
-            this.deleteOrderButton.Name = "deleteOrderButton";
-            this.deleteOrderButton.Size = new System.Drawing.Size(85, 55);
-            this.deleteOrderButton.TabIndex = 50;
-            this.deleteOrderButton.Text = "DELETE";
-            this.deleteOrderButton.UseVisualStyleBackColor = false;
-            this.deleteOrderButton.Click += new System.EventHandler(this.deleteOrderButton_Click);
+            this.deleteUserButton.BackColor = System.Drawing.Color.Tomato;
+            this.deleteUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteUserButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.deleteUserButton.Location = new System.Drawing.Point(194, 536);
+            this.deleteUserButton.Name = "deleteUserButton";
+            this.deleteUserButton.Size = new System.Drawing.Size(85, 55);
+            this.deleteUserButton.TabIndex = 50;
+            this.deleteUserButton.Text = "DELETE";
+            this.deleteUserButton.UseVisualStyleBackColor = false;
+            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
             // 
             // editUserButton
             // 
@@ -288,7 +224,7 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.changePasswdButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addUserButton);
-            this.Controls.Add(this.deleteOrderButton);
+            this.Controls.Add(this.deleteUserButton);
             this.Controls.Add(this.editUserButton);
             this.Controls.Add(this.dataUsersGridView);
             this.Controls.Add(this.menuStrip1);
@@ -317,17 +253,10 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dishesToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataUsersGridView;
-        private System.Windows.Forms.Button deleteOrderButton;
+        private System.Windows.Forms.Button deleteUserButton;
         private System.Windows.Forms.Button editUserButton;
         private System.Windows.Forms.Button addUserButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn login;
-        private System.Windows.Forms.DataGridViewTextBoxColumn full_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn role;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isActive;
         private System.Windows.Forms.Button changePasswdButton;
     }
 }

@@ -14,7 +14,6 @@ namespace PointOfSaleApp.Classes
     {
         private static int id;
         private static string login;
-        private static string password;
         private static string full_name = null;
         private static string address = null;
         private static string phone = null;
@@ -29,11 +28,6 @@ namespace PointOfSaleApp.Classes
         {
             get { return login; }
             set { login = value; }
-        }
-        public static string userPassword
-        {
-            get { return password; }
-            set { password = value; }
         }
 
         public static string userRole
@@ -82,6 +76,17 @@ namespace PointOfSaleApp.Classes
             byte[] imageData = getImage;
             MemoryStream memoryStream = new MemoryStream(imageData);
             return Image.FromStream(memoryStream);
+        }
+
+        internal static void clearSelectedUser()
+        {
+            userId = 0;
+            userLogin = null;
+            userRole = null;
+            userFullName = null;
+            userAddress = null;
+            userPhone = null;
+            IsActive = false;
         }
     }
 }

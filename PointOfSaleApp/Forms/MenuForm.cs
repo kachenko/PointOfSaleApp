@@ -15,8 +15,15 @@ namespace PointOfSaleApp
         public MenuForm()
         {
             InitializeComponent();
+            loginLabel.Text = MyUserClass.userLogin;
+            positLabel.Text = MyUserClass.userRole;
+            accessToButtons();
         }
         private void MenuForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void accessToButtons()
         {
             if (MyUserClass.userRoleId == 1)
             {
@@ -64,7 +71,7 @@ namespace PointOfSaleApp
         {
             if(e.CloseReason == CloseReason.UserClosing)
             {
-                if(MessageBox.Show("Do you really want to exit? MenuForm", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if(MessageBox.Show("Do you really want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     Application.Exit();
                 } else
@@ -77,8 +84,8 @@ namespace PointOfSaleApp
         private void addButton_Click(object sender, EventArgs e)
         {
             Forms.AddDishForm addDish = new Forms.AddDishForm();
-            // this.Hide();
-            addDish.ShowDialog();
+            this.Hide();
+            addDish.Show();
         }
 
         private void categoryButton_Click(object sender, EventArgs e)
@@ -86,11 +93,6 @@ namespace PointOfSaleApp
             Forms.AddCategoryForm addCategory = new Forms.AddCategoryForm();
             this.Hide();
             addCategory.Show();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void MenuButton_Click(object sender, EventArgs e)
@@ -140,6 +142,33 @@ namespace PointOfSaleApp
             Forms.AddEditTablesForm addEditTables = new Forms.AddEditTablesForm();
             this.Hide();
             addEditTables.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void newSessionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to end your session?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.Hide();
+                MyUserClass.ClearMyUser();
+                LoginForm login = new LoginForm();
+                login.Show();
+            }
+        }
+
+        private void returnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("You want to return.\nAre you sure you want to end your session?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                this.Hide();
+                MyUserClass.ClearMyUser();
+                LoginForm login = new LoginForm();
+                login.Show();
+            }
         }
     }
 }

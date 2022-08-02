@@ -17,8 +17,15 @@ namespace PointOfSaleApp.Forms
 
         public UsersManagementForm()
         {
-            InitializeComponent();
-            loadUsers();
+            try
+            {
+                InitializeComponent();
+                loadUsers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,29 +37,31 @@ namespace PointOfSaleApp.Forms
 
         private void loadUsers()
         {
-            try
-            {
-                dataUsersGridView.Rows.Clear();
-                dataUsersGridView.Refresh();
-                string query = "select u.*, ur.name [role] from [User] u join [UserRole] ur on u.role_id = ur.id order by 1";
-                conn.Open();
-                SqlCommand command = new SqlCommand(query, conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
+            dataUsersGridView.Rows.Clear();
+            dataUsersGridView.Refresh();
+            string query = "SELECT * FROM VAllUsersList";
+            conn.Open();
+            SqlCommand command = new SqlCommand(query, conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
 
-                foreach (DataRow row in table.Rows)
-                {
-                    string[] dataGridViewRow = new string[]
-                        { row["id"].ToString(), row["login"].ToString(), row["full_name"].ToString(), row["address"].ToString(), row["phone"].ToString(), row["role"].ToString(), row["isActive"].ToString() };
-                    dataUsersGridView.Rows.Add(dataGridViewRow);
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
+            dataUsersGridView.ColumnCount = 7;
+            dataUsersGridView.Columns[0].Name = "ID";
+            dataUsersGridView.Columns[1].Name = "Login";
+            dataUsersGridView.Columns[2].Name = "FullName";
+            dataUsersGridView.Columns[3].Name = "Address";
+            dataUsersGridView.Columns[4].Name = "Phone";
+            dataUsersGridView.Columns[5].Name = "IsActive";
+            dataUsersGridView.Columns[6].Name = "Role";
+
+            foreach (DataRow row in table.Rows)
             {
-                MessageBox.Show(ex.Message);
+                string[] dataGridViewRow = new string[]
+                    { row["ID"].ToString(), row["Login"].ToString(), row["FullName"].ToString(), row["Address"].ToString(), row["Phone"].ToString(), row["IsActive"].ToString(), row["Role"].ToString() };
+                dataUsersGridView.Rows.Add(dataGridViewRow);
             }
+            conn.Close();
         }
 
         private void addUserButton_Click(object sender, EventArgs e)
@@ -67,11 +76,8 @@ namespace PointOfSaleApp.Forms
         {
             try
             {
-                int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                Classes.UserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
-                Classes.UserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
-
+                getUserInfo();
+                
                 Forms.ChangePasswordForm changePassword = new ChangePasswordForm();
                 changePassword.ShowDialog();
             } 
@@ -81,21 +87,42 @@ namespace PointOfSaleApp.Forms
             }
         }
 
+        private void getUserInfo()
+        {
+            int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
+            int userID = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+            string query = "SELECT * FROM [User] WHERE id = @p_id";
+
+            conn.Open();
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@p_id", userID);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+
+            foreach (DataRow row in table.Rows)
+            {
+                Classes.UserClass.userId = int.Parse(row["id"].ToString());
+                Classes.UserClass.userLogin = row["login"].ToString();
+                Classes.UserClass.userFullName = row["full_name"].ToString();
+                Classes.UserClass.userAddress = row["address"].ToString();
+                Classes.UserClass.userPhone = row["phone"].ToString();
+                Classes.UserClass.IsActive = bool.Parse(row["isActive"].ToString());
+            }
+            Classes.UserClass.userRole = selectedRow.Cells["Role"].Value.ToString();
+            
+        }
+
         private void editUserButton_Click(object sender, EventArgs e)
         {
             try
             {
-                int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                Classes.UserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
-                Classes.UserClass.userLogin = selectedRow.Cells["login"].Value.ToString();
-                Classes.UserClass.userRole = selectedRow.Cells["role"].Value.ToString();
+                getUserInfo();
 
                 Forms.EditUserForm editUser = new EditUserForm();
                 editUser.ShowDialog();
                 loadUsers();
-
-                
             }
             catch (Exception ex)
             {
@@ -103,7 +130,7 @@ namespace PointOfSaleApp.Forms
             }
         }
 
-        private void deleteOrderButton_Click(object sender, EventArgs e)
+        private void deleteUserButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -113,9 +140,7 @@ namespace PointOfSaleApp.Forms
                     {
                         SqlCommand command = new SqlCommand("[sp_delete_user]", conn); 
                         command.CommandType = System.Data.CommandType.StoredProcedure;
-                        int selectedIndex = dataUsersGridView.SelectedCells[0].RowIndex;
-                        DataGridViewRow selectedRow = dataUsersGridView.Rows[selectedIndex];
-                        Classes.UserClass.userId = int.Parse(selectedRow.Cells["id"].Value.ToString());
+                        getUserInfo();
                         command.Parameters.AddWithValue("@p_user_id", Classes.UserClass.userId);
                         conn.Open();
                         int isDelete = command.ExecuteNonQuery();
@@ -134,7 +159,7 @@ namespace PointOfSaleApp.Forms
                 {
                     MessageBox.Show("Please select data.", "Delete User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 }
-                clearSelectedUser();
+                Classes.UserClass.clearSelectedUser();
                 loadUsers();
             }
             catch (Exception ex)
@@ -143,12 +168,5 @@ namespace PointOfSaleApp.Forms
             }
         }
 
-        private void clearSelectedUser()
-        {
-            Classes.UserClass.userId = 0;
-            Classes.UserClass.userLogin = null;
-            Classes.UserClass.userPassword = null;
-            Classes.UserClass.userRole = null;
-        }
     }
 }

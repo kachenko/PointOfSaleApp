@@ -20,8 +20,6 @@ namespace PointOfSaleApp.Forms
         {
             InitializeComponent();
             passwordTextBox.Text = repeatPassTextBox.Text = defaultPassword;
-            // repeatPassTextBox.Text = defaultPassword;
-            loginTextBox.Focus();
         }
 
         private void changePassButton_Click(object sender, EventArgs e)
@@ -51,7 +49,9 @@ namespace PointOfSaleApp.Forms
                         else
                         {
                             MessageBox.Show("User is not found. Check the data.", "Change Admin Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loginTextBox.Focus();
+                            passwordTextBox.Focus();
+                            conn.Close();
+                            return;
                         }
                         conn.Close();
 
@@ -63,6 +63,7 @@ namespace PointOfSaleApp.Forms
                         else
                         {
                             MessageBox.Show("Sorry, but you are not an administrator. Contact your administrator to change your password.", "Change Admin Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
                         }
                     }
                 }
@@ -106,6 +107,20 @@ namespace PointOfSaleApp.Forms
         {
             passwordTextBox.Text = repeatPassTextBox.Text = defaultPassword;
             // repeatPassTextBox.Text = defaultPassword;
+        }
+
+        private void showPassCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (showPassCheckBox.Checked)
+            {
+                passwordTextBox.UseSystemPasswordChar = false;
+                repeatPassTextBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                passwordTextBox.UseSystemPasswordChar = true;
+                repeatPassTextBox.UseSystemPasswordChar = true;
+            }
         }
     }
 }

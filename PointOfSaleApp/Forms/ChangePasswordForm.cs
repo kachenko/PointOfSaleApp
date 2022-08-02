@@ -14,41 +14,34 @@ namespace PointOfSaleApp.Forms
     public partial class ChangePasswordForm : Form
     {
         SqlConnection conn = Classes.DataBaseConnectionClass.GetConnection();
-        string defaultPassword = "12345";
+        const string defaultPassword = "12345";
 
         public ChangePasswordForm()
         {
             InitializeComponent();
-            passwordTextBox.Text = defaultPassword;
-            passwordTextBox.UseSystemPasswordChar = true;
-            loadUserInfo(Classes.UserClass.userId);
         }
 
-        public void loadUserInfo(int id)
+        private void ChangePasswordForm_Load(object sender, EventArgs e)
         {
-            string query = "select id, login from [User] where id = " + id;
-            SqlCommand command = new SqlCommand(query, conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
+            loginTextBox.Focus();
+            passwordTextBox.Text = defaultPassword;
+            passwordTextBox.UseSystemPasswordChar = true;
+            loadUserInfo();
+        }
 
-            foreach (DataRow row in table.Rows)
-            {
-                userIDTextBox.Text = row["id"].ToString();
-                loginTextBox.Text = row["login"].ToString();
-            }
+
+        public void loadUserInfo()
+        {
+                userIDTextBox.Text = Classes.UserClass.userId.ToString();
+                loginTextBox.Text = Classes.UserClass.userLogin;
         }
 
         private void showPassCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (showPassCheckBox.Checked)
-            {
                 passwordTextBox.UseSystemPasswordChar = false;
-            }
             else
-            {
                 passwordTextBox.UseSystemPasswordChar = true;
-            }
         }
 
         private void setDefaultButton_Click(object sender, EventArgs e)
@@ -86,9 +79,5 @@ namespace PointOfSaleApp.Forms
             }
         }
 
-        private void ChangePasswordForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

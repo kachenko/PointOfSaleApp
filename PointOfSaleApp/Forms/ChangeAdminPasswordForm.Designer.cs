@@ -31,10 +31,10 @@ namespace PointOfSaleApp.Forms
         {
             this.setDefaultButton = new System.Windows.Forms.Button();
             this.showPassCheckBox = new System.Windows.Forms.CheckBox();
-            this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.changePassButton = new System.Windows.Forms.Button();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
             this.repeatPassTextBox = new System.Windows.Forms.TextBox();
             this.repeatPasswordLabel = new System.Windows.Forms.Label();
@@ -62,15 +62,17 @@ namespace PointOfSaleApp.Forms
             this.showPassCheckBox.TabIndex = 87;
             this.showPassCheckBox.Text = "Show Password";
             this.showPassCheckBox.UseVisualStyleBackColor = true;
+            this.showPassCheckBox.CheckedChanged += new System.EventHandler(this.showPassCheckBox_CheckedChanged);
             // 
-            // loginTextBox
+            // passwordTextBox
             // 
-            this.loginTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginTextBox.Location = new System.Drawing.Point(152, 31);
-            this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(252, 30);
-            this.loginTextBox.TabIndex = 84;
+            this.passwordTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.passwordTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.Location = new System.Drawing.Point(152, 67);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(252, 30);
+            this.passwordTextBox.TabIndex = 92;
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -92,19 +94,19 @@ namespace PointOfSaleApp.Forms
             this.changePassButton.Location = new System.Drawing.Point(288, 168);
             this.changePassButton.Name = "changePassButton";
             this.changePassButton.Size = new System.Drawing.Size(116, 55);
-            this.changePassButton.TabIndex = 82;
+            this.changePassButton.TabIndex = 94;
             this.changePassButton.Text = "CHANGE PASSWORD";
             this.changePassButton.UseVisualStyleBackColor = false;
             this.changePassButton.Click += new System.EventHandler(this.changePassButton_Click);
             // 
-            // passwordTextBox
+            // loginTextBox
             // 
-            this.passwordTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.passwordTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.Location = new System.Drawing.Point(152, 67);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(252, 30);
-            this.passwordTextBox.TabIndex = 81;
+            this.loginTextBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.loginTextBox.Font = new System.Drawing.Font("Malgun Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginTextBox.Location = new System.Drawing.Point(152, 31);
+            this.loginTextBox.Name = "loginTextBox";
+            this.loginTextBox.Size = new System.Drawing.Size(252, 30);
+            this.loginTextBox.TabIndex = 91;
             // 
             // passwordLabel
             // 
@@ -124,7 +126,8 @@ namespace PointOfSaleApp.Forms
             this.repeatPassTextBox.Location = new System.Drawing.Point(152, 103);
             this.repeatPassTextBox.Name = "repeatPassTextBox";
             this.repeatPassTextBox.Size = new System.Drawing.Size(252, 30);
-            this.repeatPassTextBox.TabIndex = 90;
+            this.repeatPassTextBox.TabIndex = 93;
+            this.repeatPassTextBox.UseSystemPasswordChar = true;
             // 
             // repeatPasswordLabel
             // 
@@ -147,10 +150,10 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.repeatPasswordLabel);
             this.Controls.Add(this.setDefaultButton);
             this.Controls.Add(this.showPassCheckBox);
-            this.Controls.Add(this.loginTextBox);
+            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.changePassButton);
-            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.passwordLabel);
             this.Name = "ChangeAdminPasswordForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -164,10 +167,10 @@ namespace PointOfSaleApp.Forms
 
         private System.Windows.Forms.Button setDefaultButton;
         private System.Windows.Forms.CheckBox showPassCheckBox;
-        private System.Windows.Forms.TextBox loginTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button changePassButton;
-        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox loginTextBox;
         private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox repeatPassTextBox;
         private System.Windows.Forms.Label repeatPasswordLabel;
