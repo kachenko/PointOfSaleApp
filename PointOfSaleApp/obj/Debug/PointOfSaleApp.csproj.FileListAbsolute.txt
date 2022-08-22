@@ -16,9 +16,7 @@ C:\Users\Mariia\source\repos\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddPr
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\PointOfSaleApp.exe.config
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\PointOfSaleApp.exe
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\PointOfSaleApp.pdb
-C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddCategoryForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddDishForm.resources
-C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddProductForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.LoginForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.NewOrderForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.MenuForm.resources
@@ -213,8 +211,6 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\pt\Micr
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.AssemblyReference.cache
-C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.PrintReportPerDay.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.ReportsForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.DishesMenuForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.AddEditTablesForm.resources
@@ -223,3 +219,11 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microso
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microsoft.IdentityModel.Protocols.xml
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.ChangeAdminPasswordForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.UserLogoControl.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.UserMenuControl.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.AssemblyReference.cache
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.InfoForReportsForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.PrintReportPerMonth.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.PrintReportPerYear.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.PrintReportPerDay.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.PaymentMethodForm.resources

@@ -11,8 +11,9 @@ namespace PointOfSaleApp
         private static int id;
         private static int table_nr;
         private static DateTime time;
-        private static double price;
+        private static decimal price;
         private static bool isActive;
+        private static List<int> dishesId = new List<int>();
 
         public static int orderId
         {
@@ -29,7 +30,8 @@ namespace PointOfSaleApp
             get { return time; }
             set { time = value; }
         }
-        public static double orderPrice
+
+        public static decimal orderPrice
         {
             get { return price; }
             set { price = value; }
@@ -38,6 +40,21 @@ namespace PointOfSaleApp
         {
             get { return isActive; }
             set { isActive = value; }
+        }
+
+        public static List<int> DishesId 
+        { 
+            get => dishesId; 
+            set => dishesId = value; 
+        }
+
+        internal static void clearData()
+        {
+            orderId = 0;
+            orderTableNr = 0;
+            orderTime = DateTime.Now;
+            orderPrice = 0;
+            orderIsActive = false;
         }
     }
 }

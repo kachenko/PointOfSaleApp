@@ -24,7 +24,7 @@ namespace PointOfSaleApp {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class dailyReportDataSet : global::System.Data.DataSet {
         
-        private sp_day_reportDataTable tablesp_day_report;
+        private VDayReportDataTable tableVDayReport;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace PointOfSaleApp {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["sp_day_report"] != null)) {
-                    base.Tables.Add(new sp_day_reportDataTable(ds.Tables["sp_day_report"]));
+                if ((ds.Tables["VDayReport"] != null)) {
+                    base.Tables.Add(new VDayReportDataTable(ds.Tables["VDayReport"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace PointOfSaleApp {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public sp_day_reportDataTable sp_day_report {
+        public VDayReportDataTable VDayReport {
             get {
-                return this.tablesp_day_report;
+                return this.tableVDayReport;
             }
         }
         
@@ -152,8 +152,8 @@ namespace PointOfSaleApp {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["sp_day_report"] != null)) {
-                    base.Tables.Add(new sp_day_reportDataTable(ds.Tables["sp_day_report"]));
+                if ((ds.Tables["VDayReport"] != null)) {
+                    base.Tables.Add(new VDayReportDataTable(ds.Tables["VDayReport"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace PointOfSaleApp {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tablesp_day_report = ((sp_day_reportDataTable)(base.Tables["sp_day_report"]));
+            this.tableVDayReport = ((VDayReportDataTable)(base.Tables["VDayReport"]));
             if ((initTable == true)) {
-                if ((this.tablesp_day_report != null)) {
-                    this.tablesp_day_report.InitVars();
+                if ((this.tableVDayReport != null)) {
+                    this.tableVDayReport.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace PointOfSaleApp {
             this.Namespace = "http://tempuri.org/dailyReportDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tablesp_day_report = new sp_day_reportDataTable();
-            base.Tables.Add(this.tablesp_day_report);
+            this.tableVDayReport = new VDayReportDataTable();
+            base.Tables.Add(this.tableVDayReport);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializesp_day_report() {
+        private bool ShouldSerializeVDayReport() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace PointOfSaleApp {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void sp_day_reportRowChangeEventHandler(object sender, sp_day_reportRowChangeEvent e);
+        public delegate void VDayReportRowChangeEventHandler(object sender, VDayReportRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class sp_day_reportDataTable : global::System.Data.TypedTableBase<sp_day_reportRow> {
+        public partial class VDayReportDataTable : global::System.Data.TypedTableBase<VDayReportRow> {
             
             private global::System.Data.DataColumn columnid;
             
@@ -287,14 +287,18 @@ namespace PointOfSaleApp {
             
             private global::System.Data.DataColumn columnprice;
             
+            private global::System.Data.DataColumn columnpayment_id;
+            
             private global::System.Data.DataColumn columnuser_id;
             
             private global::System.Data.DataColumn columnisActive;
             
+            private global::System.Data.DataColumn columnlogin;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportDataTable() {
-                this.TableName = "sp_day_report";
+            public VDayReportDataTable() {
+                this.TableName = "VDayReport";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -302,7 +306,7 @@ namespace PointOfSaleApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal sp_day_reportDataTable(global::System.Data.DataTable table) {
+            internal VDayReportDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -319,7 +323,7 @@ namespace PointOfSaleApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected sp_day_reportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected VDayReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -358,6 +362,14 @@ namespace PointOfSaleApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn payment_idColumn {
+                get {
+                    return this.columnpayment_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn user_idColumn {
                 get {
                     return this.columnuser_id;
@@ -374,6 +386,14 @@ namespace PointOfSaleApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn loginColumn {
+                get {
+                    return this.columnlogin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -383,57 +403,59 @@ namespace PointOfSaleApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportRow this[int index] {
+            public VDayReportRow this[int index] {
                 get {
-                    return ((sp_day_reportRow)(this.Rows[index]));
+                    return ((VDayReportRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event sp_day_reportRowChangeEventHandler sp_day_reportRowChanging;
+            public event VDayReportRowChangeEventHandler VDayReportRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event sp_day_reportRowChangeEventHandler sp_day_reportRowChanged;
+            public event VDayReportRowChangeEventHandler VDayReportRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event sp_day_reportRowChangeEventHandler sp_day_reportRowDeleting;
+            public event VDayReportRowChangeEventHandler VDayReportRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event sp_day_reportRowChangeEventHandler sp_day_reportRowDeleted;
+            public event VDayReportRowChangeEventHandler VDayReportRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Addsp_day_reportRow(sp_day_reportRow row) {
+            public void AddVDayReportRow(VDayReportRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportRow Addsp_day_reportRow(System.DateTime datetime, int table_nr, decimal price, short user_id, bool isActive) {
-                sp_day_reportRow rowsp_day_reportRow = ((sp_day_reportRow)(this.NewRow()));
+            public VDayReportRow AddVDayReportRow(short id, System.DateTime datetime, int table_nr, decimal price, short payment_id, short user_id, bool isActive, string login) {
+                VDayReportRow rowVDayReportRow = ((VDayReportRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        id,
                         datetime,
                         table_nr,
                         price,
+                        payment_id,
                         user_id,
-                        isActive};
-                rowsp_day_reportRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowsp_day_reportRow);
-                return rowsp_day_reportRow;
+                        isActive,
+                        login};
+                rowVDayReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowVDayReportRow);
+                return rowVDayReportRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportRow FindByid(short id) {
-                return ((sp_day_reportRow)(this.Rows.Find(new object[] {
+            public VDayReportRow FindByid(short id) {
+                return ((VDayReportRow)(this.Rows.Find(new object[] {
                             id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                sp_day_reportDataTable cln = ((sp_day_reportDataTable)(base.Clone()));
+                VDayReportDataTable cln = ((VDayReportDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -441,7 +463,7 @@ namespace PointOfSaleApp {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new sp_day_reportDataTable();
+                return new VDayReportDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -451,8 +473,10 @@ namespace PointOfSaleApp {
                 this.columndatetime = base.Columns["datetime"];
                 this.columntable_nr = base.Columns["table_nr"];
                 this.columnprice = base.Columns["price"];
+                this.columnpayment_id = base.Columns["payment_id"];
                 this.columnuser_id = base.Columns["user_id"];
                 this.columnisActive = base.Columns["isActive"];
+                this.columnlogin = base.Columns["login"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -466,49 +490,51 @@ namespace PointOfSaleApp {
                 base.Columns.Add(this.columntable_nr);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
+                this.columnpayment_id = new global::System.Data.DataColumn("payment_id", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpayment_id);
                 this.columnuser_id = new global::System.Data.DataColumn("user_id", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnuser_id);
                 this.columnisActive = new global::System.Data.DataColumn("isActive", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnisActive);
+                this.columnlogin = new global::System.Data.DataColumn("login", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlogin);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
-                this.columnid.AutoIncrement = true;
-                this.columnid.AutoIncrementSeed = -1;
-                this.columnid.AutoIncrementStep = -1;
                 this.columnid.AllowDBNull = false;
-                this.columnid.ReadOnly = true;
                 this.columnid.Unique = true;
                 this.columndatetime.AllowDBNull = false;
                 this.columntable_nr.AllowDBNull = false;
                 this.columnprice.AllowDBNull = false;
                 this.columnuser_id.AllowDBNull = false;
                 this.columnisActive.AllowDBNull = false;
+                this.columnlogin.AllowDBNull = false;
+                this.columnlogin.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportRow Newsp_day_reportRow() {
-                return ((sp_day_reportRow)(this.NewRow()));
+            public VDayReportRow NewVDayReportRow() {
+                return ((VDayReportRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new sp_day_reportRow(builder);
+                return new VDayReportRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(sp_day_reportRow);
+                return typeof(VDayReportRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.sp_day_reportRowChanged != null)) {
-                    this.sp_day_reportRowChanged(this, new sp_day_reportRowChangeEvent(((sp_day_reportRow)(e.Row)), e.Action));
+                if ((this.VDayReportRowChanged != null)) {
+                    this.VDayReportRowChanged(this, new VDayReportRowChangeEvent(((VDayReportRow)(e.Row)), e.Action));
                 }
             }
             
@@ -516,8 +542,8 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.sp_day_reportRowChanging != null)) {
-                    this.sp_day_reportRowChanging(this, new sp_day_reportRowChangeEvent(((sp_day_reportRow)(e.Row)), e.Action));
+                if ((this.VDayReportRowChanging != null)) {
+                    this.VDayReportRowChanging(this, new VDayReportRowChangeEvent(((VDayReportRow)(e.Row)), e.Action));
                 }
             }
             
@@ -525,8 +551,8 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.sp_day_reportRowDeleted != null)) {
-                    this.sp_day_reportRowDeleted(this, new sp_day_reportRowChangeEvent(((sp_day_reportRow)(e.Row)), e.Action));
+                if ((this.VDayReportRowDeleted != null)) {
+                    this.VDayReportRowDeleted(this, new VDayReportRowChangeEvent(((VDayReportRow)(e.Row)), e.Action));
                 }
             }
             
@@ -534,14 +560,14 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.sp_day_reportRowDeleting != null)) {
-                    this.sp_day_reportRowDeleting(this, new sp_day_reportRowChangeEvent(((sp_day_reportRow)(e.Row)), e.Action));
+                if ((this.VDayReportRowDeleting != null)) {
+                    this.VDayReportRowDeleting(this, new VDayReportRowChangeEvent(((VDayReportRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Removesp_day_reportRow(sp_day_reportRow row) {
+            public void RemoveVDayReportRow(VDayReportRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -568,7 +594,7 @@ namespace PointOfSaleApp {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "sp_day_reportDataTable";
+                attribute2.FixedValue = "VDayReportDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -612,25 +638,25 @@ namespace PointOfSaleApp {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class sp_day_reportRow : global::System.Data.DataRow {
+        public partial class VDayReportRow : global::System.Data.DataRow {
             
-            private sp_day_reportDataTable tablesp_day_report;
+            private VDayReportDataTable tableVDayReport;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal sp_day_reportRow(global::System.Data.DataRowBuilder rb) : 
+            internal VDayReportRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablesp_day_report = ((sp_day_reportDataTable)(this.Table));
+                this.tableVDayReport = ((VDayReportDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public short id {
                 get {
-                    return ((short)(this[this.tablesp_day_report.idColumn]));
+                    return ((short)(this[this.tableVDayReport.idColumn]));
                 }
                 set {
-                    this[this.tablesp_day_report.idColumn] = value;
+                    this[this.tableVDayReport.idColumn] = value;
                 }
             }
             
@@ -638,10 +664,10 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime datetime {
                 get {
-                    return ((global::System.DateTime)(this[this.tablesp_day_report.datetimeColumn]));
+                    return ((global::System.DateTime)(this[this.tableVDayReport.datetimeColumn]));
                 }
                 set {
-                    this[this.tablesp_day_report.datetimeColumn] = value;
+                    this[this.tableVDayReport.datetimeColumn] = value;
                 }
             }
             
@@ -649,10 +675,10 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int table_nr {
                 get {
-                    return ((int)(this[this.tablesp_day_report.table_nrColumn]));
+                    return ((int)(this[this.tableVDayReport.table_nrColumn]));
                 }
                 set {
-                    this[this.tablesp_day_report.table_nrColumn] = value;
+                    this[this.tableVDayReport.table_nrColumn] = value;
                 }
             }
             
@@ -660,10 +686,26 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal price {
                 get {
-                    return ((decimal)(this[this.tablesp_day_report.priceColumn]));
+                    return ((decimal)(this[this.tableVDayReport.priceColumn]));
                 }
                 set {
-                    this[this.tablesp_day_report.priceColumn] = value;
+                    this[this.tableVDayReport.priceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public short payment_id {
+                get {
+                    try {
+                        return ((short)(this[this.tableVDayReport.payment_idColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Wartość z kolumny \'payment_id\' w tabeli \'VDayReport\' to DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableVDayReport.payment_idColumn] = value;
                 }
             }
             
@@ -671,10 +713,10 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public short user_id {
                 get {
-                    return ((short)(this[this.tablesp_day_report.user_idColumn]));
+                    return ((short)(this[this.tableVDayReport.user_idColumn]));
                 }
                 set {
-                    this[this.tablesp_day_report.user_idColumn] = value;
+                    this[this.tableVDayReport.user_idColumn] = value;
                 }
             }
             
@@ -682,11 +724,34 @@ namespace PointOfSaleApp {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool isActive {
                 get {
-                    return ((bool)(this[this.tablesp_day_report.isActiveColumn]));
+                    return ((bool)(this[this.tableVDayReport.isActiveColumn]));
                 }
                 set {
-                    this[this.tablesp_day_report.isActiveColumn] = value;
+                    this[this.tableVDayReport.isActiveColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string login {
+                get {
+                    return ((string)(this[this.tableVDayReport.loginColumn]));
+                }
+                set {
+                    this[this.tableVDayReport.loginColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Ispayment_idNull() {
+                return this.IsNull(this.tableVDayReport.payment_idColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setpayment_idNull() {
+                this[this.tableVDayReport.payment_idColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -694,22 +759,22 @@ namespace PointOfSaleApp {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class sp_day_reportRowChangeEvent : global::System.EventArgs {
+        public class VDayReportRowChangeEvent : global::System.EventArgs {
             
-            private sp_day_reportRow eventRow;
+            private VDayReportRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportRowChangeEvent(sp_day_reportRow row, global::System.Data.DataRowAction action) {
+            public VDayReportRowChangeEvent(VDayReportRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public sp_day_reportRow Row {
+            public VDayReportRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -737,7 +802,7 @@ namespace PointOfSaleApp.dailyReportDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class sp_day_reportTableAdapter : global::System.ComponentModel.Component {
+    public partial class VDayReportTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -751,7 +816,7 @@ namespace PointOfSaleApp.dailyReportDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public sp_day_reportTableAdapter() {
+        public VDayReportTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -848,13 +913,15 @@ namespace PointOfSaleApp.dailyReportDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "sp_day_report";
+            tableMapping.DataSetTable = "VDayReport";
             tableMapping.ColumnMappings.Add("id", "id");
             tableMapping.ColumnMappings.Add("datetime", "datetime");
             tableMapping.ColumnMappings.Add("table_nr", "table_nr");
             tableMapping.ColumnMappings.Add("price", "price");
+            tableMapping.ColumnMappings.Add("payment_id", "payment_id");
             tableMapping.ColumnMappings.Add("user_id", "user_id");
             tableMapping.ColumnMappings.Add("isActive", "isActive");
+            tableMapping.ColumnMappings.Add("login", "login");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -871,16 +938,16 @@ namespace PointOfSaleApp.dailyReportDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.sp_day_report";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].CommandText = "SELECT id, datetime, table_nr, price, payment_id, user_id, isActive, login FROM d" +
+                "bo.VDayReport";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dailyReportDataSet.sp_day_reportDataTable dataTable) {
+        public virtual int Fill(dailyReportDataSet.VDayReportDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -893,9 +960,9 @@ namespace PointOfSaleApp.dailyReportDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dailyReportDataSet.sp_day_reportDataTable GetData() {
+        public virtual dailyReportDataSet.VDayReportDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dailyReportDataSet.sp_day_reportDataTable dataTable = new dailyReportDataSet.sp_day_reportDataTable();
+            dailyReportDataSet.VDayReportDataTable dataTable = new dailyReportDataSet.VDayReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

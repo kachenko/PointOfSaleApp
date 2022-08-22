@@ -173,6 +173,7 @@
     <Compile Include="Classes\DataBaseConnectionClass.cs" />
     <Compile Include="Classes\CategoryClass.cs" />
     <Compile Include="Classes\DishClass.cs" />
+    <Compile Include="Classes\RestaurantClass.cs" />
     <Compile Include="Classes\UserClass.cs" />
     <Compile Include="dailyReportDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -185,206 +186,241 @@
     <Compile Include="Forms\AddEditTablesForm.Designer.cs">
       <DependentUpon>AddEditTablesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddUserForm.cs">
+    <Compile Include="Forms\PaymentMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddUserForm.Designer.cs">
-      <DependentUpon>AddUserForm.cs</DependentUpon>
+    <Compile Include="Forms\PaymentMethodForm.Designer.cs">
+      <DependentUpon>PaymentMethodForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChangeAdminPasswordForm.cs">
+    <Compile Include="Forms\Reports\InfoForReportsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChangeAdminPasswordForm.Designer.cs">
-      <DependentUpon>ChangeAdminPasswordForm.cs</DependentUpon>
+    <Compile Include="Forms\Reports\InfoForReportsForm.Designer.cs">
+      <DependentUpon>InfoForReportsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ChangePasswordForm.cs">
+    <Compile Include="Forms\Reports\PrintReportPerDay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ChangePasswordForm.Designer.cs">
-      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DishesMenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DishesMenuForm.Designer.cs">
-      <DependentUpon>DishesMenuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\EditOrderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\EditOrderForm.Designer.cs">
-      <DependentUpon>EditOrderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\EditUserForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\EditUserForm.Designer.cs">
-      <DependentUpon>EditUserForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MyAccountForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MyAccountForm.Designer.cs">
-      <DependentUpon>MyAccountForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Old\AddCategoryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Old\AddCategoryForm.Designer.cs">
-      <DependentUpon>AddCategoryForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AddCategoryForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddCategoryForm2.Designer.cs">
-      <DependentUpon>AddCategoryForm2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\AddDishForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddDishForm.Designer.cs">
-      <DependentUpon>AddDishForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Old\AddProductForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Old\AddProductForm.Designer.cs">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\NewOrderForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NewOrderForm.Designer.cs">
-      <DependentUpon>NewOrderForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MenuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MenuForm.Designer.cs">
-      <DependentUpon>MenuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\OrdersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\OrdersForm.Designer.cs">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\OrderTableForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\OrderTableForm.Designer.cs">
-      <DependentUpon>OrderTableForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PaymentForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PaymentForm.Designer.cs">
-      <DependentUpon>PaymentForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PrintBillForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PrintBillForm.Designer.cs">
-      <DependentUpon>PrintBillForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\PrintReportPerDay.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\PrintReportPerDay.Designer.cs">
+    <Compile Include="Forms\Reports\PrintReportPerDay.Designer.cs">
       <DependentUpon>PrintReportPerDay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ReportsForm.cs">
+    <Compile Include="Forms\Reports\PrintReportPerMonth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ReportsForm.Designer.cs">
+    <Compile Include="Forms\Reports\PrintReportPerMonth.Designer.cs">
+      <DependentUpon>PrintReportPerMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\PrintReportPerYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\PrintReportPerYear.Designer.cs">
+      <DependentUpon>PrintReportPerYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\ChangeAdminPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\ChangeAdminPasswordForm.Designer.cs">
+      <DependentUpon>ChangeAdminPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\ChangePasswordForm.Designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dishes\DishesMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dishes\DishesMenuForm.Designer.cs">
+      <DependentUpon>DishesMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\EditOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\EditOrderForm.Designer.cs">
+      <DependentUpon>EditOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\EditUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\EditUserForm.Designer.cs">
+      <DependentUpon>EditUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Users\MyAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Users\MyAccountForm.Designer.cs">
+      <DependentUpon>MyAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Categories\AddCategoryForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Categories\AddCategoryForm2.Designer.cs">
+      <DependentUpon>AddCategoryForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dishes\AddDishForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dishes\AddDishForm.Designer.cs">
+      <DependentUpon>AddDishForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mains\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mains\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\NewOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\NewOrderForm.Designer.cs">
+      <DependentUpon>NewOrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Mains\MenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Mains\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\OrdersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\OrdersForm.Designer.cs">
+      <DependentUpon>OrdersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\OrderTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\OrderTableForm.Designer.cs">
+      <DependentUpon>OrderTableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Orders\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Orders\PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\PrintBillForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\PrintBillForm.Designer.cs">
+      <DependentUpon>PrintBillForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UsersManagementForm.cs">
+    <Compile Include="Forms\Users\UsersManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UsersManagementForm.Designer.cs">
+    <Compile Include="Forms\Users\UsersManagementForm.Designer.cs">
       <DependentUpon>UsersManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\OrderClass.cs" />
-    <Compile Include="posDBDataSet.Designer.cs">
+    <Compile Include="monthlyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>posDBDataSet.xsd</DependentUpon>
+      <DependentUpon>monthlyDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\MyUserClass.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UserLogoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserLogoControl.Designer.cs">
+      <DependentUpon>UserLogoControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserMenuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserMenuControl.Designer.cs">
+      <DependentUpon>UserMenuControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="yearlyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>yearlyDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AddEditTablesForm.resx">
       <DependentUpon>AddEditTablesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddUserForm.resx">
-      <DependentUpon>AddUserForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PaymentMethodForm.resx">
+      <DependentUpon>PaymentMethodForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ChangeAdminPasswordForm.resx">
-      <DependentUpon>ChangeAdminPasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Reports\InfoForReportsForm.resx">
+      <DependentUpon>InfoForReportsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ChangePasswordForm.resx">
-      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DishesMenuForm.resx">
-      <DependentUpon>DishesMenuForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditOrderForm.resx">
-      <DependentUpon>EditOrderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditUserForm.resx">
-      <DependentUpon>EditUserForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MyAccountForm.resx">
-      <DependentUpon>MyAccountForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Old\AddCategoryForm.resx">
-      <DependentUpon>AddCategoryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddCategoryForm2.resx">
-      <DependentUpon>AddCategoryForm2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddDishForm.resx">
-      <DependentUpon>AddDishForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Old\AddProductForm.resx">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewOrderForm.resx">
-      <DependentUpon>NewOrderForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MenuForm.resx">
-      <DependentUpon>MenuForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OrdersForm.resx">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OrderTableForm.resx">
-      <DependentUpon>OrderTableForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PaymentForm.resx">
-      <DependentUpon>PaymentForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrintBillForm.resx">
-      <DependentUpon>PrintBillForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PrintReportPerDay.resx">
+    <EmbeddedResource Include="Forms\Reports\PrintReportPerDay.resx">
       <DependentUpon>PrintReportPerDay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ReportsForm.resx">
+    <EmbeddedResource Include="Forms\Reports\PrintReportPerMonth.resx">
+      <DependentUpon>PrintReportPerMonth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\PrintReportPerYear.resx">
+      <DependentUpon>PrintReportPerYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\AddUserForm.resx">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\ChangeAdminPasswordForm.resx">
+      <DependentUpon>ChangeAdminPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dishes\DishesMenuForm.resx">
+      <DependentUpon>DishesMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\EditOrderForm.resx">
+      <DependentUpon>EditOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\EditUserForm.resx">
+      <DependentUpon>EditUserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Users\MyAccountForm.resx">
+      <DependentUpon>MyAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Categories\AddCategoryForm2.resx">
+      <DependentUpon>AddCategoryForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dishes\AddDishForm.resx">
+      <DependentUpon>AddDishForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mains\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\NewOrderForm.resx">
+      <DependentUpon>NewOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Mains\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\OrdersForm.resx">
+      <DependentUpon>OrdersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\OrderTableForm.resx">
+      <DependentUpon>OrderTableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Orders\PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\PrintBillForm.resx">
+      <DependentUpon>PrintBillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\ReportsForm.resx">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UsersManagementForm.resx">
+    <EmbeddedResource Include="Forms\Users\UsersManagementForm.resx">
       <DependentUpon>UsersManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -399,6 +435,14 @@
     </Compile>
     <EmbeddedResource Include="Reports\BillPrint.rdlc" />
     <EmbeddedResource Include="Reports\PerDayReport.rdlc" />
+    <EmbeddedResource Include="Reports\PerYearReport.rdlc" />
+    <EmbeddedResource Include="Reports\PerMonthReport.rdlc" />
+    <EmbeddedResource Include="UserLogoControl.resx">
+      <DependentUpon>UserLogoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMenuControl.resx">
+      <DependentUpon>UserMenuControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="billDataSet.xsc">
       <DependentUpon>billDataSet.xsd</DependentUpon>
     </None>
@@ -421,18 +465,18 @@
     <None Include="dailyReportDataSet.xss">
       <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
     </None>
-    <None Include="packages.config" />
-    <None Include="posDBDataSet.xsc">
-      <DependentUpon>posDBDataSet.xsd</DependentUpon>
+    <None Include="monthlyDataSet.xsc">
+      <DependentUpon>monthlyDataSet.xsd</DependentUpon>
     </None>
-    <None Include="posDBDataSet.xsd">
+    <None Include="monthlyDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>posDBDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>monthlyDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="posDBDataSet.xss">
-      <DependentUpon>posDBDataSet.xsd</DependentUpon>
+    <None Include="monthlyDataSet.xss">
+      <DependentUpon>monthlyDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -442,6 +486,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="yearlyDataSet.xsc">
+      <DependentUpon>yearlyDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="yearlyDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>yearlyDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="yearlyDataSet.xss">
+      <DependentUpon>yearlyDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -466,6 +521,7 @@
     <None Include="Resources\posi пвака1.png" />
     <None Include="Resources\logo.png" />
     <None Include="Resources\posi_logo.png" />
+    <None Include="Resources\logo_POS.png" />
     <Content Include="Resources\profile1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

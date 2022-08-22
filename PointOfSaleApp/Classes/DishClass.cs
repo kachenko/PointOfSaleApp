@@ -8,11 +8,11 @@ namespace PointOfSaleApp.Classes
 {
     class DishClass
     {
-        private static int id;
-        private static string name;
-        private static string full_name;
-        private static double price;
-        private static string description;
+        private static int id = 0;
+        private static string name = null;
+        private static string full_name = null;
+        private static double price = 0.0;
+        private static string description = null;
 
         public static int dishId
         {
@@ -42,6 +42,15 @@ namespace PointOfSaleApp.Classes
         {
             get { return description; }
             set { description = value; }
+        }
+
+        public static void clearDish()
+        {
+            dishId = 0;
+            dishName = null;
+            dishFullName = null;
+            dishPrice = 0.0;
+            description = null;
         }
     }
 }
