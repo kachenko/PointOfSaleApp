@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDishForm));
             this.removeDishButton = new System.Windows.Forms.Button();
             this.addDishButton = new System.Windows.Forms.Button();
             this.dishCategoryLabel = new System.Windows.Forms.Label();
@@ -54,12 +55,12 @@ namespace PointOfSaleApp.Forms
             this.dishSelectNameCatColHead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clearDishButton = new System.Windows.Forms.Button();
             this.priceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.userLogoControl1 = new PointOfSaleApp.UserLogoControl();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userLogoControl1 = new PointOfSaleApp.UserLogoControl();
             ((System.ComponentModel.ISupportInitialize)(this.dishGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumericUpDown)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -67,19 +68,21 @@ namespace PointOfSaleApp.Forms
             // 
             // removeDishButton
             // 
+            this.removeDishButton.BackColor = System.Drawing.Color.Tomato;
             this.removeDishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeDishButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeDishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.removeDishButton.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.removeDishButton.Location = new System.Drawing.Point(885, 536);
             this.removeDishButton.Name = "removeDishButton";
             this.removeDishButton.Size = new System.Drawing.Size(85, 55);
             this.removeDishButton.TabIndex = 34;
             this.removeDishButton.Text = "REMOVE";
-            this.removeDishButton.UseVisualStyleBackColor = true;
+            this.removeDishButton.UseVisualStyleBackColor = false;
             this.removeDishButton.Click += new System.EventHandler(this.removeDishButton_Click);
             // 
             // addDishButton
             // 
+            this.addDishButton.BackColor = System.Drawing.Color.GreenYellow;
             this.addDishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addDishButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addDishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -88,7 +91,7 @@ namespace PointOfSaleApp.Forms
             this.addDishButton.Size = new System.Drawing.Size(85, 55);
             this.addDishButton.TabIndex = 33;
             this.addDishButton.Text = "ADD";
-            this.addDishButton.UseVisualStyleBackColor = true;
+            this.addDishButton.UseVisualStyleBackColor = false;
             this.addDishButton.Click += new System.EventHandler(this.addDishButton_Click);
             // 
             // dishCategoryLabel
@@ -148,9 +151,9 @@ namespace PointOfSaleApp.Forms
             this.listDishLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.listDishLabel.Location = new System.Drawing.Point(12, 200);
             this.listDishLabel.Name = "listDishLabel";
-            this.listDishLabel.Size = new System.Drawing.Size(100, 30);
+            this.listDishLabel.Size = new System.Drawing.Size(106, 30);
             this.listDishLabel.TabIndex = 26;
-            this.listDishLabel.Text = "Dish List";
+            this.listDishLabel.Text = "Dish List:";
             // 
             // dishPriceLabel
             // 
@@ -203,6 +206,7 @@ namespace PointOfSaleApp.Forms
             // 
             // updateDishButton
             // 
+            this.updateDishButton.BackColor = System.Drawing.Color.PeachPuff;
             this.updateDishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updateDishButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updateDishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -211,7 +215,7 @@ namespace PointOfSaleApp.Forms
             this.updateDishButton.Size = new System.Drawing.Size(85, 55);
             this.updateDishButton.TabIndex = 46;
             this.updateDishButton.Text = "UPDATE";
-            this.updateDishButton.UseVisualStyleBackColor = true;
+            this.updateDishButton.UseVisualStyleBackColor = false;
             this.updateDishButton.Click += new System.EventHandler(this.updateDishButton_Click);
             // 
             // rightButton
@@ -312,7 +316,7 @@ namespace PointOfSaleApp.Forms
             this.clearDishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearDishButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearDishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.clearDishButton.Location = new System.Drawing.Point(537, 536);
+            this.clearDishButton.Location = new System.Drawing.Point(528, 536);
             this.clearDishButton.Name = "clearDishButton";
             this.clearDishButton.Size = new System.Drawing.Size(85, 55);
             this.clearDishButton.TabIndex = 54;
@@ -334,13 +338,6 @@ namespace PointOfSaleApp.Forms
             this.priceNumericUpDown.TabIndex = 55;
             this.priceNumericUpDown.Leave += new System.EventHandler(this.priceNumericUpDown_Leave);
             // 
-            // userLogoControl1
-            // 
-            this.userLogoControl1.Location = new System.Drawing.Point(0, 31);
-            this.userLogoControl1.Name = "userLogoControl1";
-            this.userLogoControl1.Size = new System.Drawing.Size(982, 157);
-            this.userLogoControl1.TabIndex = 56;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Peru;
@@ -349,7 +346,7 @@ namespace PointOfSaleApp.Forms
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 30);
             this.menuStrip1.TabIndex = 57;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -360,7 +357,7 @@ namespace PointOfSaleApp.Forms
             this.returnToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -384,10 +381,18 @@ namespace PointOfSaleApp.Forms
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // userLogoControl1
+            // 
+            this.userLogoControl1.Location = new System.Drawing.Point(0, 29);
+            this.userLogoControl1.Name = "userLogoControl1";
+            this.userLogoControl1.Size = new System.Drawing.Size(982, 157);
+            this.userLogoControl1.TabIndex = 56;
+            // 
             // AddDishForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
             this.Controls.Add(this.menuStrip1);
@@ -413,6 +418,7 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.dishFullNameTextBox);
             this.Controls.Add(this.dishNameTextBox);
             this.Controls.Add(this.listDishLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddDishForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POS - Add or Edit Dish";

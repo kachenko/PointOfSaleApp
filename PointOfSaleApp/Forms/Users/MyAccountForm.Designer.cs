@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyAccountForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newSessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +54,7 @@ namespace PointOfSaleApp.Forms
             this.userLoginTextBox = new System.Windows.Forms.TextBox();
             this.userIDTextBox = new System.Windows.Forms.TextBox();
             this.userRoleComboBox = new System.Windows.Forms.ComboBox();
+            this.changePasswdButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -115,6 +117,7 @@ namespace PointOfSaleApp.Forms
             // 
             // saveUserButton
             // 
+            this.saveUserButton.BackColor = System.Drawing.Color.GreenYellow;
             this.saveUserButton.Enabled = false;
             this.saveUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,11 +127,12 @@ namespace PointOfSaleApp.Forms
             this.saveUserButton.Size = new System.Drawing.Size(85, 55);
             this.saveUserButton.TabIndex = 99;
             this.saveUserButton.Text = "SAVE";
-            this.saveUserButton.UseVisualStyleBackColor = true;
+            this.saveUserButton.UseVisualStyleBackColor = false;
             this.saveUserButton.Click += new System.EventHandler(this.saveUserButton_Click);
             // 
             // editUserButton
             // 
+            this.editUserButton.BackColor = System.Drawing.Color.SandyBrown;
             this.editUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -137,94 +141,94 @@ namespace PointOfSaleApp.Forms
             this.editUserButton.Size = new System.Drawing.Size(85, 55);
             this.editUserButton.TabIndex = 98;
             this.editUserButton.Text = "EDIT";
-            this.editUserButton.UseVisualStyleBackColor = true;
+            this.editUserButton.UseVisualStyleBackColor = false;
             this.editUserButton.Click += new System.EventHandler(this.editUserButton_Click);
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Font = new System.Drawing.Font("Malgun Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Font = new System.Drawing.Font("Malgun Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.nameLabel.Location = new System.Drawing.Point(153, 31);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(182, 32);
+            this.nameLabel.Size = new System.Drawing.Size(215, 38);
             this.nameLabel.TabIndex = 97;
             this.nameLabel.Text = "Name Surname";
             // 
             // userRoleLabel
             // 
             this.userRoleLabel.AutoSize = true;
-            this.userRoleLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.userRoleLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userRoleLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userRoleLabel.Location = new System.Drawing.Point(168, 338);
             this.userRoleLabel.Name = "userRoleLabel";
-            this.userRoleLabel.Size = new System.Drawing.Size(56, 28);
+            this.userRoleLabel.Size = new System.Drawing.Size(55, 28);
             this.userRoleLabel.TabIndex = 96;
             this.userRoleLabel.Text = "Role:";
             // 
             // userPhoneLabel
             // 
             this.userPhoneLabel.AutoSize = true;
-            this.userPhoneLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.userPhoneLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userPhoneLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userPhoneLabel.Location = new System.Drawing.Point(168, 310);
             this.userPhoneLabel.Name = "userPhoneLabel";
-            this.userPhoneLabel.Size = new System.Drawing.Size(74, 28);
+            this.userPhoneLabel.Size = new System.Drawing.Size(72, 28);
             this.userPhoneLabel.TabIndex = 95;
             this.userPhoneLabel.Text = "Phone:";
             // 
             // userAddressLabel
             // 
             this.userAddressLabel.AutoSize = true;
-            this.userAddressLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.userAddressLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userAddressLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userAddressLabel.Location = new System.Drawing.Point(168, 225);
             this.userAddressLabel.Name = "userAddressLabel";
-            this.userAddressLabel.Size = new System.Drawing.Size(89, 28);
+            this.userAddressLabel.Size = new System.Drawing.Size(87, 28);
             this.userAddressLabel.TabIndex = 94;
             this.userAddressLabel.Text = "Address:";
             // 
             // userFullNameLabel
             // 
             this.userFullNameLabel.AutoSize = true;
-            this.userFullNameLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.userFullNameLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userFullNameLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userFullNameLabel.Location = new System.Drawing.Point(168, 140);
             this.userFullNameLabel.Name = "userFullNameLabel";
-            this.userFullNameLabel.Size = new System.Drawing.Size(109, 28);
+            this.userFullNameLabel.Size = new System.Drawing.Size(104, 28);
             this.userFullNameLabel.TabIndex = 93;
             this.userFullNameLabel.Text = "Full Name:";
             // 
             // userIsActiveLabel
             // 
             this.userIsActiveLabel.AutoSize = true;
-            this.userIsActiveLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.userIsActiveLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userIsActiveLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userIsActiveLabel.Location = new System.Drawing.Point(168, 366);
             this.userIsActiveLabel.Name = "userIsActiveLabel";
-            this.userIsActiveLabel.Size = new System.Drawing.Size(92, 28);
+            this.userIsActiveLabel.Size = new System.Drawing.Size(87, 28);
             this.userIsActiveLabel.TabIndex = 92;
             this.userIsActiveLabel.Text = "Is Active:";
             // 
             // userLoginLabel
             // 
             this.userLoginLabel.AutoSize = true;
-            this.userLoginLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F);
+            this.userLoginLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userLoginLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userLoginLabel.Location = new System.Drawing.Point(168, 112);
             this.userLoginLabel.Name = "userLoginLabel";
-            this.userLoginLabel.Size = new System.Drawing.Size(67, 28);
+            this.userLoginLabel.Size = new System.Drawing.Size(66, 28);
             this.userLoginLabel.TabIndex = 91;
             this.userLoginLabel.Text = "Login:";
             // 
             // userIDLabel
             // 
             this.userIDLabel.AutoSize = true;
-            this.userIDLabel.Font = new System.Drawing.Font("Malgun Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userIDLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userIDLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.userIDLabel.Location = new System.Drawing.Point(168, 84);
             this.userIDLabel.Name = "userIDLabel";
-            this.userIDLabel.Size = new System.Drawing.Size(35, 28);
+            this.userIDLabel.Size = new System.Drawing.Size(36, 28);
             this.userIDLabel.TabIndex = 90;
             this.userIDLabel.Text = "ID:";
             // 
@@ -298,12 +302,27 @@ namespace PointOfSaleApp.Forms
             this.userRoleComboBox.Size = new System.Drawing.Size(250, 24);
             this.userRoleComboBox.TabIndex = 101;
             // 
+            // changePasswdButton
+            // 
+            this.changePasswdButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changePasswdButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePasswdButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.changePasswdButton.Location = new System.Drawing.Point(12, 412);
+            this.changePasswdButton.Name = "changePasswdButton";
+            this.changePasswdButton.Size = new System.Drawing.Size(133, 55);
+            this.changePasswdButton.TabIndex = 103;
+            this.changePasswdButton.Text = "CHANGE PASSWORD";
+            this.changePasswdButton.UseVisualStyleBackColor = true;
+            this.changePasswdButton.Click += new System.EventHandler(this.changePasswdButton_Click);
+            // 
             // MyAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(567, 483);
+            this.Controls.Add(this.changePasswdButton);
             this.Controls.Add(this.userRoleComboBox);
             this.Controls.Add(this.changeImageButton);
             this.Controls.Add(this.saveUserButton);
@@ -324,9 +343,10 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.userLoginTextBox);
             this.Controls.Add(this.userIDTextBox);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MyAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MyAccountForm";
+            this.Text = "POSi - My Account";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MyAccountForm_FormClosing);
             this.Load += new System.EventHandler(this.MyAccountForm_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -363,5 +383,6 @@ namespace PointOfSaleApp.Forms
         private System.Windows.Forms.TextBox userLoginTextBox;
         private System.Windows.Forms.TextBox userIDTextBox;
         private System.Windows.Forms.ComboBox userRoleComboBox;
+        private System.Windows.Forms.Button changePasswdButton;
     }
 }

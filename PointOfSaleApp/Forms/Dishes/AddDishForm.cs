@@ -40,8 +40,8 @@ namespace PointOfSaleApp.Forms
                     }
                     dishGridView.Rows[nRowIndex].Selected = true;
                     dishGridView.FirstDisplayedScrollingRowIndex = nRowIndex;
-                    showCategoryListView();
                 }
+                showCategoryListView();
             }
             catch (Exception ex)
             {
@@ -187,14 +187,9 @@ namespace PointOfSaleApp.Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show("Do you really want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
+                this.Hide();
+                MenuForm menu = new MenuForm();
+                menu.Show();
             }
         }
 
@@ -322,17 +317,24 @@ namespace PointOfSaleApp.Forms
                             else
                                 MessageBox.Show("Dish " + dishNameTextBox.Text + " has not been added.");
 
+                            loadDishes();
+                            clearData();
+
+                            dishGridView.ClearSelection();
+                            if (dishGridView.Rows.Count > 2)
+                            {
+                                int nRowIndex = dishGridView.Rows.Count - 1;
+                                dishGridView.Rows[nRowIndex].Cells[0].Selected = true;
+                            }
+                            else
+                            {
+                                dishGridView.Rows[0].Cells[0].Selected = true;
+                            }
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }
-                        loadDishes();
-                        clearData();
-
-                        dishGridView.ClearSelection();
-                        int nRowIndex = dishGridView.Rows.Count - 2;
-                        dishGridView.Rows[nRowIndex].Cells[0].Selected = true;
                     }
                     else
                     {
@@ -612,6 +614,7 @@ namespace PointOfSaleApp.Forms
                         MessageBox.Show("Dish " + dishNameTextBox.Text + " deleted", "Category Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDishes();
                         clearData();
+                        Classes.DishClass.clearDish();
                     }
                     else
                     {

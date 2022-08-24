@@ -197,14 +197,9 @@ namespace PointOfSaleApp.Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show("Do you really want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
+                this.Hide();
+                MenuForm menu = new MenuForm();
+                menu.Show();
             }
         }
 

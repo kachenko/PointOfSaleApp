@@ -199,6 +199,7 @@ namespace PointOfSaleApp.Forms
                 orderReceivedTextBox.Visible = false;
                 orderChangeLabel.Visible = false;
                 orderChangeTextBox.Visible = false;
+                calculateOrderButton.Visible = false;
 
             }
             else
@@ -207,6 +208,7 @@ namespace PointOfSaleApp.Forms
                 orderReceivedTextBox.Visible = true;
                 orderChangeLabel.Visible = true;
                 orderChangeTextBox.Visible = true;
+                calculateOrderButton.Visible = true;
             }
         }
 

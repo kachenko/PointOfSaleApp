@@ -19,6 +19,16 @@ namespace PointOfSaleApp
         public LoginForm()
         {
             InitializeComponent();
+            clearAll();
+        }
+
+        public void clearAll()
+        {
+            Classes.DishClass.clearDish();
+            OrderClass.clearData();
+            Classes.CategoryClass.сlearCategory();
+            Classes.UserClass.clearSelectedUser();
+            MyUserClass.ClearMyUser();
         }
 
 		private void loginButton_Click(object sender, EventArgs e)
@@ -43,23 +53,37 @@ namespace PointOfSaleApp
             string loginUserText = "";
             string passwordUserText = "";
 
-            conn.Open();
-            SqlCommand command = new SqlCommand("[sp_show_user]", conn);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@p_login", loginText);
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                loginUserText = reader["login"].ToString();
-                passwordUserText = reader["password"].ToString();
-                isActive = bool.Parse(reader["isActive"].ToString());
+                conn.Open();
+                SqlCommand command = new SqlCommand("[sp_show_user]", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_login", loginText);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    loginUserText = reader["login"].ToString();
+                    passwordUserText = reader["password"].ToString();
+                    isActive = bool.Parse(reader["isActive"].ToString());
+                }
+                else
+                {
+                    MessageBox.Show("User does not exist.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                MessageBox.Show("User does not exist.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
+                MessageBox.Show(ex.Message);
             }
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
 
 
             if (isActive == false)
@@ -88,24 +112,34 @@ namespace PointOfSaleApp
 
         private void getMyUserInfo(string loginText)
         {
-            conn.Open();
-            SqlCommand command = new SqlCommand("[sp_show_user]", conn);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@p_login", loginText);
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
+            try
             {
-                MyUserClass.userId = int.Parse(reader["id"].ToString());
-                MyUserClass.userLogin = reader["login"].ToString();
-                MyUserClass.userPassword = reader["password"].ToString();
-                MyUserClass.userFullName = reader["full_name"].ToString();
-                MyUserClass.userAddress = reader["address"].ToString();
-                MyUserClass.userPhone = reader["phone"].ToString();
-                MyUserClass.userRoleId = int.Parse(reader["role_id"].ToString());
-                MyUserClass.userRole = reader["role"].ToString();
-                MyUserClass.userIsActive = bool.Parse(reader["isActive"].ToString());
+                conn.Open();
+                SqlCommand command = new SqlCommand("[sp_show_user]", conn);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_login", loginText);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    MyUserClass.userId = int.Parse(reader["id"].ToString());
+                    MyUserClass.userLogin = reader["login"].ToString();
+                    MyUserClass.userPassword = reader["password"].ToString();
+                    MyUserClass.userFullName = reader["full_name"].ToString();
+                    MyUserClass.userAddress = reader["address"].ToString();
+                    MyUserClass.userPhone = reader["phone"].ToString();
+                    MyUserClass.userRoleId = int.Parse(reader["role_id"].ToString());
+                    MyUserClass.userRole = reader["role"].ToString();
+                    MyUserClass.userIsActive = bool.Parse(reader["isActive"].ToString());
+                }
             }
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)

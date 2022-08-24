@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>posi-logo-4.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.DevOps.Comments.WebApi, Version=18.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.TeamFoundationServer.Client.16.170.0\lib\net462\Microsoft.Azure.DevOps.Comments.WebApi.dll</HintPath>
@@ -164,7 +167,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="billDataSet.Designer.cs">
+    <Compile Include="DataSets\billDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>billDataSet.xsd</DependentUpon>
@@ -173,30 +176,23 @@
     <Compile Include="Classes\DataBaseConnectionClass.cs" />
     <Compile Include="Classes\CategoryClass.cs" />
     <Compile Include="Classes\DishClass.cs" />
-    <Compile Include="Classes\RestaurantClass.cs" />
     <Compile Include="Classes\UserClass.cs" />
-    <Compile Include="dailyReportDataSet.Designer.cs">
+    <Compile Include="DataSets\dailyReportDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddEditTablesForm.cs">
+    <Compile Include="Forms\Mains\AddEditTablesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddEditTablesForm.Designer.cs">
+    <Compile Include="Forms\Mains\AddEditTablesForm.Designer.cs">
       <DependentUpon>AddEditTablesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PaymentMethodForm.cs">
+    <Compile Include="Forms\Mains\PaymentMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PaymentMethodForm.Designer.cs">
+    <Compile Include="Forms\Mains\PaymentMethodForm.Designer.cs">
       <DependentUpon>PaymentMethodForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Reports\InfoForReportsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Reports\InfoForReportsForm.Designer.cs">
-      <DependentUpon>InfoForReportsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\PrintReportPerDay.cs">
       <SubType>Form</SubType>
@@ -234,11 +230,11 @@
     <Compile Include="Forms\Users\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dishes\DishesMenuForm.cs">
+    <Compile Include="Forms\Dishes\DishMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dishes\DishesMenuForm.Designer.cs">
-      <DependentUpon>DishesMenuForm.cs</DependentUpon>
+    <Compile Include="Forms\Dishes\DishMenuForm.Designer.cs">
+      <DependentUpon>DishMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Orders\EditOrderForm.cs">
       <SubType>Form</SubType>
@@ -258,11 +254,11 @@
     <Compile Include="Forms\Users\MyAccountForm.Designer.cs">
       <DependentUpon>MyAccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Categories\AddCategoryForm2.cs">
+    <Compile Include="Forms\Categories\AddCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Categories\AddCategoryForm2.Designer.cs">
-      <DependentUpon>AddCategoryForm2.cs</DependentUpon>
+    <Compile Include="Forms\Categories\AddCategoryForm.Designer.cs">
+      <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dishes\AddDishForm.cs">
       <SubType>Form</SubType>
@@ -276,11 +272,11 @@
     <Compile Include="Forms\Mains\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Orders\NewOrderForm.cs">
+    <Compile Include="Forms\Orders\AddOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Orders\NewOrderForm.Designer.cs">
-      <DependentUpon>NewOrderForm.cs</DependentUpon>
+    <Compile Include="Forms\Orders\AddOrderForm.Designer.cs">
+      <DependentUpon>AddOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Mains\MenuForm.cs">
       <SubType>Form</SubType>
@@ -288,11 +284,11 @@
     <Compile Include="Forms\Mains\MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Orders\OrdersForm.cs">
+    <Compile Include="Forms\Orders\AllOrdersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Orders\OrdersForm.Designer.cs">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
+    <Compile Include="Forms\Orders\AllOrdersForm.Designer.cs">
+      <DependentUpon>AllOrdersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Orders\OrderTableForm.cs">
       <SubType>Form</SubType>
@@ -306,11 +302,11 @@
     <Compile Include="Forms\Orders\PaymentForm.Designer.cs">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Reports\PrintBillForm.cs">
+    <Compile Include="Forms\Reports\PrintBill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Reports\PrintBillForm.Designer.cs">
-      <DependentUpon>PrintBillForm.cs</DependentUpon>
+    <Compile Include="Forms\Reports\PrintBill.Designer.cs">
+      <DependentUpon>PrintBill.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Reports\ReportsForm.cs">
       <SubType>Form</SubType>
@@ -325,7 +321,7 @@
       <DependentUpon>UsersManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\OrderClass.cs" />
-    <Compile Include="monthlyDataSet.Designer.cs">
+    <Compile Include="DataSets\monthlyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>monthlyDataSet.xsd</DependentUpon>
@@ -334,31 +330,28 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\MyUserClass.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="UserLogoControl.cs">
+    <Compile Include="CustomControls\UserLogoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserLogoControl.Designer.cs">
+    <Compile Include="CustomControls\UserLogoControl.Designer.cs">
       <DependentUpon>UserLogoControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserMenuControl.cs">
+    <Compile Include="CustomControls\UserMenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserMenuControl.Designer.cs">
+    <Compile Include="CustomControls\UserMenuControl.Designer.cs">
       <DependentUpon>UserMenuControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="yearlyDataSet.Designer.cs">
+    <Compile Include="DataSets\yearlyDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>yearlyDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\AddEditTablesForm.resx">
+    <EmbeddedResource Include="Forms\Mains\AddEditTablesForm.resx">
       <DependentUpon>AddEditTablesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PaymentMethodForm.resx">
+    <EmbeddedResource Include="Forms\Mains\PaymentMethodForm.resx">
       <DependentUpon>PaymentMethodForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\InfoForReportsForm.resx">
-      <DependentUpon>InfoForReportsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\PrintReportPerDay.resx">
       <DependentUpon>PrintReportPerDay.cs</DependentUpon>
@@ -378,8 +371,8 @@
     <EmbeddedResource Include="Forms\Users\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dishes\DishesMenuForm.resx">
-      <DependentUpon>DishesMenuForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Dishes\DishMenuForm.resx">
+      <DependentUpon>DishMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\EditOrderForm.resx">
       <DependentUpon>EditOrderForm.cs</DependentUpon>
@@ -390,8 +383,8 @@
     <EmbeddedResource Include="Forms\Users\MyAccountForm.resx">
       <DependentUpon>MyAccountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Categories\AddCategoryForm2.resx">
-      <DependentUpon>AddCategoryForm2.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Categories\AddCategoryForm.resx">
+      <DependentUpon>AddCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dishes\AddDishForm.resx">
       <DependentUpon>AddDishForm.cs</DependentUpon>
@@ -399,14 +392,14 @@
     <EmbeddedResource Include="Forms\Mains\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Orders\NewOrderForm.resx">
-      <DependentUpon>NewOrderForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Orders\AddOrderForm.resx">
+      <DependentUpon>AddOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Mains\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Orders\OrdersForm.resx">
-      <DependentUpon>OrdersForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Orders\AllOrdersForm.resx">
+      <DependentUpon>AllOrdersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Orders\OrderTableForm.resx">
       <DependentUpon>OrderTableForm.cs</DependentUpon>
@@ -414,8 +407,8 @@
     <EmbeddedResource Include="Forms\Orders\PaymentForm.resx">
       <DependentUpon>PaymentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports\PrintBillForm.resx">
-      <DependentUpon>PrintBillForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Reports\PrintBill.resx">
+      <DependentUpon>PrintBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Reports\ReportsForm.resx">
       <DependentUpon>ReportsForm.cs</DependentUpon>
@@ -437,43 +430,43 @@
     <EmbeddedResource Include="Reports\PerDayReport.rdlc" />
     <EmbeddedResource Include="Reports\PerYearReport.rdlc" />
     <EmbeddedResource Include="Reports\PerMonthReport.rdlc" />
-    <EmbeddedResource Include="UserLogoControl.resx">
+    <EmbeddedResource Include="CustomControls\UserLogoControl.resx">
       <DependentUpon>UserLogoControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserMenuControl.resx">
+    <EmbeddedResource Include="CustomControls\UserMenuControl.resx">
       <DependentUpon>UserMenuControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="billDataSet.xsc">
+    <None Include="DataSets\billDataSet.xsc">
       <DependentUpon>billDataSet.xsd</DependentUpon>
     </None>
-    <None Include="billDataSet.xsd">
+    <None Include="DataSets\billDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>billDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="billDataSet.xss">
+    <None Include="DataSets\billDataSet.xss">
       <DependentUpon>billDataSet.xsd</DependentUpon>
     </None>
-    <None Include="dailyReportDataSet.xsc">
+    <None Include="DataSets\dailyReportDataSet.xsc">
       <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
     </None>
-    <None Include="dailyReportDataSet.xsd">
+    <None Include="DataSets\dailyReportDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dailyReportDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="dailyReportDataSet.xss">
+    <None Include="DataSets\dailyReportDataSet.xss">
       <DependentUpon>dailyReportDataSet.xsd</DependentUpon>
     </None>
-    <None Include="monthlyDataSet.xsc">
+    <None Include="DataSets\monthlyDataSet.xsc">
       <DependentUpon>monthlyDataSet.xsd</DependentUpon>
     </None>
-    <None Include="monthlyDataSet.xsd">
+    <None Include="DataSets\monthlyDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>monthlyDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="monthlyDataSet.xss">
+    <None Include="DataSets\monthlyDataSet.xss">
       <DependentUpon>monthlyDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -486,15 +479,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="yearlyDataSet.xsc">
+    <None Include="DataSets\yearlyDataSet.xsc">
       <DependentUpon>yearlyDataSet.xsd</DependentUpon>
     </None>
-    <None Include="yearlyDataSet.xsd">
+    <None Include="DataSets\yearlyDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>yearlyDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="yearlyDataSet.xss">
+    <None Include="DataSets\yearlyDataSet.xss">
       <DependentUpon>yearlyDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
@@ -502,26 +495,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\padlock.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\profile.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1234.jpg" />
-    <None Include="Resources\EEE1234.jpg" />
-    <None Include="Resources\EEE1234.png" />
-    <None Include="Resources\1324%282%29 %281%29.png" />
-    <None Include="Resources\EEE1234LOGO.png" />
-    <None Include="Resources\1324%283%29.png" />
-    <Content Include="Resources\f291c20922ce1ff1878b13afc2a49f19.jpg" />
-    <None Include="Resources\POSi-icon.png" />
-    <None Include="Resources\food-delivery.png" />
-    <None Include="Resources\POSi - Логотип.png" />
-    <None Include="Resources\posi пвака1.png" />
-    <None Include="Resources\logo.png" />
-    <None Include="Resources\posi_logo.png" />
-    <None Include="Resources\logo_POS.png" />
+    <Content Include="posi-logo-4.ico" />
+    <None Include="Resources\posi-logo-2.png" />
+    <None Include="Resources\posi-logo-4.png" />
+    <None Include="Resources\for-design1.png" />
+    <None Include="Resources\posi-logo-21.png" />
     <Content Include="Resources\profile1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

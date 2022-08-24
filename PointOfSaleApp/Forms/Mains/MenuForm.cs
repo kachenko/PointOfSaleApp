@@ -15,8 +15,8 @@ namespace PointOfSaleApp
         public MenuForm()
         {
             InitializeComponent();
-            loginLabel.Text = MyUserClass.userLogin;
-            positLabel.Text = MyUserClass.userRole;
+            // loginLabel.Text = MyUserClass.userLogin;
+            // positLabel.Text = MyUserClass.userRole;
             accessToButtons();
         }
         private void MenuForm_Load(object sender, EventArgs e)
@@ -25,7 +25,7 @@ namespace PointOfSaleApp
 
         private void accessToButtons()
         {
-            if (MyUserClass.userRoleId == 1)
+            if (MyUserClass.userRoleId == 1 || MyUserClass.userRoleId == 2)
             {
                 newOrderButton.Visible = true;
                 myOrdersButton.Visible = true;

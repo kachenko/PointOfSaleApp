@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersManagementForm));
             this.dataUsersGridView = new System.Windows.Forms.DataGridView();
             this.deleteUserButton = new System.Windows.Forms.Button();
             this.editUserButton = new System.Windows.Forms.Button();
@@ -78,6 +79,7 @@ namespace PointOfSaleApp.Forms
             // 
             // editUserButton
             // 
+            this.editUserButton.BackColor = System.Drawing.Color.SandyBrown;
             this.editUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -86,11 +88,12 @@ namespace PointOfSaleApp.Forms
             this.editUserButton.Size = new System.Drawing.Size(85, 55);
             this.editUserButton.TabIndex = 49;
             this.editUserButton.Text = "EDIT";
-            this.editUserButton.UseVisualStyleBackColor = true;
+            this.editUserButton.UseVisualStyleBackColor = false;
             this.editUserButton.Click += new System.EventHandler(this.editUserButton_Click);
             // 
             // addUserButton
             // 
+            this.addUserButton.BackColor = System.Drawing.Color.GreenYellow;
             this.addUserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addUserButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addUserButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -99,7 +102,7 @@ namespace PointOfSaleApp.Forms
             this.addUserButton.Size = new System.Drawing.Size(85, 55);
             this.addUserButton.TabIndex = 51;
             this.addUserButton.Text = "ADD";
-            this.addUserButton.UseVisualStyleBackColor = true;
+            this.addUserButton.UseVisualStyleBackColor = false;
             this.addUserButton.Click += new System.EventHandler(this.addUserButton_Click);
             // 
             // label1
@@ -151,21 +154,21 @@ namespace PointOfSaleApp.Forms
             // newSessionToolStripMenuItem
             // 
             this.newSessionToolStripMenuItem.Name = "newSessionToolStripMenuItem";
-            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newSessionToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.newSessionToolStripMenuItem.Text = "New Session";
             this.newSessionToolStripMenuItem.Click += new System.EventHandler(this.newSessionToolStripMenuItem_Click);
             // 
             // returnToolStripMenuItem
             // 
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
-            this.returnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.returnToolStripMenuItem.Text = "Return";
             this.returnToolStripMenuItem.Click += new System.EventHandler(this.returnToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -173,6 +176,7 @@ namespace PointOfSaleApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 603);
             this.Controls.Add(this.menuStrip1);
@@ -182,6 +186,7 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.deleteUserButton);
             this.Controls.Add(this.editUserButton);
             this.Controls.Add(this.dataUsersGridView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UsersManagementForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSi - Users";

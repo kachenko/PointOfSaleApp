@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportsForm));
             this.perDayButton = new System.Windows.Forms.Button();
             this.perMonthButton = new System.Windows.Forms.Button();
             this.perYearButton = new System.Windows.Forms.Button();
@@ -87,7 +88,7 @@ namespace PointOfSaleApp.Forms
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(589, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(589, 30);
             this.menuStrip1.TabIndex = 89;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,7 +99,7 @@ namespace PointOfSaleApp.Forms
             this.returnToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -126,13 +127,14 @@ namespace PointOfSaleApp.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(589, 177);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.perYearButton);
             this.Controls.Add(this.perMonthButton);
             this.Controls.Add(this.perDayButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSi - Reports";

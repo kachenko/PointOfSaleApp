@@ -57,12 +57,6 @@ namespace PointOfSaleApp.Forms
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            InfoForReportsForm infoForReports = new InfoForReportsForm();
-            infoForReports.ShowDialog();
-        }
-
         private void ReportsForm_Load(object sender, EventArgs e)
         {
         }

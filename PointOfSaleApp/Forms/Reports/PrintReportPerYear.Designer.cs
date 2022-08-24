@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms.Reports
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintReportPerYear));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@ namespace PointOfSaleApp.Forms.Reports
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(812, 453);
+            this.reportViewer1.Size = new System.Drawing.Size(882, 523);
             this.reportViewer1.TabIndex = 0;
             // 
             // PrintReportPerYear
@@ -48,8 +49,9 @@ namespace PointOfSaleApp.Forms.Reports
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(812, 453);
+            this.ClientSize = new System.Drawing.Size(882, 523);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PrintReportPerYear";
             this.Text = "POSi - Print Report Per Year";
             this.Load += new System.EventHandler(this.PrintReportPerYear_Load);

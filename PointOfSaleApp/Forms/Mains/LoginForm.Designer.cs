@@ -29,6 +29,7 @@ namespace PointOfSaleApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.loginLabel = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.passTextBox = new System.Windows.Forms.TextBox();
@@ -83,6 +84,7 @@ namespace PointOfSaleApp
             // 
             // OKButton
             // 
+            this.OKButton.BackColor = System.Drawing.Color.PeachPuff;
             this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKButton.Font = new System.Drawing.Font("Malgun Gothic Semilight", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OKButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -91,12 +93,13 @@ namespace PointOfSaleApp
             this.OKButton.Size = new System.Drawing.Size(336, 45);
             this.OKButton.TabIndex = 5;
             this.OKButton.Text = "LOG IN";
-            this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.UseVisualStyleBackColor = false;
             this.OKButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // adminForgotPasswordLabel
             // 
             this.adminForgotPasswordLabel.AutoSize = true;
+            this.adminForgotPasswordLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.adminForgotPasswordLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 8F);
             this.adminForgotPasswordLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.adminForgotPasswordLabel.Location = new System.Drawing.Point(113, 435);
@@ -110,8 +113,8 @@ namespace PointOfSaleApp
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = global::PointOfSaleApp.Properties.Resources.logo_POS;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox1.Image = global::PointOfSaleApp.Properties.Resources.posi_logo_2;
+            this.pictureBox1.Location = new System.Drawing.Point(-1, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(349, 287);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -121,6 +124,7 @@ namespace PointOfSaleApp
             // LoginForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(360, 482);
             this.Controls.Add(this.adminForgotPasswordLabel);
@@ -130,6 +134,7 @@ namespace PointOfSaleApp
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSi - Log In";

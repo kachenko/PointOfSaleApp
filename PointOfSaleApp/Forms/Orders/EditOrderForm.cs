@@ -131,11 +131,12 @@ namespace PointOfSaleApp.Forms
 
             dataDishGridView.ColumnCount = 3;
             dataDishGridView.Columns[0].Name = "ID";
-            dataDishGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            // dataDishGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             dataDishGridView.Columns[1].Name = "Name";
-            dataDishGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataOrderGridView.Columns[1].Width = 70;
+            // dataDishGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataDishGridView.Columns[2].Name = "Price";
-            dataDishGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            // dataDishGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             string query = "[sp_show_dish_by_category]";
             try

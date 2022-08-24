@@ -270,8 +270,8 @@
         </TablixRowHierarchy>
         <DataSetName>billDataSet</DataSetName>
         <Top>0.07056cm</Top>
-        <Height>1.05889cm</Height>
-        <Width>8.4328cm</Width>
+        <Height>1.05888cm</Height>
+        <Width>8.43279cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -290,7 +290,7 @@
   <Width>3.58667in</Width>
   <Page>
     <PageHeader>
-      <Height>2.0955cm</Height>
+      <Height>0.68467cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

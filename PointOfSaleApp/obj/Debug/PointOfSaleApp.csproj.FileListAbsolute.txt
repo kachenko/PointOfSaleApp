@@ -221,9 +221,8 @@ C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\bin\Debug\Microso
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.ChangeAdminPasswordForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.UserLogoControl.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.UserMenuControl.resources
-C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.AssemblyReference.cache
-C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.InfoForReportsForm.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.PrintReportPerMonth.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.PrintReportPerYear.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.Reports.PrintReportPerDay.resources
 C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.Forms.PaymentMethodForm.resources
+C:\Users\Mariia\Documents\GitHub\PointOfSaleApp\PointOfSaleApp\obj\Debug\PointOfSaleApp.csproj.AssemblyReference.cache

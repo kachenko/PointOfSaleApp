@@ -29,6 +29,7 @@ namespace PointOfSaleApp
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.newOrderButton = new System.Windows.Forms.Button();
             this.usersButton = new System.Windows.Forms.Button();
             this.myOrdersButton = new System.Windows.Forms.Button();
@@ -43,84 +44,82 @@ namespace PointOfSaleApp
             this.myAccountButton = new System.Windows.Forms.Button();
             this.reportsButton = new System.Windows.Forms.Button();
             this.tablesButton = new System.Windows.Forms.Button();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.positLabel = new System.Windows.Forms.Label();
-            this.loginLabel = new System.Windows.Forms.Label();
             this.paymentMethodButton = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.userLogoControl1 = new PointOfSaleApp.UserLogoControl();
             this.menuStrip1.SuspendLayout();
-            this.mainPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // newOrderButton
             // 
+            this.newOrderButton.BackColor = System.Drawing.Color.GreenYellow;
             this.newOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newOrderButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.newOrderButton.Location = new System.Drawing.Point(24, 194);
+            this.newOrderButton.Location = new System.Drawing.Point(12, 194);
             this.newOrderButton.Name = "newOrderButton";
-            this.newOrderButton.Size = new System.Drawing.Size(183, 113);
+            this.newOrderButton.Size = new System.Drawing.Size(200, 113);
             this.newOrderButton.TabIndex = 0;
             this.newOrderButton.Text = "NEW ORDER";
-            this.newOrderButton.UseVisualStyleBackColor = true;
+            this.newOrderButton.UseVisualStyleBackColor = false;
             this.newOrderButton.Click += new System.EventHandler(this.newOrderButton_Click);
             // 
             // usersButton
             // 
             this.usersButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.usersButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.usersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.usersButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usersButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.usersButton.Location = new System.Drawing.Point(524, 313);
+            this.usersButton.Location = new System.Drawing.Point(512, 313);
             this.usersButton.Name = "usersButton";
-            this.usersButton.Size = new System.Drawing.Size(183, 113);
+            this.usersButton.Size = new System.Drawing.Size(200, 113);
             this.usersButton.TabIndex = 6;
             this.usersButton.Text = "USERS";
-            this.usersButton.UseVisualStyleBackColor = true;
+            this.usersButton.UseVisualStyleBackColor = false;
             this.usersButton.Click += new System.EventHandler(this.UsersButton_Click);
             // 
             // myOrdersButton
             // 
+            this.myOrdersButton.BackColor = System.Drawing.Color.GreenYellow;
             this.myOrdersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.myOrdersButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myOrdersButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.myOrdersButton.Location = new System.Drawing.Point(275, 194);
+            this.myOrdersButton.Location = new System.Drawing.Point(263, 194);
             this.myOrdersButton.Name = "myOrdersButton";
-            this.myOrdersButton.Size = new System.Drawing.Size(183, 113);
+            this.myOrdersButton.Size = new System.Drawing.Size(200, 113);
             this.myOrdersButton.TabIndex = 1;
             this.myOrdersButton.Text = "ALL ORDERS";
-            this.myOrdersButton.UseVisualStyleBackColor = true;
+            this.myOrdersButton.UseVisualStyleBackColor = false;
             this.myOrdersButton.Click += new System.EventHandler(this.myOrdersButton_Click);
             // 
             // menuButton
             // 
             this.menuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuButton.BackColor = System.Drawing.Color.Bisque;
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.menuButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.menuButton.Location = new System.Drawing.Point(524, 194);
+            this.menuButton.Location = new System.Drawing.Point(512, 194);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(183, 113);
+            this.menuButton.Size = new System.Drawing.Size(200, 113);
             this.menuButton.TabIndex = 2;
-            this.menuButton.Text = "MENU";
-            this.menuButton.UseVisualStyleBackColor = true;
+            this.menuButton.Text = "RESTAURANT MENU";
+            this.menuButton.UseVisualStyleBackColor = false;
             this.menuButton.Click += new System.EventHandler(this.MenuButton_Click);
             // 
             // dishButton
             // 
             this.dishButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dishButton.BackColor = System.Drawing.Color.Bisque;
             this.dishButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dishButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dishButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.dishButton.Location = new System.Drawing.Point(24, 313);
+            this.dishButton.Location = new System.Drawing.Point(12, 313);
             this.dishButton.Name = "dishButton";
-            this.dishButton.Size = new System.Drawing.Size(183, 113);
+            this.dishButton.Size = new System.Drawing.Size(200, 113);
             this.dishButton.TabIndex = 4;
             this.dishButton.Text = "DISHES";
-            this.dishButton.UseVisualStyleBackColor = true;
+            this.dishButton.UseVisualStyleBackColor = false;
             this.dishButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // menuStrip1
@@ -131,7 +130,7 @@ namespace PointOfSaleApp
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(982, 28);
             this.menuStrip1.TabIndex = 26;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -142,7 +141,7 @@ namespace PointOfSaleApp
             this.returnToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
             this.fileToolStripMenuItem.Text = "Session";
             // 
             // newSessionToolStripMenuItem
@@ -169,141 +168,95 @@ namespace PointOfSaleApp
             // categoryButton
             // 
             this.categoryButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.categoryButton.BackColor = System.Drawing.Color.SandyBrown;
             this.categoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.categoryButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.categoryButton.Location = new System.Drawing.Point(275, 313);
+            this.categoryButton.Location = new System.Drawing.Point(263, 313);
             this.categoryButton.Name = "categoryButton";
-            this.categoryButton.Size = new System.Drawing.Size(183, 113);
+            this.categoryButton.Size = new System.Drawing.Size(200, 113);
             this.categoryButton.TabIndex = 5;
             this.categoryButton.Text = "CATEGORIES";
-            this.categoryButton.UseVisualStyleBackColor = true;
+            this.categoryButton.UseVisualStyleBackColor = false;
             this.categoryButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // myAccountButton
             // 
             this.myAccountButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.myAccountButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.myAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.myAccountButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.myAccountButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.myAccountButton.Location = new System.Drawing.Point(769, 194);
+            this.myAccountButton.Location = new System.Drawing.Point(757, 194);
             this.myAccountButton.Name = "myAccountButton";
-            this.myAccountButton.Size = new System.Drawing.Size(183, 113);
+            this.myAccountButton.Size = new System.Drawing.Size(200, 113);
             this.myAccountButton.TabIndex = 3;
             this.myAccountButton.Text = "MY ACCOUNT";
-            this.myAccountButton.UseVisualStyleBackColor = true;
+            this.myAccountButton.UseVisualStyleBackColor = false;
             this.myAccountButton.Click += new System.EventHandler(this.myAccountButton_Click);
             // 
             // reportsButton
             // 
             this.reportsButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.reportsButton.BackColor = System.Drawing.Color.Plum;
             this.reportsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportsButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.reportsButton.Location = new System.Drawing.Point(769, 313);
+            this.reportsButton.Location = new System.Drawing.Point(757, 313);
             this.reportsButton.Name = "reportsButton";
-            this.reportsButton.Size = new System.Drawing.Size(183, 113);
+            this.reportsButton.Size = new System.Drawing.Size(200, 113);
             this.reportsButton.TabIndex = 7;
             this.reportsButton.Text = "REPORTS";
-            this.reportsButton.UseVisualStyleBackColor = true;
+            this.reportsButton.UseVisualStyleBackColor = false;
             this.reportsButton.Click += new System.EventHandler(this.reportsButton_Click);
             // 
             // tablesButton
             // 
             this.tablesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tablesButton.BackColor = System.Drawing.Color.Tan;
             this.tablesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tablesButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tablesButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.tablesButton.Location = new System.Drawing.Point(24, 432);
+            this.tablesButton.Location = new System.Drawing.Point(12, 432);
             this.tablesButton.Name = "tablesButton";
-            this.tablesButton.Size = new System.Drawing.Size(183, 113);
+            this.tablesButton.Size = new System.Drawing.Size(200, 113);
             this.tablesButton.TabIndex = 8;
             this.tablesButton.Text = "TABLES";
-            this.tablesButton.UseVisualStyleBackColor = true;
+            this.tablesButton.UseVisualStyleBackColor = false;
             this.tablesButton.Click += new System.EventHandler(this.tablesButton_Click);
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(203)))), ((int)(((byte)(170)))));
-            this.mainPanel.Controls.Add(this.pictureBox2);
-            this.mainPanel.Controls.Add(this.pictureBox1);
-            this.mainPanel.Controls.Add(this.positLabel);
-            this.mainPanel.Controls.Add(this.loginLabel);
-            this.mainPanel.Location = new System.Drawing.Point(0, 31);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(982, 157);
-            this.mainPanel.TabIndex = 30;
-            // 
-            // positLabel
-            // 
-            this.positLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.positLabel.AutoSize = true;
-            this.positLabel.Font = new System.Drawing.Font("Malgun Gothic Semilight", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.positLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.positLabel.Location = new System.Drawing.Point(848, 125);
-            this.positLabel.Name = "positLabel";
-            this.positLabel.Size = new System.Drawing.Size(70, 23);
-            this.positLabel.TabIndex = 71;
-            this.positLabel.Text = "Position";
-            // 
-            // loginLabel
-            // 
-            this.loginLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.loginLabel.AutoSize = true;
-            this.loginLabel.Font = new System.Drawing.Font("Malgun Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginLabel.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.loginLabel.Location = new System.Drawing.Point(651, 118);
-            this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(182, 32);
-            this.loginLabel.TabIndex = 70;
-            this.loginLabel.Text = "Name Surname";
             // 
             // paymentMethodButton
             // 
             this.paymentMethodButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.paymentMethodButton.BackColor = System.Drawing.Color.NavajoWhite;
             this.paymentMethodButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.paymentMethodButton.Font = new System.Drawing.Font("Malgun Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.paymentMethodButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.paymentMethodButton.Location = new System.Drawing.Point(275, 432);
+            this.paymentMethodButton.Location = new System.Drawing.Point(263, 432);
             this.paymentMethodButton.Name = "paymentMethodButton";
-            this.paymentMethodButton.Size = new System.Drawing.Size(183, 113);
+            this.paymentMethodButton.Size = new System.Drawing.Size(200, 113);
             this.paymentMethodButton.TabIndex = 9;
             this.paymentMethodButton.Text = "PAYMENT METHODS";
-            this.paymentMethodButton.UseVisualStyleBackColor = true;
+            this.paymentMethodButton.UseVisualStyleBackColor = false;
             this.paymentMethodButton.Click += new System.EventHandler(this.paymentMethodButton_Click);
             // 
-            // pictureBox2
+            // userLogoControl1
             // 
-            this.pictureBox2.Image = global::PointOfSaleApp.Properties.Resources.EEE1234LOGO;
-            this.pictureBox2.Location = new System.Drawing.Point(176, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(220, 78);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 73;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PointOfSaleApp.Properties.Resources._1324_2___1_;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(156, 147);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 72;
-            this.pictureBox1.TabStop = false;
+            this.userLogoControl1.Location = new System.Drawing.Point(0, 31);
+            this.userLogoControl1.Name = "userLogoControl1";
+            this.userLogoControl1.Size = new System.Drawing.Size(982, 157);
+            this.userLogoControl1.TabIndex = 27;
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(982, 557);
+            this.Controls.Add(this.userLogoControl1);
             this.Controls.Add(this.paymentMethodButton);
             this.Controls.Add(this.tablesButton);
-            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.reportsButton);
             this.Controls.Add(this.myAccountButton);
             this.Controls.Add(this.categoryButton);
@@ -313,6 +266,7 @@ namespace PointOfSaleApp
             this.Controls.Add(this.myOrdersButton);
             this.Controls.Add(this.usersButton);
             this.Controls.Add(this.newOrderButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "POSi - Menu";
@@ -320,10 +274,6 @@ namespace PointOfSaleApp
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,11 +295,7 @@ namespace PointOfSaleApp
         private System.Windows.Forms.Button myAccountButton;
         private System.Windows.Forms.Button reportsButton;
         private System.Windows.Forms.Button tablesButton;
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Label positLabel;
-        private System.Windows.Forms.Label loginLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button paymentMethodButton;
+        private UserLogoControl userLogoControl1;
     }
 }

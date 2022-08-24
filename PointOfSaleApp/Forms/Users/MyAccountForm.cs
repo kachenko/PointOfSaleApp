@@ -226,14 +226,25 @@ namespace PointOfSaleApp.Forms
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show("Do you really want to exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-                else
-                {
-                    e.Cancel = true;
-                }
+                this.Hide();
+                MenuForm menu = new MenuForm();
+                menu.Show();
+            }
+        }
+
+        private void changePasswdButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Classes.UserClass.userId = int.Parse(userIDTextBox.Text);
+                Classes.UserClass.userLogin = userLoginTextBox.Text;
+
+                Forms.ChangePasswordForm changePassword = new ChangePasswordForm();
+                changePassword.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

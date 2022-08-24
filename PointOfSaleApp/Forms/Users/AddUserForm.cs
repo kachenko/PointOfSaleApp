@@ -24,15 +24,16 @@ namespace PointOfSaleApp.Forms
 
         private void saveUserButton_Click(object sender, EventArgs e)
         {
-            try
+            if (userLoginTextBox.Text != "" && userPasswordTextBox.Text != "" && userRoleComboBox.Text != "")
             {
-                if (userLoginTextBox.Text != "" && userPasswordTextBox.Text != "" && userRoleComboBox.Text != "")
+                if (MessageBox.Show("Are you sure you want to add a new user?", "Add User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (MessageBox.Show("Are you sure you want to add a new user?", "Add User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    int isSuccess = -1;
+                    try
                     {
                         string loginText = userLoginTextBox.Text;
                         string passwordText = userPasswordTextBox.Text;
-                        passwordText = System.Text.Encoding.Default.GetString(Classes.CryptographyClass.GetSHA1(loginText, passwordText)); 
+                        passwordText = System.Text.Encoding.Default.GetString(Classes.CryptographyClass.GetSHA1(loginText, passwordText));
 
                         SqlCommand command = new SqlCommand("[sp_add_user]", conn);
                         command.CommandType = CommandType.StoredProcedure;
@@ -49,22 +50,30 @@ namespace PointOfSaleApp.Forms
                         command.Parameters.AddWithValue("@p_image", setImage);
 
                         conn.Open();
-                        command.ExecuteNonQuery();
+                        isSuccess = command.ExecuteNonQuery();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("SQL EXCEPTION: " + ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
                         conn.Close();
-
-                        MessageBox.Show("User added successfully", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+                        if (isSuccess > 0)
+                            MessageBox.Show("User added successfully.", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("User has not added.", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.Close();
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Please enter details.", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Please enter details.", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -157,6 +166,12 @@ namespace PointOfSaleApp.Forms
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        const string defaultPassword = "12345";
+        private void changePasswdButton_Click(object sender, EventArgs e)
+        {
+            userPasswordTextBox.Text = defaultPassword;
         }
     }
 }

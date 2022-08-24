@@ -29,6 +29,7 @@ namespace PointOfSaleApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentForm));
             this.dataPriceGridView = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -168,6 +169,7 @@ namespace PointOfSaleApp.Forms
             // 
             // calculateOrderButton
             // 
+            this.calculateOrderButton.BackColor = System.Drawing.Color.LightSkyBlue;
             this.calculateOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calculateOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calculateOrderButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -177,11 +179,12 @@ namespace PointOfSaleApp.Forms
             this.calculateOrderButton.Size = new System.Drawing.Size(107, 55);
             this.calculateOrderButton.TabIndex = 66;
             this.calculateOrderButton.Text = "CALCULATE";
-            this.calculateOrderButton.UseVisualStyleBackColor = true;
+            this.calculateOrderButton.UseVisualStyleBackColor = false;
             this.calculateOrderButton.Click += new System.EventHandler(this.calculateOrderButton_Click);
             // 
             // printBillButton
             // 
+            this.printBillButton.BackColor = System.Drawing.Color.PeachPuff;
             this.printBillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printBillButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.printBillButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -191,7 +194,7 @@ namespace PointOfSaleApp.Forms
             this.printBillButton.Size = new System.Drawing.Size(107, 55);
             this.printBillButton.TabIndex = 67;
             this.printBillButton.Text = "PRINT BILL";
-            this.printBillButton.UseVisualStyleBackColor = true;
+            this.printBillButton.UseVisualStyleBackColor = false;
             this.printBillButton.Click += new System.EventHandler(this.printBillButton_Click);
             // 
             // closeOrderButton
@@ -233,7 +236,7 @@ namespace PointOfSaleApp.Forms
             // 
             // editOrderButton
             // 
-            this.editOrderButton.BackColor = System.Drawing.Color.Linen;
+            this.editOrderButton.BackColor = System.Drawing.Color.LightGoldenrodYellow;
             this.editOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.editOrderButton.Font = new System.Drawing.Font("Malgun Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editOrderButton.ForeColor = System.Drawing.SystemColors.WindowFrame;
@@ -278,8 +281,8 @@ namespace PointOfSaleApp.Forms
             // 
             // PaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(803, 547);
             this.Controls.Add(this.userMenuControl1);
@@ -299,10 +302,11 @@ namespace PointOfSaleApp.Forms
             this.Controls.Add(this.printBillButton);
             this.Controls.Add(this.itemOrderLabel);
             this.Controls.Add(this.dataPriceGridView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PaymentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PaymentForm";
+            this.Text = "POSi - Payment";
             this.Load += new System.EventHandler(this.PaymentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataPriceGridView)).EndInit();
             this.ResumeLayout(false);

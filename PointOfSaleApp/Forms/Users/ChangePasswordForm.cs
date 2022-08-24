@@ -53,6 +53,7 @@ namespace PointOfSaleApp.Forms
         {
             string passwordText = passwordTextBox.Text;
             string loginText = loginTextBox.Text;
+            int isSuccess = -1;
             try
             {
                 if (loginTextBox.Text != "" && passwordTextBox.Text != "")
@@ -63,10 +64,7 @@ namespace PointOfSaleApp.Forms
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@p_id", int.Parse(userIDTextBox.Text));
                     command.Parameters.AddWithValue("@p_password", passwordText);
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("User password updated successfully.", "Change User Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  
-                    conn.Close();
+                    isSuccess = command.ExecuteNonQuery();
                 }
                 else
                 {
@@ -76,6 +74,18 @@ namespace PointOfSaleApp.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                    conn.Close();
+                if (isSuccess > 0)
+                    MessageBox.Show("User password updated successfully.", "Change User Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("User password not updated.", "Change User Password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Classes.UserClass.clearSelectedUser();
+
+                this.Hide();
             }
         }
 
